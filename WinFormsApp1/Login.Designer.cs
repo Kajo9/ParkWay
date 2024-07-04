@@ -37,6 +37,7 @@
             ClientSize = new Size(800, 450);
             Name = "Login";
             Text = "FrmLogin";
+            Load += Login_Load;
             ResumeLayout(false);
         }
 
