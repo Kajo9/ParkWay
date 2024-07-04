@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ParkWay.Models
 {
-    internal class Floor
+    public class Floor
     {
         public string FloorName { get; set; }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ParkWay.Models
 {
-    internal class Invoice: Base
+    public class Invoice: Base
     {
         public User User { get; set; }
 
