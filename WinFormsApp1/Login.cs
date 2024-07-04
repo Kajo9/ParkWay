@@ -11,5 +11,10 @@ namespace WinFormsApp1
         {
 
         }
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
