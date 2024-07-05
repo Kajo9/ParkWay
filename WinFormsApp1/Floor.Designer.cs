@@ -1,6 +1,6 @@
 ﻿namespace ParkWay
 {
-    partial class OverviewofParkingSpaces
+    partial class Floor
     {
         /// <summary>
         /// Required designer variable.
@@ -30,12 +30,13 @@
         {
             dgvOverviewofParkingSpaces = new DataGridView();
             btnBack = new Button();
-            btnReserve = new Button();
             msFloor = new MenuStrip();
             floorToolStripMenuItem = new ToolStripMenuItem();
             stFloorToolStripMenuItem = new ToolStripMenuItem();
             ndFloorToolStripMenuItem = new ToolStripMenuItem();
             rdFloorToolStripMenuItem = new ToolStripMenuItem();
+            lblFloor = new Label();
+            txtFloor = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvOverviewofParkingSpaces).BeginInit();
             msFloor.SuspendLayout();
             SuspendLayout();
@@ -43,15 +44,15 @@
             // dgvOverviewofParkingSpaces
             // 
             dgvOverviewofParkingSpaces.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvOverviewofParkingSpaces.Location = new Point(35, 66);
+            dgvOverviewofParkingSpaces.Location = new Point(35, 94);
             dgvOverviewofParkingSpaces.Name = "dgvOverviewofParkingSpaces";
             dgvOverviewofParkingSpaces.RowHeadersWidth = 51;
-            dgvOverviewofParkingSpaces.Size = new Size(726, 312);
+            dgvOverviewofParkingSpaces.Size = new Size(1357, 380);
             dgvOverviewofParkingSpaces.TabIndex = 0;
-            // 
+            //
             // btnBack
             // 
-            btnBack.Location = new Point(35, 409);
+            btnBack.Location = new Point(35, 480);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(94, 29);
             btnBack.TabIndex = 1;
@@ -59,22 +60,13 @@
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
             // 
-            // btnReserve
-            // 
-            btnReserve.Location = new Point(667, 409);
-            btnReserve.Name = "btnReserve";
-            btnReserve.Size = new Size(94, 29);
-            btnReserve.TabIndex = 2;
-            btnReserve.Text = "Reserve";
-            btnReserve.UseVisualStyleBackColor = true;
-            // 
             // msFloor
             // 
             msFloor.ImageScalingSize = new Size(20, 20);
             msFloor.Items.AddRange(new ToolStripItem[] { floorToolStripMenuItem });
             msFloor.Location = new Point(0, 0);
             msFloor.Name = "msFloor";
-            msFloor.Size = new Size(800, 28);
+            msFloor.Size = new Size(1437, 28);
             msFloor.TabIndex = 3;
             msFloor.Text = "msFloor";
             // 
@@ -103,18 +95,36 @@
             rdFloorToolStripMenuItem.Size = new Size(155, 26);
             rdFloorToolStripMenuItem.Text = "3rd Floor";
             // 
-            // OverviewofParkingSpaces
+            // lblFloor
+            // 
+            lblFloor.AutoSize = true;
+            lblFloor.Location = new Point(37, 44);
+            lblFloor.Name = "lblFloor";
+            lblFloor.Size = new Size(50, 20);
+            lblFloor.TabIndex = 4;
+            lblFloor.Text = "Floor: ";
+            // 
+            // txtFloor
+            // 
+            txtFloor.Location = new Point(93, 44);
+            txtFloor.Name = "txtFloor";
+            txtFloor.Size = new Size(125, 27);
+            txtFloor.TabIndex = 5;
+            // 
+            // Floor
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(btnReserve);
+            ClientSize = new Size(1437, 521);
+            Controls.Add(txtFloor);
+            Controls.Add(lblFloor);
             Controls.Add(btnBack);
             Controls.Add(dgvOverviewofParkingSpaces);
             Controls.Add(msFloor);
             MainMenuStrip = msFloor;
-            Name = "OverviewofParkingSpaces";
+            Name = "Floor";
             Text = "OverviewofParkingSpaces";
+            WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)dgvOverviewofParkingSpaces).EndInit();
             msFloor.ResumeLayout(false);
             msFloor.PerformLayout();
@@ -126,11 +136,12 @@
 
         private DataGridView dgvOverviewofParkingSpaces;
         private Button btnBack;
-        private Button btnReserve;
         private MenuStrip msFloor;
         private ToolStripMenuItem floorToolStripMenuItem;
         private ToolStripMenuItem stFloorToolStripMenuItem;
         private ToolStripMenuItem ndFloorToolStripMenuItem;
         private ToolStripMenuItem rdFloorToolStripMenuItem;
+        private Label lblFloor;
+        private TextBox txtFloor;
     }
 }

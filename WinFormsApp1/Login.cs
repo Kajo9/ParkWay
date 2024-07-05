@@ -30,7 +30,6 @@ namespace WinFormsApp1
                 Hide();
                 Main main = new Main();
                 main.Show();
-                Close();
             }
         }
     }

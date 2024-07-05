@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ParkWay
 {
-    public partial class OverviewofParkingSpaces : Form
+    public partial class Floor : Form
     {
-        public OverviewofParkingSpaces()
+        public Floor()
         {
             InitializeComponent();
         }

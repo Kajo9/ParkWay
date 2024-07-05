@@ -29,13 +29,16 @@
         private void InitializeComponent()
         {
             btnCancel = new Button();
-            btnOverviewofParkingSpaces = new Button();
-            btnAcountOverview = new Button();
+            menuStrip1 = new MenuStrip();
+            catalogToolStripMenuItem = new ToolStripMenuItem();
+            floorsToolStripMenuItem = new ToolStripMenuItem();
+            parkingSpacesToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(505, 219);
+            btnCancel.Location = new Point(1279, 525);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(94, 29);
             btnCancel.TabIndex = 0;
@@ -43,43 +46,59 @@
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btn_Cancel_Click;
             // 
-            // btnOverviewofParkingSpaces
+            // menuStrip1
             // 
-            btnOverviewofParkingSpaces.Location = new Point(32, 75);
-            btnOverviewofParkingSpaces.Name = "btnOverviewofParkingSpaces";
-            btnOverviewofParkingSpaces.Size = new Size(248, 29);
-            btnOverviewofParkingSpaces.TabIndex = 1;
-            btnOverviewofParkingSpaces.Text = "Overview of parking spaces";
-            btnOverviewofParkingSpaces.UseVisualStyleBackColor = true;
-            btnOverviewofParkingSpaces.Click += btnOverviewofParkingSpaces_Click;
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { catalogToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1396, 28);
+            menuStrip1.TabIndex = 1;
+            menuStrip1.Text = "menuStrip1";
             // 
-            // btnAcountOverview
+            // catalogToolStripMenuItem
             // 
-            btnAcountOverview.Location = new Point(351, 75);
-            btnAcountOverview.Name = "btnAcountOverview";
-            btnAcountOverview.Size = new Size(248, 29);
-            btnAcountOverview.TabIndex = 3;
-            btnAcountOverview.Text = "Account overview";
-            btnAcountOverview.UseVisualStyleBackColor = true;
-            btnAcountOverview.Click += btnAcountOverview_Click;
+            catalogToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { floorsToolStripMenuItem, parkingSpacesToolStripMenuItem });
+            catalogToolStripMenuItem.Name = "catalogToolStripMenuItem";
+            catalogToolStripMenuItem.Size = new Size(75, 24);
+            catalogToolStripMenuItem.Text = "Catalog";
+            // 
+            // floorsToolStripMenuItem
+            // 
+            floorsToolStripMenuItem.Name = "floorsToolStripMenuItem";
+            floorsToolStripMenuItem.Size = new Size(188, 26);
+            floorsToolStripMenuItem.Text = "Floors";
+            floorsToolStripMenuItem.Click += floorsToolStripMenuItem_Click;
+            // 
+            // parkingSpacesToolStripMenuItem
+            // 
+            parkingSpacesToolStripMenuItem.Name = "parkingSpacesToolStripMenuItem";
+            parkingSpacesToolStripMenuItem.Size = new Size(188, 26);
+            parkingSpacesToolStripMenuItem.Text = "Parking spaces";
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(634, 299);
-            Controls.Add(btnAcountOverview);
-            Controls.Add(btnOverviewofParkingSpaces);
+            ClientSize = new Size(1396, 577);
             Controls.Add(btnCancel);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Name = "Main";
             Text = "Main";
+            WindowState = FormWindowState.Maximized;
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button btnCancel;
-        private Button btnOverviewofParkingSpaces;
-        private Button btnAcountOverview;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem catalogToolStripMenuItem;
+        private ToolStripMenuItem floorsToolStripMenuItem;
+        private ToolStripMenuItem parkingSpacesToolStripMenuItem;
     }
 }
