@@ -28,49 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btn_Cancel = new Button();
-            btn_Login = new Button();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            btnCancel = new Button();
+            btnLogin = new Button();
+            txtUsername = new TextBox();
+            txtPassword = new TextBox();
             lb_Username = new Label();
             lbl_Password = new Label();
             SuspendLayout();
             // 
-            // btn_Cancel
+            // btnCancel
             // 
-            btn_Cancel.BackColor = SystemColors.Control;
-            btn_Cancel.Location = new Point(438, 256);
-            btn_Cancel.Name = "btn_Cancel";
-            btn_Cancel.Size = new Size(94, 29);
-            btn_Cancel.TabIndex = 0;
-            btn_Cancel.Text = "Cancel";
-            btn_Cancel.UseVisualStyleBackColor = false;
-            btn_Cancel.Click += btn_Cancel_Click;
+            btnCancel.BackColor = SystemColors.Control;
+            btnCancel.Location = new Point(438, 256);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(94, 29);
+            btnCancel.TabIndex = 0;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = false;
+            btnCancel.Click += btn_Cancel_Click;
             // 
-            // btn_Login
+            // btnLogin
             // 
-            btn_Login.BackColor = SystemColors.ActiveCaption;
-            btn_Login.Location = new Point(51, 256);
-            btn_Login.Name = "btn_Login";
-            btn_Login.Size = new Size(94, 29);
-            btn_Login.TabIndex = 1;
-            btn_Login.Text = "Login";
-            btn_Login.UseVisualStyleBackColor = false;
-            btn_Login.Click += btn_Login_Click;
+            btnLogin.BackColor = SystemColors.ActiveCaption;
+            btnLogin.Location = new Point(51, 256);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(94, 29);
+            btnLogin.TabIndex = 1;
+            btnLogin.Text = "Login";
+            btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btn_Login_Click;
             // 
-            // textBox1
+            // txtUsername
             // 
-            textBox1.Location = new Point(265, 78);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(267, 27);
-            textBox1.TabIndex = 2;
+            txtUsername.Location = new Point(265, 78);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(267, 27);
+            txtUsername.TabIndex = 2;
             // 
-            // textBox2
+            // txtPassword
             // 
-            textBox2.Location = new Point(265, 156);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(267, 27);
-            textBox2.TabIndex = 3;
+            txtPassword.Location = new Point(265, 156);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(267, 27);
+            txtPassword.TabIndex = 3;
             // 
             // lb_Username
             // 
@@ -97,10 +97,10 @@
             ClientSize = new Size(558, 334);
             Controls.Add(lbl_Password);
             Controls.Add(lb_Username);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
-            Controls.Add(btn_Login);
-            Controls.Add(btn_Cancel);
+            Controls.Add(txtPassword);
+            Controls.Add(txtUsername);
+            Controls.Add(btnLogin);
+            Controls.Add(btnCancel);
             Name = "Login";
             Text = "FrmLogin";
             Load += Login_Load;
@@ -110,10 +110,10 @@
 
         #endregion
 
-        private Button btn_Cancel;
-        private Button btn_Login;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private Button btnCancel;
+        private Button btnLogin;
+        private TextBox txtUsername;
+        private TextBox txtPassword;
         private Label lb_Username;
         private Label lbl_Password;
     }

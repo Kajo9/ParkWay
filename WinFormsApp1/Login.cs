@@ -21,8 +21,17 @@ namespace WinFormsApp1
 
         private void btn_Login_Click(object sender, EventArgs e)
         {
-            Main main = new Main();
-            main.Show();
+            if (txtUsername.Text == "" || txtPassword.Text == "")
+            {
+                MessageBox.Show("Molimo unesite korisnièke podatke!", "Upozorenje!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                Hide();
+                Main main = new Main();
+                main.Show();
+                Close();
+            }
         }
     }
 }
