@@ -22,20 +22,10 @@ namespace ParkWay
             Close();
         }
 
-        private void btnOverviewofParkingSpaces_Click(object sender, EventArgs e)
+        private void floorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OverviewofParkingSpaces overviewofParkingSpaces = new OverviewofParkingSpaces();
-            overviewofParkingSpaces.Show();
-
-            this.Close();
-        }
-
-        private void btnAcountOverview_Click(object sender, EventArgs e)
-        {
-            AccountOverview acountOverview = new AccountOverview();
-            acountOverview.Show();
-
-            this.Close();
+            Floor floor = new Floor();
+            floor.Show();
         }
     }
 }
