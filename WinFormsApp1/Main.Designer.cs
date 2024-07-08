@@ -38,7 +38,7 @@
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(1279, 525);
+            btnCancel.Location = new Point(1091, 415);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(94, 29);
             btnCancel.TabIndex = 0;
@@ -52,7 +52,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { catalogToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1396, 28);
+            menuStrip1.Size = new Size(1226, 28);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -80,7 +80,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1396, 577);
+            ClientSize = new Size(1226, 471);
             Controls.Add(btnCancel);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;

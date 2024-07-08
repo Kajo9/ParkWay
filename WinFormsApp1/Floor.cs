@@ -8,10 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using ParkWay.Models;
+
 namespace ParkWay
 {
     public partial class Floor : Form
     {
+
+        DatabaseContext db = new DatabaseContext();
         public Floor()
         {
             InitializeComponent();
@@ -23,6 +27,28 @@ namespace ParkWay
             main.Show();
 
             this.Close();
+        }
+
+        private void Floor_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                using (DatabaseContext db1 = new DatabaseContext())
+                {
+                     var nekavarijabla = db1.Floors.ToList();
+
+                }
+                
+            }
+            catch (Exception x)
+            {
+
+                var nesto = x;
+            }
+            
+            
+            dgvFloors.DataSource = db.Floors.ToList();
+                
         }
 
     }

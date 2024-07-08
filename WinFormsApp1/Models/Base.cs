@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ParkWay.Models
 {
-    public class Base
+    public partial class Base
     {
         public int ID { get; set; }
     }

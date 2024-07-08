@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ParkWay.Models
 {
-    public class User: Base
+    public partial class User: Base
     {
         public string FirstName { get; set; }
 
