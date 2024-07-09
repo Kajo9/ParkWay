@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsApp1;
 
 namespace ParkWay
 {
@@ -17,15 +18,25 @@ namespace ParkWay
             InitializeComponent();
         }
 
-        private void btn_Cancel_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void floorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Floor floor = new Floor();
             floor.Show();
+            Hide();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
+        }
+
+        private void parkingSpotsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ParkingSpot parkingSpot = new ParkingSpot();
+            parkingSpot.Show();
+            Hide();
         }
     }
 }

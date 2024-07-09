@@ -61,6 +61,7 @@
             Controls.Add(btnBack);
             Name = "AccountOverview";
             Text = "AcountOverview";
+            Load += AccountOverview_Load;
             ((System.ComponentModel.ISupportInitialize)dgvAccount).EndInit();
             ResumeLayout(false);
         }

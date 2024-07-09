@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnCancel = new Button();
+            btnBack = new Button();
             menuStrip1 = new MenuStrip();
             catalogToolStripMenuItem = new ToolStripMenuItem();
             floorsToolStripMenuItem = new ToolStripMenuItem();
-            parkingSpacesToolStripMenuItem = new ToolStripMenuItem();
+            parkingSpotsToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
-            // btnCancel
+            // btnBack
             // 
-            btnCancel.Location = new Point(1120, 416);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(94, 29);
-            btnCancel.TabIndex = 0;
-            btnCancel.Text = "Cancel";
-            btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btn_Cancel_Click;
+            btnBack.Location = new Point(1036, 371);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(94, 29);
+            btnBack.TabIndex = 0;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
             // 
             // menuStrip1
             // 
@@ -52,13 +52,13 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { catalogToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1226, 28);
+            menuStrip1.Size = new Size(1159, 28);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
             // catalogToolStripMenuItem
             // 
-            catalogToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { floorsToolStripMenuItem, parkingSpacesToolStripMenuItem });
+            catalogToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { floorsToolStripMenuItem, parkingSpotsToolStripMenuItem });
             catalogToolStripMenuItem.Name = "catalogToolStripMenuItem";
             catalogToolStripMenuItem.Size = new Size(75, 24);
             catalogToolStripMenuItem.Text = "Catalog";
@@ -66,22 +66,23 @@
             // floorsToolStripMenuItem
             // 
             floorsToolStripMenuItem.Name = "floorsToolStripMenuItem";
-            floorsToolStripMenuItem.Size = new Size(188, 26);
+            floorsToolStripMenuItem.Size = new Size(224, 26);
             floorsToolStripMenuItem.Text = "Floors";
             floorsToolStripMenuItem.Click += floorsToolStripMenuItem_Click;
             // 
-            // parkingSpacesToolStripMenuItem
+            // parkingSpotsToolStripMenuItem
             // 
-            parkingSpacesToolStripMenuItem.Name = "parkingSpacesToolStripMenuItem";
-            parkingSpacesToolStripMenuItem.Size = new Size(188, 26);
-            parkingSpacesToolStripMenuItem.Text = "Parking spaces";
+            parkingSpotsToolStripMenuItem.Name = "parkingSpotsToolStripMenuItem";
+            parkingSpotsToolStripMenuItem.Size = new Size(224, 26);
+            parkingSpotsToolStripMenuItem.Text = "Parking spots";
+            parkingSpotsToolStripMenuItem.Click += parkingSpotsToolStripMenuItem_Click;
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1226, 471);
-            Controls.Add(btnCancel);
+            ClientSize = new Size(1159, 424);
+            Controls.Add(btnBack);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "Main";
@@ -95,10 +96,10 @@
 
         #endregion
 
-        private Button btnCancel;
+        private Button btnBack;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem catalogToolStripMenuItem;
         private ToolStripMenuItem floorsToolStripMenuItem;
-        private ToolStripMenuItem parkingSpacesToolStripMenuItem;
+        private ToolStripMenuItem parkingSpotsToolStripMenuItem;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ParkWay.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace ParkWay
 {
     public partial class AccountOverview : Form
     {
+        DatabaseContext db = new DatabaseContext();
+
         public AccountOverview()
         {
             InitializeComponent();
@@ -21,8 +24,12 @@ namespace ParkWay
         {
             Main main = new Main();
             main.Show();
+            Close();
+        }
 
-            this.Close();
+        private void AccountOverview_Load(object sender, EventArgs e)
+        {
+            dgvAccount.DataSource = db.Invoices.ToList();
         }
     }
 }

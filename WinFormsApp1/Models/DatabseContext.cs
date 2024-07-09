@@ -14,8 +14,6 @@ namespace ParkWay.Models
                 
         }
 
-
-
         public  DbSet<Floor> Floors { get; set; }
 
         public  DbSet<Invoice> Invoices { get; set; }
