@@ -12,5 +12,6 @@ namespace ParkWay.Models
         public ParkingSpot ParkingSpot { get; set; }
         public DateTime PurchaseDate { get; set; }
         public int NumberOfDays { get; set; }
+        public decimal Amount {  get; set; }
     }
 }

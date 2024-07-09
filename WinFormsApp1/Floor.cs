@@ -32,7 +32,9 @@ namespace ParkWay
         private void Floor_Load(object sender, EventArgs e)
         {
 
-            dgvFloors.DataSource = db.Floors.ToList();
+            LoadFloorsData();
+            dgvFloors.Columns["ID"].DisplayIndex = 0;
+            dgvFloors.Columns["FloorName"].DisplayIndex = 1;
 
         }
 

@@ -40,6 +40,8 @@
             dgvFloors = new DataGridView();
             btnSave = new Button();
             btnDelete = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvOverviewofParkingSpaces).BeginInit();
+            msFloor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFloors).BeginInit();
             SuspendLayout();
             // 
@@ -100,7 +102,7 @@
             // lblFloor
             // 
             lblFloor.AutoSize = true;
-            lblFloor.Location = new Point(37, 44);
+            lblFloor.Location = new Point(37, 48);
             lblFloor.Name = "lblFloor";
             lblFloor.Size = new Size(50, 20);
             lblFloor.TabIndex = 4;
@@ -160,6 +162,9 @@
             Text = "Floors";
             WindowState = FormWindowState.Maximized;
             Load += Floor_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvOverviewofParkingSpaces).EndInit();
+            msFloor.ResumeLayout(false);
+            msFloor.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFloors).EndInit();
             ResumeLayout(false);
             PerformLayout();

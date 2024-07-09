@@ -9,7 +9,8 @@ namespace ParkWay.Models
     public partial class ParkingSpot: Base
     {
         public string Name { get; set; }
-
+        public string Vehicle {  get; set; }
         public Floor Floor { get; set; }
+        public bool isAvaible { get; set; }
     }
 }

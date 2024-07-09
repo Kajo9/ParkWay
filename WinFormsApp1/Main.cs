@@ -25,18 +25,18 @@ namespace ParkWay
             Hide();
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            Login login = new Login();
-            login.Show();
-            Close();
-        }
-
         private void parkingSpotsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ParkingSpot parkingSpot = new ParkingSpot();
             parkingSpot.Show();
             Hide();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
         }
     }
 }

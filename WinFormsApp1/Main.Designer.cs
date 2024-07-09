@@ -28,23 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnBack = new Button();
             menuStrip1 = new MenuStrip();
             catalogToolStripMenuItem = new ToolStripMenuItem();
             floorsToolStripMenuItem = new ToolStripMenuItem();
             parkingSpotsToolStripMenuItem = new ToolStripMenuItem();
+            btnBack = new Button();
             menuStrip1.SuspendLayout();
             SuspendLayout();
-            // 
-            // btnBack
-            // 
-            btnBack.Location = new Point(1036, 371);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new Size(94, 29);
-            btnBack.TabIndex = 0;
-            btnBack.Text = "Back";
-            btnBack.UseVisualStyleBackColor = true;
-            btnBack.Click += btnBack_Click;
             // 
             // menuStrip1
             // 
@@ -66,16 +56,27 @@
             // floorsToolStripMenuItem
             // 
             floorsToolStripMenuItem.Name = "floorsToolStripMenuItem";
-            floorsToolStripMenuItem.Size = new Size(224, 26);
+            floorsToolStripMenuItem.Size = new Size(179, 26);
             floorsToolStripMenuItem.Text = "Floors";
             floorsToolStripMenuItem.Click += floorsToolStripMenuItem_Click;
             // 
             // parkingSpotsToolStripMenuItem
             // 
             parkingSpotsToolStripMenuItem.Name = "parkingSpotsToolStripMenuItem";
-            parkingSpotsToolStripMenuItem.Size = new Size(224, 26);
+            parkingSpotsToolStripMenuItem.Size = new Size(179, 26);
             parkingSpotsToolStripMenuItem.Text = "Parking spots";
             parkingSpotsToolStripMenuItem.Click += parkingSpotsToolStripMenuItem_Click;
+            // 
+            // btnBack
+            // 
+            btnBack.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnBack.Location = new Point(1028, 368);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(94, 29);
+            btnBack.TabIndex = 2;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
             // 
             // Main
             // 
@@ -95,11 +96,10 @@
         }
 
         #endregion
-
-        private Button btnBack;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem catalogToolStripMenuItem;
         private ToolStripMenuItem floorsToolStripMenuItem;
         private ToolStripMenuItem parkingSpotsToolStripMenuItem;
+        private Button btnBack;
     }
 }
