@@ -42,7 +42,7 @@
             btnCancel.Location = new Point(438, 256);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(94, 29);
-            btnCancel.TabIndex = 0;
+            btnCancel.TabIndex = 3;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = false;
             btnCancel.Click += btn_Cancel_Click;
@@ -53,7 +53,7 @@
             btnLogin.Location = new Point(51, 256);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(94, 29);
-            btnLogin.TabIndex = 1;
+            btnLogin.TabIndex = 2;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btn_Login_Click;
@@ -63,14 +63,14 @@
             txtUsername.Location = new Point(265, 78);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(267, 27);
-            txtUsername.TabIndex = 2;
+            txtUsername.TabIndex = 0;
             // 
             // txtPassword
             // 
             txtPassword.Location = new Point(265, 156);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(267, 27);
-            txtPassword.TabIndex = 3;
+            txtPassword.TabIndex = 1;
             // 
             // lb_Username
             // 

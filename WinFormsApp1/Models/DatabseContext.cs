@@ -9,12 +9,12 @@ namespace ParkWay.Models
 {
      public class DatabaseContext : DbContext
     {
-        public DatabaseContext() : base(@"Data Source=ASUS_09\SQLEXPRESS;Initial Catalog=ParkWayDB;User ID=sa;Password=plavi100;")
+        public DatabaseContext() : base(@"Data Source=ASUS09_K\SQLEXPRESS;Initial Catalog=ParkWayDB;User ID=sa;Password=plavi100;")
         {
                 
         }
 
-        public  DbSet<Base> Bases { get; set; }
+
 
         public  DbSet<Floor> Floors { get; set; }
 
