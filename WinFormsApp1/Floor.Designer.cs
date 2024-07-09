@@ -36,10 +36,12 @@
             ndFloorToolStripMenuItem = new ToolStripMenuItem();
             rdFloorToolStripMenuItem = new ToolStripMenuItem();
             lblFloor = new Label();
-            txtFloor = new TextBox();
+            txtFloorName = new TextBox();
             dgvFloors = new DataGridView();
             btnSave = new Button();
             btnDelete = new Button();
+            txtFloorID = new TextBox();
+            lblID = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvOverviewofParkingSpaces).BeginInit();
             msFloor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFloors).BeginInit();
@@ -102,18 +104,18 @@
             // lblFloor
             // 
             lblFloor.AutoSize = true;
-            lblFloor.Location = new Point(37, 48);
+            lblFloor.Location = new Point(37, 66);
             lblFloor.Name = "lblFloor";
             lblFloor.Size = new Size(50, 20);
             lblFloor.TabIndex = 4;
             lblFloor.Text = "Floor: ";
             // 
-            // txtFloor
+            // txtFloorName
             // 
-            txtFloor.Location = new Point(93, 44);
-            txtFloor.Name = "txtFloor";
-            txtFloor.Size = new Size(125, 27);
-            txtFloor.TabIndex = 1;
+            txtFloorName.Location = new Point(93, 63);
+            txtFloorName.Name = "txtFloorName";
+            txtFloorName.Size = new Size(125, 27);
+            txtFloorName.TabIndex = 1;
             // 
             // dgvFloors
             // 
@@ -126,10 +128,11 @@
             dgvFloors.RowHeadersWidth = 51;
             dgvFloors.Size = new Size(1230, 324);
             dgvFloors.TabIndex = 4;
+            dgvFloors.CellContentClick += dgvFloors_CellContentClick;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(260, 43);
+            btnSave.Location = new Point(256, 61);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(94, 29);
             btnSave.TabIndex = 2;
@@ -139,7 +142,7 @@
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(411, 44);
+            btnDelete.Location = new Point(396, 61);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(94, 29);
             btnDelete.TabIndex = 3;
@@ -147,15 +150,34 @@
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
+            // txtFloorID
+            // 
+            txtFloorID.Location = new Point(93, 30);
+            txtFloorID.Name = "txtFloorID";
+            txtFloorID.ReadOnly = true;
+            txtFloorID.Size = new Size(125, 27);
+            txtFloorID.TabIndex = 6;
+            // 
+            // lblID
+            // 
+            lblID.AutoSize = true;
+            lblID.Location = new Point(37, 33);
+            lblID.Name = "lblID";
+            lblID.Size = new Size(27, 20);
+            lblID.TabIndex = 7;
+            lblID.Text = "ID:";
+            // 
             // Floor
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1350, 534);
+            Controls.Add(lblID);
+            Controls.Add(txtFloorID);
             Controls.Add(btnDelete);
             Controls.Add(btnSave);
             Controls.Add(dgvFloors);
-            Controls.Add(txtFloor);
+            Controls.Add(txtFloorName);
             Controls.Add(lblFloor);
             Controls.Add(btnBack);
             Name = "Floor";
@@ -180,9 +202,11 @@
         private ToolStripMenuItem ndFloorToolStripMenuItem;
         private ToolStripMenuItem rdFloorToolStripMenuItem;
         private Label lblFloor;
-        private TextBox txtFloor;
+        private TextBox txtFloorName;
         private DataGridView dgvFloors;
         private Button btnSave;
         private Button btnDelete;
+        private TextBox txtFloorID;
+        private Label lblID;
     }
 }

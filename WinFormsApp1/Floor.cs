@@ -12,10 +12,10 @@ using ParkWay.Models;
 
 namespace ParkWay
 {
+
     public partial class Floor : Form
     {
 
-        DatabaseContext db = new DatabaseContext();
         public Floor()
         {
             InitializeComponent();
@@ -25,8 +25,7 @@ namespace ParkWay
         {
             Main main = new Main();
             main.Show();
-
-            this.Close();
+            Close();
         }
 
         private void Floor_Load(object sender, EventArgs e)
@@ -49,18 +48,38 @@ namespace ParkWay
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtFloor.Text))
+            if (!string.IsNullOrWhiteSpace(txtFloorName.Text))
             {
                 using (var context = new DatabaseContext())
                 {
-                    var floor = new Models.Floor
+                    int floorId;
+                    if (int.TryParse(txtFloorID.Text, out floorId))
                     {
-                        FloorName = txtFloor.Text,
-                    };
-
-                    context.Floors.Add(floor);
+                        var existingFloor = context.Floors.FirstOrDefault(f => f.ID == floorId);
+                        if (existingFloor != null)
+                        {
+                            if (context.Floors.Any(f => f.FloorName == txtFloorName.Text && f.ID != floorId))
+                            {
+                                MessageBox.Show("Naziv kata već postoji!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            existingFloor.FloorName = txtFloorName.Text;
+                        }
+                    }
+                    else
+                    {
+                        if (context.Floors.Any(f => f.FloorName == txtFloorName.Text))
+                        {
+                            MessageBox.Show("Naziv kata već postoji!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        var floor = new Models.Floor
+                        {
+                            FloorName = txtFloorName.Text,
+                        };
+                        context.Floors.Add(floor);
+                    }
                     context.SaveChanges();
-
                     MessageBox.Show("Podaci su uspešno sačuvani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadFloorsData();
                 }
@@ -73,31 +92,46 @@ namespace ParkWay
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (dgvFloors.SelectedRows.Count > 0)
+            if (dgvFloors.CurrentCell != null)
             {
-                int selectedRowIndex = dgvFloors.SelectedRows[0].Index;
-                int floorId = (int)dgvFloors.Rows[selectedRowIndex].Cells["ID"].Value;
+                int rowIndex = dgvFloors.CurrentCell.RowIndex;
+                int floorId = (int)dgvFloors.Rows[rowIndex].Cells["ID"].Value;
 
-                using (var context = new DatabaseContext())
+                DialogResult result = MessageBox.Show("Jeste li sigurni da želite obrisati odabrani red?", "Potvrda brisanja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
                 {
-                    var floor = context.Floors.FirstOrDefault(f => f.ID == floorId);
-                    if (floor != null)
+                    using (var context = new DatabaseContext())
                     {
-                        context.Floors.Remove(floor);
-                        context.SaveChanges();
+                        var floor = context.Floors.FirstOrDefault(f => f.ID == floorId);
+                        if (floor != null)
+                        {
+                            context.Floors.Remove(floor);
+                            context.SaveChanges();
 
-                        MessageBox.Show("Podaci su uspešno obrisani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadFloorsData();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Nije pronađen zapis za brisanje.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Podaci su uspješno obrisani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadFloorsData();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nije pronađen zapis za brisanje.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Morate odabrati red za brisanje.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Morate odabrati ćeliju za brisanje.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void dgvFloors_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvFloors.SelectedRows.Count > 0)
+            {
+                int selectedRowIndex = dgvFloors.SelectedRows[0].Index;
+                txtFloorID.Text = dgvFloors.Rows[selectedRowIndex].Cells["ID"].Value.ToString();
+                txtFloorName.Text = dgvFloors.Rows[selectedRowIndex].Cells["FloorName"].Value.ToString();
             }
         }
     }
