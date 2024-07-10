@@ -120,15 +120,15 @@
             // dgvFloors
             // 
             dgvFloors.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvFloors.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvFloors.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dgvFloors.BackgroundColor = SystemColors.ScrollBar;
             dgvFloors.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvFloors.Location = new Point(37, 128);
+            dgvFloors.Location = new Point(12, 96);
             dgvFloors.Name = "dgvFloors";
             dgvFloors.RowHeadersWidth = 51;
-            dgvFloors.Size = new Size(1230, 324);
+            dgvFloors.Size = new Size(1326, 385);
             dgvFloors.TabIndex = 4;
-            dgvFloors.CellContentClick += dgvFloors_CellContentClick;
+            dgvFloors.SelectionChanged += dgvFloors_SelectionChanged;
             // 
             // btnSave
             // 

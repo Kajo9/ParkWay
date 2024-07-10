@@ -125,7 +125,7 @@ namespace ParkWay
             }
         }
 
-        private void dgvFloors_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvFloors_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvFloors.SelectedRows.Count > 0)
             {
