@@ -58,7 +58,8 @@ namespace ParkWay
             dgvFloors.ClearSelection();
         }
 
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void deleteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (dgvFloors.SelectedRows.Count > 0)
             {
@@ -94,28 +95,49 @@ namespace ParkWay
             }
         }
 
-        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(txtFloorName.Text))
             {
                 using (var context = new DatabaseContext())
                 {
-                    if (context.Floors.Any(f => f.FloorName == txtFloorName.Text))
+                    if (isUpdating)
                     {
-                        MessageBox.Show("Naziv kata već postoji!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        int floorID = int.Parse(txtFloorID.Text);
+                        var existingFloor = context.Floors.FirstOrDefault(f => f.ID == floorID);
+                        if (existingFloor != null)
+                        {
+                            if (context.Floors.Any(f => f.FloorName == txtFloorName.Text && f.ID != floorID))
+                            {
+                                MessageBox.Show("Naziv kata već postoji!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+
+                            existingFloor.FloorName = txtFloorName.Text;
+                            context.SaveChanges();
+
+                            MessageBox.Show("Podaci su uspješno ažurirani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            dgvFloors.Rows[dgvFloors.SelectedRows[0].Index].Cells["FloorName"].Value = txtFloorName.Text;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nije pronađen zapis za ažuriranje.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
-
-                    var floor = new Models.Floor
+                    else
                     {
-                        FloorName = txtFloorName.Text,
-                    };
-                    context.Floors.Add(floor);
-                    context.SaveChanges();
+                        var floor = new Models.Floor
+                        {
+                            FloorName = txtFloorName.Text,
+                        };
+                        context.Floors.Add(floor);
+                        context.SaveChanges();
 
-                    MessageBox.Show("Podaci su uspešno sačuvani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadFloorsData();
-                    ResetForm();
+                        MessageBox.Show("Podaci su uspješno sačuvani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadFloorsData();
+                        ResetForm();
+                    }
                 }
             }
             else
@@ -124,44 +146,11 @@ namespace ParkWay
             }
         }
 
-        private void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dgvFloors.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Nije pronađen zapis za ažuriranje.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (isUpdating && !string.IsNullOrWhiteSpace(txtFloorName.Text))
-            {
-                using (var context = new DatabaseContext())
-                {
-                    int floorId = int.Parse(txtFloorID.Text);
-                    var existingFloor = context.Floors.FirstOrDefault(f => f.ID == floorId);
-                    if (existingFloor != null)
-                    {
-                        if (context.Floors.Any(f => f.FloorName == txtFloorName.Text && f.ID != floorId))
-                        {
-                            MessageBox.Show("Naziv kata već postoji!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                        existingFloor.FloorName = txtFloorName.Text;
-                        context.SaveChanges();
-
-                        MessageBox.Show("Podaci su uspešno ažurirani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadFloorsData();
-                        ResetForm();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Nije pronađen zapis za ažuriranje.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Morate ispuniti polje!", "Upozorenje!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            isUpdating = false;
+            txtFloorID.Text = string.Empty;
+            txtFloorName.Text = string.Empty;
         }
     }
 }

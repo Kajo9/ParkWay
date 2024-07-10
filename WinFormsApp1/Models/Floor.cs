@@ -10,5 +10,7 @@ namespace ParkWay.Models
     {
         public string FloorName { get; set; }
 
+        public ICollection<ParkingSpot> ParkingSpots { get; } = new List<ParkingSpot>();
+
     }
 }

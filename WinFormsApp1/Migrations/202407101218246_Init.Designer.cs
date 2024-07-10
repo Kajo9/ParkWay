@@ -7,13 +7,13 @@ namespace ParkWay.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class PromjenaAtributaParkingSpot1 : IMigrationMetadata
+    public sealed partial class Init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PromjenaAtributaParkingSpot1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Init));
         
         string IMigrationMetadata.Id
         {
-            get { return "202407100910017_PromjenaAtributaParkingSpot1"; }
+            get { return "202407101218246_Init"; }
         }
         
         string IMigrationMetadata.Source

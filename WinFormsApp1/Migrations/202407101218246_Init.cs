@@ -17,6 +17,19 @@
                 .PrimaryKey(t => t.ID);
             
             CreateTable(
+                "dbo.ParkingSpots",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        FloorID = c.Int(nullable: false),
+                        isAvaible = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Floors", t => t.FloorID, cascadeDelete: true)
+                .Index(t => t.FloorID);
+            
+            CreateTable(
                 "dbo.Invoices",
                 c => new
                     {
@@ -30,18 +43,6 @@
                 .ForeignKey("dbo.Users", t => t.User_ID)
                 .Index(t => t.ParkingSpot_ID)
                 .Index(t => t.User_ID);
-            
-            CreateTable(
-                "dbo.ParkingSpots",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Floor_ID = c.Int(),
-                    })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Floors", t => t.Floor_ID)
-                .Index(t => t.Floor_ID);
             
             CreateTable(
                 "dbo.Users",
@@ -74,6 +75,7 @@
                         ID = c.Int(nullable: false, identity: true),
                         PurchaseDate = c.DateTime(nullable: false),
                         NumberOfDays = c.Int(nullable: false),
+                        Amount = c.Decimal(nullable: false, precision: 18, scale: 2),
                         ParkingSpot_ID = c.Int(),
                         User_ID = c.Int(),
                     })
@@ -109,20 +111,20 @@
             DropForeignKey("dbo.Purchases", "ParkingSpot_ID", "dbo.ParkingSpots");
             DropForeignKey("dbo.Invoices", "User_ID", "dbo.Users");
             DropForeignKey("dbo.Invoices", "ParkingSpot_ID", "dbo.ParkingSpots");
-            DropForeignKey("dbo.ParkingSpots", "Floor_ID", "dbo.Floors");
+            DropForeignKey("dbo.ParkingSpots", "FloorID", "dbo.Floors");
             DropIndex("dbo.Reservations", new[] { "User_ID" });
             DropIndex("dbo.Reservations", new[] { "ParkingSpot_ID" });
             DropIndex("dbo.Purchases", new[] { "User_ID" });
             DropIndex("dbo.Purchases", new[] { "ParkingSpot_ID" });
-            DropIndex("dbo.ParkingSpots", new[] { "Floor_ID" });
             DropIndex("dbo.Invoices", new[] { "User_ID" });
             DropIndex("dbo.Invoices", new[] { "ParkingSpot_ID" });
+            DropIndex("dbo.ParkingSpots", new[] { "FloorID" });
             DropTable("dbo.Reservations");
             DropTable("dbo.Purchases");
             DropTable("dbo.ParkingOverviews");
             DropTable("dbo.Users");
-            DropTable("dbo.ParkingSpots");
             DropTable("dbo.Invoices");
+            DropTable("dbo.ParkingSpots");
             DropTable("dbo.Floors");
         }
     }
