@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace ParkWay.Models
 {
@@ -27,6 +28,16 @@ namespace ParkWay.Models
         public DbSet<User> Users { get; set; }
 
         public DbSet<Reservation> Reservations { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Floor>()
+                .HasMany(f => f.ParkingSpots)
+                .WithOne(p => p.Floor)
+                .HasForeignKey(p => p.FloorID)
+                .IsRequired();
+        }
 
     }
 }

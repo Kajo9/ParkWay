@@ -13,6 +13,7 @@ namespace ParkWay
 {
     public partial class ParkingSpot : Form
     {
+
         private bool isUpdating = false;
         public ParkingSpot()
         {
