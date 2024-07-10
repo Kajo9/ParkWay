@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             dgvOverviewofParkingSpaces = new DataGridView();
-            btnBack = new Button();
             msFloor = new MenuStrip();
             floorToolStripMenuItem = new ToolStripMenuItem();
             stFloorToolStripMenuItem = new ToolStripMenuItem();
@@ -38,13 +37,17 @@
             lblFloor = new Label();
             txtFloorName = new TextBox();
             dgvFloors = new DataGridView();
-            btnSave = new Button();
-            btnDelete = new Button();
             txtFloorID = new TextBox();
             lblID = new Label();
+            menuStrip1 = new MenuStrip();
+            editToolStripMenuItem = new ToolStripMenuItem();
+            addToolStripMenuItem = new ToolStripMenuItem();
+            updateToolStripMenuItem = new ToolStripMenuItem();
+            deleteToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dgvOverviewofParkingSpaces).BeginInit();
             msFloor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFloors).BeginInit();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // dgvOverviewofParkingSpaces
@@ -55,16 +58,6 @@
             dgvOverviewofParkingSpaces.RowHeadersWidth = 51;
             dgvOverviewofParkingSpaces.Size = new Size(1357, 380);
             dgvOverviewofParkingSpaces.TabIndex = 0;
-            // 
-            // btnBack
-            // 
-            btnBack.Location = new Point(37, 487);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new Size(94, 29);
-            btnBack.TabIndex = 5;
-            btnBack.Text = "Back";
-            btnBack.UseVisualStyleBackColor = true;
-            btnBack.Click += btnBack_Click;
             // 
             // msFloor
             // 
@@ -104,7 +97,7 @@
             // lblFloor
             // 
             lblFloor.AutoSize = true;
-            lblFloor.Location = new Point(37, 66);
+            lblFloor.Location = new Point(41, 76);
             lblFloor.Name = "lblFloor";
             lblFloor.Size = new Size(50, 20);
             lblFloor.TabIndex = 4;
@@ -112,47 +105,30 @@
             // 
             // txtFloorName
             // 
-            txtFloorName.Location = new Point(93, 63);
+            txtFloorName.Location = new Point(141, 76);
             txtFloorName.Name = "txtFloorName";
             txtFloorName.Size = new Size(125, 27);
             txtFloorName.TabIndex = 1;
             // 
             // dgvFloors
             // 
+            dgvFloors.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvFloors.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvFloors.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dgvFloors.BackgroundColor = SystemColors.ScrollBar;
             dgvFloors.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvFloors.Location = new Point(12, 96);
+            dgvFloors.Location = new Point(41, 123);
             dgvFloors.Name = "dgvFloors";
+            dgvFloors.ReadOnly = true;
             dgvFloors.RowHeadersWidth = 51;
-            dgvFloors.Size = new Size(1326, 385);
+            dgvFloors.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvFloors.Size = new Size(1289, 385);
             dgvFloors.TabIndex = 4;
             dgvFloors.SelectionChanged += dgvFloors_SelectionChanged;
             // 
-            // btnSave
-            // 
-            btnSave.Location = new Point(256, 61);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(94, 29);
-            btnSave.TabIndex = 2;
-            btnSave.Text = "Save";
-            btnSave.UseVisualStyleBackColor = true;
-            btnSave.Click += btnSave_Click;
-            // 
-            // btnDelete
-            // 
-            btnDelete.Location = new Point(396, 61);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(94, 29);
-            btnDelete.TabIndex = 3;
-            btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = true;
-            btnDelete.Click += btnDelete_Click;
-            // 
             // txtFloorID
             // 
-            txtFloorID.Location = new Point(93, 30);
+            txtFloorID.Location = new Point(141, 39);
             txtFloorID.Name = "txtFloorID";
             txtFloorID.ReadOnly = true;
             txtFloorID.Size = new Size(125, 27);
@@ -161,11 +137,49 @@
             // lblID
             // 
             lblID.AutoSize = true;
-            lblID.Location = new Point(37, 33);
+            lblID.Location = new Point(41, 42);
             lblID.Name = "lblID";
             lblID.Size = new Size(27, 20);
             lblID.TabIndex = 7;
             lblID.Text = "ID:";
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { editToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1350, 28);
+            menuStrip1.TabIndex = 8;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // editToolStripMenuItem
+            // 
+            editToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { addToolStripMenuItem, updateToolStripMenuItem, deleteToolStripMenuItem });
+            editToolStripMenuItem.Name = "editToolStripMenuItem";
+            editToolStripMenuItem.Size = new Size(49, 24);
+            editToolStripMenuItem.Text = "Edit";
+            // 
+            // addToolStripMenuItem
+            // 
+            addToolStripMenuItem.Name = "addToolStripMenuItem";
+            addToolStripMenuItem.Size = new Size(141, 26);
+            addToolStripMenuItem.Text = "Add";
+            addToolStripMenuItem.Click += addToolStripMenuItem_Click;
+            // 
+            // updateToolStripMenuItem
+            // 
+            updateToolStripMenuItem.Name = "updateToolStripMenuItem";
+            updateToolStripMenuItem.Size = new Size(141, 26);
+            updateToolStripMenuItem.Text = "Update";
+            updateToolStripMenuItem.Click += updateToolStripMenuItem_Click;
+            // 
+            // deleteToolStripMenuItem
+            // 
+            deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            deleteToolStripMenuItem.Size = new Size(141, 26);
+            deleteToolStripMenuItem.Text = "Delete";
+            deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
             // 
             // Floor
             // 
@@ -174,12 +188,11 @@
             ClientSize = new Size(1350, 534);
             Controls.Add(lblID);
             Controls.Add(txtFloorID);
-            Controls.Add(btnDelete);
-            Controls.Add(btnSave);
             Controls.Add(dgvFloors);
             Controls.Add(txtFloorName);
             Controls.Add(lblFloor);
-            Controls.Add(btnBack);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Name = "Floor";
             Text = "Floors";
             WindowState = FormWindowState.Maximized;
@@ -188,6 +201,8 @@
             msFloor.ResumeLayout(false);
             msFloor.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFloors).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -195,7 +210,6 @@
         #endregion
 
         private DataGridView dgvOverviewofParkingSpaces;
-        private Button btnBack;
         private MenuStrip msFloor;
         private ToolStripMenuItem floorToolStripMenuItem;
         private ToolStripMenuItem stFloorToolStripMenuItem;
@@ -204,9 +218,12 @@
         private Label lblFloor;
         private TextBox txtFloorName;
         private DataGridView dgvFloors;
-        private Button btnSave;
-        private Button btnDelete;
         private TextBox txtFloorID;
         private Label lblID;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem editToolStripMenuItem;
+        private ToolStripMenuItem addToolStripMenuItem;
+        private ToolStripMenuItem updateToolStripMenuItem;
+        private ToolStripMenuItem deleteToolStripMenuItem;
     }
 }

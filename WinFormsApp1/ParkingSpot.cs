@@ -13,65 +13,67 @@ namespace ParkWay
 {
     public partial class ParkingSpot : Form
     {
-
-        DatabaseContext db = new DatabaseContext();
+        private bool isUpdating = false;
         public ParkingSpot()
         {
             InitializeComponent();
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
+        private void ParkingSpace_Load(object sender, EventArgs e)
         {
-            Close();
-            Main main = new Main();
-            main.Show();
+            LoadParkingSpotsData();
+            dgvParkingspot.Columns["ID"].DisplayIndex = 0;
+            dgvParkingspot.Columns["Name"].DisplayIndex = 1;
+            dgvParkingspot.Columns["isAvaible"].DisplayIndex = 2;
+
         }
-
-        private void btnSave_Click(object sender, EventArgs e)
+        private void LoadParkingSpotsData()
         {
-            if (!string.IsNullOrWhiteSpace(txtParkingspot.Text))
+            using (var context = new DatabaseContext())
             {
-                using (var context = new DatabaseContext())
-                {
-                    var parkingSpot = new Models.ParkingSpot
-                    {
-                        Name = txtParkingspot.Text,
-                    };
-
-                    context.ParkingSpots.Add(parkingSpot);
-                    context.SaveChanges();
-
-                    MessageBox.Show("Podaci su uspešno sačuvani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadFloorsData();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Morate ispuniti polje!", "Upozorenje!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                var parkingSpots = context.ParkingSpots.ToList();
+                dgvParkingspot.DataSource = parkingSpots;
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void dgvParkingspot_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvParkingspot.SelectedRows.Count > 0)
+            {
+                isUpdating = true;
+                int selectedRowIndex = dgvParkingspot.SelectedRows[0].Index;
+                txtParkingSpotID.Text = dgvParkingspot.Rows[selectedRowIndex].Cells["ID"].Value.ToString();
+                txtParkingSpot.Text = dgvParkingspot.Rows[selectedRowIndex].Cells["Name"].Value.ToString();
+            }
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dgvParkingspot.SelectedRows.Count > 0)
             {
                 int selectedRowIndex = dgvParkingspot.SelectedRows[0].Index;
                 int parkingSpotID = (int)dgvParkingspot.Rows[selectedRowIndex].Cells["ID"].Value;
 
-                using (var context = new DatabaseContext())
-                {
-                    var parkingSpot = context.ParkingSpots.FirstOrDefault(f => f.ID == parkingSpotID);
-                    if (parkingSpot != null)
-                    {
-                        context.ParkingSpots.Remove(parkingSpot);
-                        context.SaveChanges();
+                DialogResult result = MessageBox.Show("Jeste li sigurni da želite obrisati odabrani red?", "Potvrda brisanja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                        MessageBox.Show("Podaci su uspešno obrisani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadFloorsData();
-                    }
-                    else
+                if (result == DialogResult.Yes)
+                {
+                    using (var context = new DatabaseContext())
                     {
-                        MessageBox.Show("Nije pronađen zapis za brisanje.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        var parkingSpot = context.ParkingSpots.FirstOrDefault(p => p.ID == parkingSpotID);
+                        if (parkingSpot != null)
+                        {
+                            context.ParkingSpots.Remove(parkingSpot);
+                            context.SaveChanges();
+
+                            MessageBox.Show("Podaci su uspešno obrisani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadParkingSpotsData();
+                            ResetForm();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nije pronađen zapis za brisanje.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }
@@ -81,16 +83,82 @@ namespace ParkWay
             }
         }
 
-        private void ParkingSpace_Load(object sender, EventArgs e)
+        private void updateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dgvParkingspot.DataSource = db.ParkingSpots.ToList();
-        }
-        private void LoadFloorsData()
-        {
-            using (var context = new DatabaseContext())
+            if (dgvParkingspot.SelectedRows.Count == 0)
             {
-                var parkingSpot = context.ParkingSpots.ToList();
-                dgvParkingspot.DataSource = parkingSpot;
+                MessageBox.Show("Nije pronađen zapis za ažuriranje.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (isUpdating && !string.IsNullOrWhiteSpace(txtParkingSpot.Text))
+            {
+                using (var context = new DatabaseContext())
+                {
+                    int parkingSpotID = int.Parse(txtParkingSpotID.Text);
+                    var existingSpot = context.ParkingSpots.FirstOrDefault(p => p.ID == parkingSpotID);
+                    if (existingSpot != null)
+                    {
+                        if (context.ParkingSpots.Any(p => p.Name == txtParkingSpot.Text && p.ID != parkingSpotID))
+                        {
+                            MessageBox.Show("Naziv parkirnog mjesta već postoji!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        existingSpot.Name = txtParkingSpot.Text;
+                        context.SaveChanges();
+
+                        MessageBox.Show("Podaci su uspešno ažurirani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadParkingSpotsData();
+                        ResetForm();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nije pronađen zapis za ažuriranje.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Morate ispuniti polje!", "Upozorenje!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ResetForm()
+        {
+            isUpdating = false;
+            txtParkingSpotID.Text = string.Empty;
+            txtParkingSpot.Text = string.Empty;
+            dgvParkingspot.ClearSelection();
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtParkingSpot.Text))
+            {
+                using (var context = new DatabaseContext())
+                {
+                    if (context.ParkingSpots.Any(p => p.Name == txtParkingSpot.Text))
+                    {
+                        MessageBox.Show("Naziv parkirnog mjesta već postoji!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    var parkingSpot = new Models.ParkingSpot
+                    {
+                        Name = txtParkingSpot.Text,
+                    };
+                    context.ParkingSpots.Add(parkingSpot);
+                    context.SaveChanges();
+
+                    MessageBox.Show("Podaci su uspešno sačuvani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadParkingSpotsData();
+                    ResetForm();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Morate ispuniti polje!", "Upozorenje!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

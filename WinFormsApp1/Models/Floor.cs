@@ -9,5 +9,6 @@ namespace ParkWay.Models
     public partial class Floor: Base
     {
         public string FloorName { get; set; }
+
     }
 }

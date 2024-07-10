@@ -22,14 +22,12 @@ namespace ParkWay
         {
             Floor floor = new Floor();
             floor.Show();
-            Hide();
         }
 
         private void parkingSpotsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ParkingSpot parkingSpot = new ParkingSpot();
             parkingSpot.Show();
-            Hide();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
