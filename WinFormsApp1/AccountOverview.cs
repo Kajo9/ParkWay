@@ -13,7 +13,6 @@ namespace ParkWay
 {
     public partial class AccountOverview : Form
     {
-        DatabaseContext db = new DatabaseContext();
 
         public AccountOverview()
         {
@@ -29,7 +28,7 @@ namespace ParkWay
 
         private void AccountOverview_Load(object sender, EventArgs e)
         {
-            dgvAccount.DataSource = db.Invoices.ToList();
+
         }
     }
 }

@@ -1,18 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+
 
 namespace ParkWay.Models
 {
      public class DatabaseContext : DbContext
     {
-        public DatabaseContext() : base(@"Data Source=ASUS09_K\SQLEXPRESS;Initial Catalog=ParkWayDB;User ID=sa;Password=plavi100;")
+        public DatabaseContext() : base(GetOptions())
         {
                 
+        }
+
+        private static DbContextOptions GetOptions()
+        {
+            var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ParkWayContext"].ConnectionString;
+
+            return SqlServerDbContextOptionsExtensions.UseSqlServer(new DbContextOptionsBuilder(), connectionString).Options;
         }
 
         public  DbSet<Floor> Floors { get; set; }
@@ -30,14 +32,15 @@ namespace ParkWay.Models
         public DbSet<Reservation> Reservations { get; set; }
 
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Floor>()
-                .HasMany(f => f.ParkingSpots)
-                .WithOne(p => p.Floor)
-                .HasForeignKey(p => p.FloorID)
-                .IsRequired();
-        }
+
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Floor>()
+        //        .HasMany(f => f.ParkingSpots)
+        //        .WithOne(p => p.Floor)
+        //        .HasForeignKey(p => p.FloorID)
+        //        .IsRequired();
+        //}
 
     }
 }
