@@ -33,14 +33,14 @@ namespace ParkWay.Models
 
 
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Floor>()
-        //        .HasMany(f => f.ParkingSpots)
-        //        .WithOne(p => p.Floor)
-        //        .HasForeignKey(p => p.FloorID)
-        //        .IsRequired();
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Floor>()
+                .HasMany(f => f.ParkingSpots)
+                .WithOne(p => p.Floor)
+                .HasForeignKey(p => p.FloorID)
+                .IsRequired();
+        }
 
     }
 }

@@ -64,6 +64,7 @@
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(267, 27);
             txtUsername.TabIndex = 0;
+            txtUsername.Text = "a";
             // 
             // txtPassword
             // 
@@ -71,6 +72,7 @@
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(267, 27);
             txtPassword.TabIndex = 1;
+            txtPassword.Text = "a";
             // 
             // lb_Username
             // 

@@ -13,6 +13,7 @@ namespace ParkWay.Models
         public int FloorID { get; set; }
         
         public Floor Floor { get; set; }
+
         public bool isAvaible { get; set; }
     }
 }
