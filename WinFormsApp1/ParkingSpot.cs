@@ -32,10 +32,24 @@ namespace ParkWay
         {
             using (var context = new DatabaseContext())
             {
-                var parkingSpots = context.ParkingSpots.ToList();
-                dgvParkingspot.DataSource = parkingSpots;
+                if (cbFloor.SelectedValue != null)
+                {
+                    int selectedFloorId = (int)cbFloor.SelectedValue;
+                    var parkingSpots = context.ParkingSpots.Where(p => p.FloorID == selectedFloorId).ToList();
+                    dgvParkingspot.DataSource = parkingSpots;
+                }
             }
         }
+        //private void LoadFloors()
+        //{
+        //    using (var context = new DatabaseContext())
+        //    {
+        //        var floors = context.Floors.ToList();
+        //        cbFloor.DataSource = floors;
+        //        cbFloor.DisplayMember = "FloorName";
+        //        cbFloor.ValueMember = "ID";
+        //    }
+        //}
 
         private void dgvParkingspot_SelectionChanged(object sender, EventArgs e)
         {
@@ -56,7 +70,66 @@ namespace ParkWay
             dgvParkingspot.ClearSelection();
         }
 
-        private void deleteToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void newToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isUpdating = false;
+            txtParkingSpotID.Text = string.Empty;
+            txtParkingSpot.Text = string.Empty;
+        }
+
+        private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtParkingSpot.Text))
+            {
+                using (var context = new DatabaseContext())
+                {
+                    if (isUpdating)
+                    {
+                        int parkingspotID = int.Parse(txtParkingSpot.Text);
+                        var existingParkingSpot = context.ParkingSpots.FirstOrDefault(p => p.ID == parkingspotID);
+                        if (existingParkingSpot != null)
+                        {
+                            if (context.ParkingSpots.Any(p => p.Name == txtParkingSpot.Text && p.ID != parkingspotID))
+                            {
+                                MessageBox.Show("Naziv kata već postoji!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+
+                            existingParkingSpot.Name = txtParkingSpot.Text;
+                            context.SaveChanges();
+
+                            MessageBox.Show("Podaci su uspješno ažurirani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            dgvParkingspot.Rows[dgvParkingspot.SelectedRows[0].Index].Cells["Name"].Value = txtParkingSpot.Text;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nije pronađen zapis za ažuriranje.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        var parkingspot = new Models.ParkingSpot
+                        {
+                            Name = txtParkingSpot.Text,
+                            //FloorID = (int)cbFloor.SelectedValue
+                        };
+                        context.ParkingSpots.Add(parkingspot);
+                        context.SaveChanges();
+
+                        MessageBox.Show("Podaci su uspješno sačuvani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadParkingSpotsData();
+                        ResetForm();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Morate ispuniti polje!", "Upozorenje!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dgvParkingspot.SelectedRows.Count > 0)
             {
@@ -92,62 +165,9 @@ namespace ParkWay
             }
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void cbFloor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtParkingSpot.Text))
-            {
-                using (var context = new DatabaseContext())
-                {
-                    if (isUpdating)
-                    {
-                        int parkingspotID = int.Parse(txtParkingSpot.Text);
-                        var existingParkingSpot = context.ParkingSpots.FirstOrDefault(p => p.ID == parkingspotID);
-                        if (existingParkingSpot != null)
-                        {
-                            if (context.ParkingSpots.Any(p => p.Name == txtParkingSpot.Text && p.ID != parkingspotID))
-                            {
-                                MessageBox.Show("Naziv kata već postoji!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
-
-                            existingParkingSpot.Name = txtParkingSpot.Text;
-                            context.SaveChanges();
-
-                            MessageBox.Show("Podaci su uspješno ažurirani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            dgvParkingspot.Rows[dgvParkingspot.SelectedRows[0].Index].Cells["Name"].Value = txtParkingSpot.Text;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Nije pronađen zapis za ažuriranje.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                    }
-                    else
-                    {
-                        var parkingspot = new Models.ParkingSpot
-                        {
-                            Name = txtParkingSpot.Text,
-                        };
-                        context.ParkingSpots.Add(parkingspot);
-                        context.SaveChanges();
-
-                        MessageBox.Show("Podaci su uspješno sačuvani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadParkingSpotsData();
-                        ResetForm();
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Morate ispuniti polje!", "Upozorenje!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void newToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            isUpdating = false;
-            txtParkingSpotID.Text = string.Empty;
-            txtParkingSpot.Text = string.Empty;
+            LoadParkingSpotsData();
         }
     }
 }

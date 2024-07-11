@@ -34,6 +34,10 @@
             label1 = new Label();
             txtParkingSpotID = new TextBox();
             menuStrip1 = new MenuStrip();
+            editToolStripMenuItem1 = new ToolStripMenuItem();
+            newToolStripMenuItem1 = new ToolStripMenuItem();
+            saveToolStripMenuItem1 = new ToolStripMenuItem();
+            deleteToolStripMenuItem = new ToolStripMenuItem();
             editToolStripMenuItem = new ToolStripMenuItem();
             newToolStripMenuItem = new ToolStripMenuItem();
             saveToolStripMenuItem = new ToolStripMenuItem();
@@ -92,6 +96,42 @@
             txtParkingSpotID.Size = new Size(125, 27);
             txtParkingSpotID.TabIndex = 6;
             // 
+            // menuStrip1
+            // 
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { editToolStripMenuItem1, newToolStripMenuItem1, saveToolStripMenuItem1, deleteToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1353, 28);
+            menuStrip1.TabIndex = 10;
+            // 
+            // editToolStripMenuItem1
+            // 
+            editToolStripMenuItem1.Name = "editToolStripMenuItem1";
+            editToolStripMenuItem1.Size = new Size(49, 24);
+            editToolStripMenuItem1.Text = "Edit";
+            // 
+            // newToolStripMenuItem1
+            // 
+            newToolStripMenuItem1.Name = "newToolStripMenuItem1";
+            newToolStripMenuItem1.Size = new Size(53, 24);
+            newToolStripMenuItem1.Text = "New";
+            newToolStripMenuItem1.Click += newToolStripMenuItem1_Click;
+            // 
+            // saveToolStripMenuItem1
+            // 
+            saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
+            saveToolStripMenuItem1.Size = new Size(54, 24);
+            saveToolStripMenuItem1.Text = "Save";
+            saveToolStripMenuItem1.Click += saveToolStripMenuItem1_Click;
+            // 
+            // deleteToolStripMenuItem
+            // 
+            deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            deleteToolStripMenuItem.Size = new Size(67, 24);
+            deleteToolStripMenuItem.Text = "Delete";
+            deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
+            // 
             // editToolStripMenuItem
             // 
             editToolStripMenuItem.Name = "editToolStripMenuItem";
@@ -101,31 +141,25 @@
             // newToolStripMenuItem
             // 
             newToolStripMenuItem.Name = "newToolStripMenuItem";
-            newToolStripMenuItem.Size = new Size(53, 24);
-            newToolStripMenuItem.Text = "New";
-            newToolStripMenuItem.Click += newToolStripMenuItem_Click;
+            newToolStripMenuItem.Size = new Size(32, 19);
             // 
             // saveToolStripMenuItem
             // 
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(54, 24);
-            saveToolStripMenuItem.Text = "Save";
-            saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
+            saveToolStripMenuItem.Size = new Size(32, 19);
             // 
             // deleteToolStripMenuItem1
             // 
             deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
-            deleteToolStripMenuItem1.Size = new Size(67, 24);
-            deleteToolStripMenuItem1.Text = "Delete";
-            deleteToolStripMenuItem1.Click += deleteToolStripMenuItem1_Click;
+            deleteToolStripMenuItem1.Size = new Size(32, 19);
             // 
             // cbFloor
             // 
-            cbFloor.FormattingEnabled = true;
-            cbFloor.Location = new Point(393, 35);
+            cbFloor.Location = new Point(376, 39);
             cbFloor.Name = "cbFloor";
-            cbFloor.Size = new Size(151, 28);
-            cbFloor.TabIndex = 8;
+            cbFloor.Size = new Size(121, 28);
+            cbFloor.TabIndex = 10;
+            cbFloor.SelectedIndexChanged += cbFloor_SelectedIndexChanged;
             // 
             // lblFloor
             // 
@@ -153,7 +187,6 @@
             Name = "ParkingSpot";
             Text = "ParkingSpot";
             WindowState = FormWindowState.Maximized;
-            Load += ParkingSpace_Load;
             ((System.ComponentModel.ISupportInitialize)dgvParkingspot).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -174,5 +207,9 @@
         private ToolStripMenuItem deleteToolStripMenuItem1;
         private ComboBox cbFloor;
         private Label lblFloor;
+        private ToolStripMenuItem editToolStripMenuItem1;
+        private ToolStripMenuItem newToolStripMenuItem1;
+        private ToolStripMenuItem saveToolStripMenuItem1;
+        private ToolStripMenuItem deleteToolStripMenuItem;
     }
 }
