@@ -38,6 +38,8 @@
             newToolStripMenuItem = new ToolStripMenuItem();
             saveToolStripMenuItem = new ToolStripMenuItem();
             deleteToolStripMenuItem1 = new ToolStripMenuItem();
+            cbFloor = new ComboBox();
+            lblFloor = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvParkingspot).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -90,16 +92,6 @@
             txtParkingSpotID.Size = new Size(125, 27);
             txtParkingSpotID.TabIndex = 6;
             // 
-            // menuStrip1
-            // 
-            menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { editToolStripMenuItem, newToolStripMenuItem, saveToolStripMenuItem, deleteToolStripMenuItem1 });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1353, 28);
-            menuStrip1.TabIndex = 7;
-            menuStrip1.Text = "menuStrip1";
-            // 
             // editToolStripMenuItem
             // 
             editToolStripMenuItem.Name = "editToolStripMenuItem";
@@ -127,11 +119,30 @@
             deleteToolStripMenuItem1.Text = "Delete";
             deleteToolStripMenuItem1.Click += deleteToolStripMenuItem1_Click;
             // 
+            // cbFloor
+            // 
+            cbFloor.FormattingEnabled = true;
+            cbFloor.Location = new Point(393, 35);
+            cbFloor.Name = "cbFloor";
+            cbFloor.Size = new Size(151, 28);
+            cbFloor.TabIndex = 8;
+            // 
+            // lblFloor
+            // 
+            lblFloor.AutoSize = true;
+            lblFloor.Location = new Point(308, 38);
+            lblFloor.Name = "lblFloor";
+            lblFloor.Size = new Size(46, 20);
+            lblFloor.TabIndex = 9;
+            lblFloor.Text = "Floor:";
+            // 
             // ParkingSpot
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1353, 564);
+            Controls.Add(lblFloor);
+            Controls.Add(cbFloor);
             Controls.Add(txtParkingSpotID);
             Controls.Add(label1);
             Controls.Add(txtParkingSpot);
@@ -161,5 +172,7 @@
         private ToolStripMenuItem newToolStripMenuItem;
         private ToolStripMenuItem saveToolStripMenuItem;
         private ToolStripMenuItem deleteToolStripMenuItem1;
+        private ComboBox cbFloor;
+        private Label lblFloor;
     }
 }
