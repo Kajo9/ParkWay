@@ -19,8 +19,6 @@ namespace ParkWay
         {
             InitializeComponent();
             LoadFloors();
-            this.Load += new EventHandler(ParkingSpace_Load);
-            cbFloor.SelectedIndexChanged += new EventHandler(cbFloor_SelectedIndexChanged);
         }
 
         private void ParkingSpace_Load(object sender, EventArgs e)
@@ -47,11 +45,15 @@ namespace ParkWay
         private void LoadFloors()
         {
             using (var context = new DatabaseContext())
-           {
+            {
                 var floors = context.Floors.ToList();
-                cbFloor.DataSource = floors;
+                foreach (var floor in floors)
+                {
+                    cbFloor.Items.Add(floor.FloorName);
+                }
                 cbFloor.DisplayMember = "FloorName";
                 cbFloor.ValueMember = "ID";
+                cbFloor.DataSource = floors;
             }
         }
 
@@ -63,7 +65,7 @@ namespace ParkWay
                 int selectedRowIndex = dgvParkingspot.SelectedRows[0].Index;
                 txtParkingSpotID.Text = dgvParkingspot.Rows[selectedRowIndex].Cells["ID"].Value.ToString();
                 txtParkingSpot.Text = dgvParkingspot.Rows[selectedRowIndex].Cells["Name"].Value.ToString();
-                cbFloor.SelectedValue = dgvParkingspot.Rows[selectedRowIndex].Cells["FloorID"].Value;
+                cbFloor.SelectedValue = dgvParkingspot.Rows[selectedRowIndex].Cells["FloorId"].Value;
             }
         }
 
@@ -116,8 +118,7 @@ namespace ParkWay
                     {
                         var parkingspot = new Models.ParkingSpot
                         {
-                            Name = txtParkingSpot.Text,
-                            FloorId = (int)cbFloor.SelectedValue
+                            Name = txtParkingSpot.Text
                         };
                         context.ParkingSpots.Add(parkingspot);
                         context.SaveChanges();
