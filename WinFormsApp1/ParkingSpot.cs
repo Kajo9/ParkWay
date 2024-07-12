@@ -18,6 +18,9 @@ namespace ParkWay
         public ParkingSpot()
         {
             InitializeComponent();
+            LoadFloors();
+            this.Load += new EventHandler(ParkingSpace_Load);
+            cbFloor.SelectedIndexChanged += new EventHandler(cbFloor_SelectedIndexChanged);
         }
 
         private void ParkingSpace_Load(object sender, EventArgs e)
@@ -169,7 +172,12 @@ namespace ParkWay
 
         private void cbFloor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadFloors();
+            var selectedFloor = cbFloor.SelectedItem as Models.Floor;
+            if (cbFloor.SelectedValue != null)
+            {
+                int selectedFloorId = selectedFloor.ID;
+                string selectedFloorName = selectedFloor.FloorName;
+            }
         }
     }
 }
