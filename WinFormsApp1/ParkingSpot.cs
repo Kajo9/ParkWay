@@ -36,7 +36,7 @@ namespace ParkWay
                 if (cbFloor.SelectedValue != null)
                 {
                     int selectedFloorId = (int)cbFloor.SelectedValue;
-                    var parkingSpots = context.ParkingSpots.Where(p => p.FloorID == selectedFloorId).ToList();
+                    var parkingSpots = context.ParkingSpots.Where(p => p.FloorId == selectedFloorId).ToList();
                     dgvParkingspot.DataSource = parkingSpots;
                 }
             }
@@ -114,7 +114,7 @@ namespace ParkWay
                         var parkingspot = new Models.ParkingSpot
                         {
                             Name = txtParkingSpot.Text,
-                            FloorID = (int)cbFloor.SelectedValue
+                            FloorId = (int)cbFloor.SelectedValue
                         };
                         context.ParkingSpots.Add(parkingspot);
                         context.SaveChanges();

@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-
 namespace ParkWay.Models
 {
      public class DatabaseContext : DbContext
