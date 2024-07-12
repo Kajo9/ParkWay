@@ -10,7 +10,7 @@ namespace ParkWay.Models
     {
         public string Name { get; set; }
 
-        public int FloorID { get; set; }
+        public int FloorId { get; set; }
         
         public Floor Floor { get; set; }
 

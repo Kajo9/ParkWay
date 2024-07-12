@@ -43,7 +43,7 @@
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(94, 29);
             btnCancel.TabIndex = 3;
-            btnCancel.Text = "Cancel";
+            btnCancel.Text = "Resgister";
             btnCancel.UseVisualStyleBackColor = false;
             btnCancel.Click += btn_Cancel_Click;
             // 
