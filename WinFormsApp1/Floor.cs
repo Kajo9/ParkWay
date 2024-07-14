@@ -27,6 +27,7 @@ namespace ParkWay
             LoadFloorsData();
             dgvFloors.Columns["ID"].DisplayIndex = 0;
             dgvFloors.Columns["FloorName"].DisplayIndex = 1;
+            dgvFloors.Columns["ParkingSpots"].DisplayIndex = 2;
 
         }
 
@@ -34,7 +35,14 @@ namespace ParkWay
         {
             using (var context = new DatabaseContext())
             {
-                var floors = context.Floors.ToList();
+                var floors = context.Floors
+                                            .Select(f => new
+                                            {
+                                                f.ID,
+                                                f.FloorName,
+                                                ParkingSpots = string.Join(", ", f.ParkingSpots.Select(ps => ps.Name))
+                                            })
+                                            .ToList();
                 dgvFloors.DataSource = floors;
             }
         }
@@ -65,6 +73,16 @@ namespace ParkWay
             {
                 int selectedRowIndex = dgvFloors.SelectedRows[0].Index;
                 int floorsID = (int)dgvFloors.Rows[selectedRowIndex].Cells["ID"].Value;
+
+                using (var context = new DatabaseContext())
+                {
+                    bool hasParkingSpots = context.ParkingSpots.Any(p => p.FloorId == floorsID);
+                    if (hasParkingSpots)
+                    {
+                        MessageBox.Show("Ne možete obrisati kat koji ima parkirna mjesta.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
 
                 DialogResult result = MessageBox.Show("Jeste li sigurni da želite obrisati odabrani red?", "Potvrda brisanja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 

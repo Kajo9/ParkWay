@@ -47,10 +47,6 @@ namespace ParkWay
             using (var context = new DatabaseContext())
             {
                 var floors = context.Floors.ToList();
-                foreach (var floor in floors)
-                {
-                    cbFloor.Items.Add(floor.FloorName);
-                }
                 cbFloor.DisplayMember = "FloorName";
                 cbFloor.ValueMember = "ID";
                 cbFloor.DataSource = floors;
@@ -92,22 +88,24 @@ namespace ParkWay
                 {
                     if (isUpdating)
                     {
-                        int parkingspotID = int.Parse(txtParkingSpot.Text);
+                        int parkingspotID = int.Parse(txtParkingSpotID.Text);
                         var existingParkingSpot = context.ParkingSpots.FirstOrDefault(p => p.ID == parkingspotID);
                         if (existingParkingSpot != null)
                         {
                             if (context.ParkingSpots.Any(p => p.Name == txtParkingSpot.Text && p.ID != parkingspotID))
                             {
-                                MessageBox.Show("Naziv kata već postoji!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Naziv parkirnog mjesta već postoji!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
 
                             existingParkingSpot.Name = txtParkingSpot.Text;
+                            existingParkingSpot.FloorId = (int)cbFloor.SelectedValue;
                             context.SaveChanges();
 
                             MessageBox.Show("Podaci su uspješno ažurirani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            dgvParkingspot.Rows[dgvParkingspot.SelectedRows[0].Index].Cells["Name"].Value = txtParkingSpot.Text;
+                            LoadParkingSpotsData();
+                            ResetForm();
                         }
                         else
                         {
@@ -118,7 +116,9 @@ namespace ParkWay
                     {
                         var parkingspot = new Models.ParkingSpot
                         {
-                            Name = txtParkingSpot.Text
+                            Name = txtParkingSpot.Text,
+                            FloorId = (int)cbFloor.SelectedValue
+
                         };
                         context.ParkingSpots.Add(parkingspot);
                         context.SaveChanges();
@@ -126,6 +126,7 @@ namespace ParkWay
                         MessageBox.Show("Podaci su uspješno sačuvani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadParkingSpotsData();
                         ResetForm();
+
                     }
                 }
             }
@@ -173,12 +174,7 @@ namespace ParkWay
 
         private void cbFloor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectedFloor = cbFloor.SelectedItem as Models.Floor;
-            if (cbFloor.SelectedValue != null)
-            {
-                int selectedFloorId = selectedFloor.ID;
-                string selectedFloorName = selectedFloor.FloorName;
-            }
+            LoadParkingSpotsData();
         }
     }
 }
