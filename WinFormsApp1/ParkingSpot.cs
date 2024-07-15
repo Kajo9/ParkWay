@@ -37,7 +37,16 @@ namespace ParkWay
                 if (cbFloor.SelectedValue != null)
                 {
                     int selectedFloorId = (int)cbFloor.SelectedValue;
-                    var parkingSpots = context.ParkingSpots.Where(p => p.FloorId == selectedFloorId).ToList();
+                    var parkingSpots = context.ParkingSpots
+                        .Where(ps => ps.FloorId == selectedFloorId)
+                        .Select(ps => new
+                        {
+                            ps.ID,
+                            ps.Name,
+                            ps.isAvaible,
+                            ps.FloorId
+                        })
+                        .ToList();
                     dgvParkingspot.DataSource = parkingSpots;
                 }
             }
@@ -86,20 +95,22 @@ namespace ParkWay
             {
                 using (var context = new DatabaseContext())
                 {
+                    int selectedFloorId = (int)cbFloor.SelectedValue;
+
                     if (isUpdating)
                     {
                         int parkingspotID = int.Parse(txtParkingSpotID.Text);
-                        var existingParkingSpot = context.ParkingSpots.FirstOrDefault(p => p.ID == parkingspotID);
+                        var existingParkingSpot = context.ParkingSpots.FirstOrDefault(ps => ps.ID == parkingspotID);
                         if (existingParkingSpot != null)
                         {
-                            if (context.ParkingSpots.Any(p => p.Name == txtParkingSpot.Text && p.ID != parkingspotID))
+                            if (context.ParkingSpots.Any(p => p.Name == txtParkingSpot.Text && p.FloorId == selectedFloorId && p.ID != parkingspotID))
                             {
-                                MessageBox.Show("Naziv parkirnog mjesta već postoji!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Naziv parkirnog mjesta već postoji na odabranom katu!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
 
                             existingParkingSpot.Name = txtParkingSpot.Text;
-                            existingParkingSpot.FloorId = (int)cbFloor.SelectedValue;
+                            existingParkingSpot.FloorId = selectedFloorId;
                             context.SaveChanges();
 
                             MessageBox.Show("Podaci su uspješno ažurirani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -114,11 +125,16 @@ namespace ParkWay
                     }
                     else
                     {
+                        if (context.ParkingSpots.Any(p => p.Name == txtParkingSpot.Text && p.FloorId == selectedFloorId))
+                        {
+                            MessageBox.Show("Naziv parkirnog mjesta već postoji na odabranom katu!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
                         var parkingspot = new Models.ParkingSpot
                         {
                             Name = txtParkingSpot.Text,
-                            FloorId = (int)cbFloor.SelectedValue
-
+                            FloorId = selectedFloorId
                         };
                         context.ParkingSpots.Add(parkingspot);
                         context.SaveChanges();
@@ -126,7 +142,6 @@ namespace ParkWay
                         MessageBox.Show("Podaci su uspješno sačuvani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadParkingSpotsData();
                         ResetForm();
-
                     }
                 }
             }

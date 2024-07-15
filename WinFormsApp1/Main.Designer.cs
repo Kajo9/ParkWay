@@ -33,6 +33,7 @@
             floorsToolStripMenuItem = new ToolStripMenuItem();
             parkingSpotsToolStripMenuItem = new ToolStripMenuItem();
             btnBack = new Button();
+            usersToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,7 +49,7 @@
             // 
             // catalogToolStripMenuItem
             // 
-            catalogToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { floorsToolStripMenuItem, parkingSpotsToolStripMenuItem });
+            catalogToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { floorsToolStripMenuItem, parkingSpotsToolStripMenuItem, usersToolStripMenuItem });
             catalogToolStripMenuItem.Name = "catalogToolStripMenuItem";
             catalogToolStripMenuItem.Size = new Size(75, 24);
             catalogToolStripMenuItem.Text = "Catalog";
@@ -56,14 +57,14 @@
             // floorsToolStripMenuItem
             // 
             floorsToolStripMenuItem.Name = "floorsToolStripMenuItem";
-            floorsToolStripMenuItem.Size = new Size(179, 26);
+            floorsToolStripMenuItem.Size = new Size(224, 26);
             floorsToolStripMenuItem.Text = "Floors";
             floorsToolStripMenuItem.Click += floorsToolStripMenuItem_Click;
             // 
             // parkingSpotsToolStripMenuItem
             // 
             parkingSpotsToolStripMenuItem.Name = "parkingSpotsToolStripMenuItem";
-            parkingSpotsToolStripMenuItem.Size = new Size(179, 26);
+            parkingSpotsToolStripMenuItem.Size = new Size(224, 26);
             parkingSpotsToolStripMenuItem.Text = "Parking spots";
             parkingSpotsToolStripMenuItem.Click += parkingSpotsToolStripMenuItem_Click;
             // 
@@ -77,6 +78,12 @@
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
+            // 
+            // usersToolStripMenuItem
+            // 
+            usersToolStripMenuItem.Name = "usersToolStripMenuItem";
+            usersToolStripMenuItem.Size = new Size(224, 26);
+            usersToolStripMenuItem.Text = "Users";
             // 
             // Main
             // 
@@ -101,5 +108,6 @@
         private ToolStripMenuItem floorsToolStripMenuItem;
         private ToolStripMenuItem parkingSpotsToolStripMenuItem;
         private Button btnBack;
+        private ToolStripMenuItem usersToolStripMenuItem;
     }
 }

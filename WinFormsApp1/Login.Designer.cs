@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnCancel = new Button();
+            btnRegister = new Button();
             btnLogin = new Button();
             txtUsername = new TextBox();
             txtPassword = new TextBox();
@@ -36,16 +36,14 @@
             lbl_Password = new Label();
             SuspendLayout();
             // 
-            // btnCancel
+            // btnRegister
             // 
-            btnCancel.BackColor = SystemColors.Control;
-            btnCancel.Location = new Point(438, 256);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(94, 29);
-            btnCancel.TabIndex = 3;
-            btnCancel.Text = "Resgister";
-            btnCancel.UseVisualStyleBackColor = false;
-            btnCancel.Click += btn_Cancel_Click;
+            btnRegister.Location = new Point(457, 258);
+            btnRegister.Name = "btnRegister";
+            btnRegister.Size = new Size(75, 27);
+            btnRegister.TabIndex = 6;
+            btnRegister.Text = "Register";
+            btnRegister.Click += btnRegister_Click;
             // 
             // btnLogin
             // 
@@ -62,18 +60,18 @@
             // 
             txtUsername.Location = new Point(265, 78);
             txtUsername.Name = "txtUsername";
+            txtUsername.PlaceholderText = "Korisničko ime";
             txtUsername.Size = new Size(267, 27);
             txtUsername.TabIndex = 0;
-            txtUsername.Text = "a";
             // 
             // txtPassword
             // 
             txtPassword.Location = new Point(265, 156);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '$';
+            txtPassword.PlaceholderText = "Lozinka";
             txtPassword.Size = new Size(267, 27);
             txtPassword.TabIndex = 1;
-            txtPassword.Text = "a";
             // 
             // lb_Username
             // 
@@ -103,7 +101,7 @@
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);
             Controls.Add(btnLogin);
-            Controls.Add(btnCancel);
+            Controls.Add(btnRegister);
             Name = "Login";
             Text = "FrmLogin";
             Load += Login_Load;
@@ -113,7 +111,7 @@
 
         #endregion
 
-        private Button btnCancel;
+        private Button btnRegister;
         private Button btnLogin;
         private TextBox txtUsername;
         private TextBox txtPassword;

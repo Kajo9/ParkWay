@@ -136,7 +136,8 @@ namespace ParkWay
 
                             MessageBox.Show("Podaci su uspješno ažurirani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            dgvFloors.Rows[dgvFloors.SelectedRows[0].Index].Cells["FloorName"].Value = txtFloorName.Text;
+                            LoadFloorsData();
+                            ResetForm();
                         }
                         else
                         {
@@ -145,6 +146,12 @@ namespace ParkWay
                     }
                     else
                     {
+                        if (context.Floors.Any(f => f.FloorName == txtFloorName.Text))
+                        {
+                            MessageBox.Show("Naziv kata već postoji!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
                         var floor = new Models.Floor
                         {
                             FloorName = txtFloorName.Text,
