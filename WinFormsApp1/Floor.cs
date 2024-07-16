@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Microsoft.EntityFrameworkCore;
 using ParkWay.Models;
 
 namespace ParkWay
@@ -44,6 +44,8 @@ namespace ParkWay
                                             })
                                             .ToList();
                 dgvFloors.DataSource = floors;
+
+                dgvFloors.Columns["ID"].Visible = false;
             }
         }
 
@@ -176,6 +178,42 @@ namespace ParkWay
             isUpdating = false;
             txtFloorID.Text = string.Empty;
             txtFloorName.Text = string.Empty;
+        }
+
+        private void btnListAllFloor_Click(object sender, EventArgs e)
+        {
+            if (dgvFloors.SelectedRows.Count > 0)
+            {
+                int selectedRowIndex = dgvFloors.SelectedRows[0].Index;
+                int floorID = (int)dgvFloors.Rows[selectedRowIndex].Cells["ID"].Value;
+
+                using (var context = new DatabaseContext())
+                {
+                    var floor = context.Floors
+                        .Include(f => f.ParkingSpots)
+                        .FirstOrDefault(f => f.ID == floorID);
+
+                    if (floor != null && floor.ParkingSpots != null)
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        sb.AppendLine($"Parkirna mjesta za kat: {floor.FloorName}");
+                        foreach (var spot in floor.ParkingSpots)
+                        {
+                            sb.AppendLine($"- {spot.Name}");
+                        }
+
+                        MessageBox.Show(sb.ToString(), "Parkirna mjesta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nema dostupnih parkirnih mjesta za odabrani kat.", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Morate odabrati kat.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

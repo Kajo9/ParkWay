@@ -40,10 +40,10 @@
             txtFloorID = new TextBox();
             lblID = new Label();
             menuStrip1 = new MenuStrip();
-            editToolStripMenuItem = new ToolStripMenuItem();
             newToolStripMenuItem = new ToolStripMenuItem();
             saveToolStripMenuItem = new ToolStripMenuItem();
             deleteToolStripMenuItem1 = new ToolStripMenuItem();
+            btnListAllFloor = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvOverviewofParkingSpaces).BeginInit();
             msFloor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFloors).BeginInit();
@@ -146,18 +146,12 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { editToolStripMenuItem, newToolStripMenuItem, saveToolStripMenuItem, deleteToolStripMenuItem1 });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { newToolStripMenuItem, saveToolStripMenuItem, deleteToolStripMenuItem1 });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1350, 28);
             menuStrip1.TabIndex = 8;
             menuStrip1.Text = "menuStrip1";
-            // 
-            // editToolStripMenuItem
-            // 
-            editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new Size(49, 24);
-            editToolStripMenuItem.Text = "Edit";
             // 
             // newToolStripMenuItem
             // 
@@ -180,11 +174,22 @@
             deleteToolStripMenuItem1.Text = "Delete";
             deleteToolStripMenuItem1.Click += deleteToolStripMenuItem1_Click;
             // 
+            // btnListAllFloor
+            // 
+            btnListAllFloor.Location = new Point(1118, 76);
+            btnListAllFloor.Name = "btnListAllFloor";
+            btnListAllFloor.Size = new Size(212, 27);
+            btnListAllFloor.TabIndex = 9;
+            btnListAllFloor.Text = "Izlistaj sva parkirna mjesta";
+            btnListAllFloor.UseVisualStyleBackColor = true;
+            btnListAllFloor.Click += btnListAllFloor_Click;
+            // 
             // Floor
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1350, 534);
+            Controls.Add(btnListAllFloor);
             Controls.Add(lblID);
             Controls.Add(txtFloorID);
             Controls.Add(dgvFloors);
@@ -220,9 +225,9 @@
         private TextBox txtFloorID;
         private Label lblID;
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem editToolStripMenuItem;
         private ToolStripMenuItem newToolStripMenuItem;
         private ToolStripMenuItem saveToolStripMenuItem;
         private ToolStripMenuItem deleteToolStripMenuItem1;
+        private Button btnListAllFloor;
     }
 }

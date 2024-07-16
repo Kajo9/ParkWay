@@ -25,9 +25,8 @@ namespace ParkWay
         {
             LoadFloors();
             LoadParkingSpotsData();
-            dgvParkingspot.Columns["ID"].DisplayIndex = 0;
-            dgvParkingspot.Columns["Name"].DisplayIndex = 1;
-            dgvParkingspot.Columns["isAvaible"].DisplayIndex = 2;
+            dgvParkingspot.Columns["Name"].DisplayIndex = 0;
+            dgvParkingspot.Columns["isAvaible"].DisplayIndex = 1;
 
         }
         private void LoadParkingSpotsData()
@@ -48,6 +47,9 @@ namespace ParkWay
                         })
                         .ToList();
                     dgvParkingspot.DataSource = parkingSpots;
+
+                    dgvParkingspot.Columns["ID"].Visible = false;
+                    dgvParkingspot.Columns["FloorId"].Visible = false;
                 }
             }
         }

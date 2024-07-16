@@ -32,15 +32,16 @@
             catalogToolStripMenuItem = new ToolStripMenuItem();
             floorsToolStripMenuItem = new ToolStripMenuItem();
             parkingSpotsToolStripMenuItem = new ToolStripMenuItem();
-            btnBack = new Button();
             usersToolStripMenuItem = new ToolStripMenuItem();
+            btnBack = new Button();
+            changePasswordToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { catalogToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { catalogToolStripMenuItem, changePasswordToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1159, 28);
@@ -68,6 +69,13 @@
             parkingSpotsToolStripMenuItem.Text = "Parking spots";
             parkingSpotsToolStripMenuItem.Click += parkingSpotsToolStripMenuItem_Click;
             // 
+            // usersToolStripMenuItem
+            // 
+            usersToolStripMenuItem.Name = "usersToolStripMenuItem";
+            usersToolStripMenuItem.Size = new Size(224, 26);
+            usersToolStripMenuItem.Text = "Users";
+            usersToolStripMenuItem.Click += usersToolStripMenuItem_Click;
+            // 
             // btnBack
             // 
             btnBack.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
@@ -79,11 +87,11 @@
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
             // 
-            // usersToolStripMenuItem
+            // changePasswordToolStripMenuItem
             // 
-            usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            usersToolStripMenuItem.Size = new Size(224, 26);
-            usersToolStripMenuItem.Text = "Users";
+            changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            changePasswordToolStripMenuItem.Size = new Size(140, 24);
+            changePasswordToolStripMenuItem.Text = "Change password";
             // 
             // Main
             // 
@@ -109,5 +117,6 @@
         private ToolStripMenuItem parkingSpotsToolStripMenuItem;
         private Button btnBack;
         private ToolStripMenuItem usersToolStripMenuItem;
+        private ToolStripMenuItem changePasswordToolStripMenuItem;
     }
 }

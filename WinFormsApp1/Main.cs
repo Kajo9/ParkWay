@@ -19,7 +19,7 @@ namespace ParkWay
         {
             InitializeComponent();
         }
-       
+
         private void floorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Floor floor = new Floor();
@@ -37,6 +37,12 @@ namespace ParkWay
             Login login = new Login();
             login.Show();
             Close();
+        }
+
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Registration registration = new Registration();
+            registration.Show();
         }
     }
 }

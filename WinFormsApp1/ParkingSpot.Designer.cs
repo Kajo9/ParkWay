@@ -34,7 +34,6 @@
             lblID = new Label();
             txtParkingSpotID = new TextBox();
             menuStrip1 = new MenuStrip();
-            editToolStripMenuItem1 = new ToolStripMenuItem();
             newToolStripMenuItem1 = new ToolStripMenuItem();
             saveToolStripMenuItem1 = new ToolStripMenuItem();
             deleteToolStripMenuItem = new ToolStripMenuItem();
@@ -99,17 +98,11 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { editToolStripMenuItem1, newToolStripMenuItem1, saveToolStripMenuItem1, deleteToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { newToolStripMenuItem1, saveToolStripMenuItem1, deleteToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1353, 28);
             menuStrip1.TabIndex = 10;
-            // 
-            // editToolStripMenuItem1
-            // 
-            editToolStripMenuItem1.Name = "editToolStripMenuItem1";
-            editToolStripMenuItem1.Size = new Size(49, 24);
-            editToolStripMenuItem1.Text = "Edit";
             // 
             // newToolStripMenuItem1
             // 
@@ -207,7 +200,6 @@
         private ToolStripMenuItem deleteToolStripMenuItem1;
         private ComboBox cbFloor;
         private Label lblFloor;
-        private ToolStripMenuItem editToolStripMenuItem1;
         private ToolStripMenuItem newToolStripMenuItem1;
         private ToolStripMenuItem saveToolStripMenuItem1;
         private ToolStripMenuItem deleteToolStripMenuItem;

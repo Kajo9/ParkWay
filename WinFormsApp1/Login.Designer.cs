@@ -28,22 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnRegister = new Button();
             btnLogin = new Button();
             txtUsername = new TextBox();
             txtPassword = new TextBox();
             lb_Username = new Label();
             lbl_Password = new Label();
             SuspendLayout();
-            // 
-            // btnRegister
-            // 
-            btnRegister.Location = new Point(457, 258);
-            btnRegister.Name = "btnRegister";
-            btnRegister.Size = new Size(75, 27);
-            btnRegister.TabIndex = 6;
-            btnRegister.Text = "Register";
-            btnRegister.Click += btnRegister_Click;
             // 
             // btnLogin
             // 
@@ -63,6 +53,7 @@
             txtUsername.PlaceholderText = "Korisničko ime";
             txtUsername.Size = new Size(267, 27);
             txtUsername.TabIndex = 0;
+            txtUsername.Text = "mmijić21";
             // 
             // txtPassword
             // 
@@ -72,6 +63,7 @@
             txtPassword.PlaceholderText = "Lozinka";
             txtPassword.Size = new Size(267, 27);
             txtPassword.TabIndex = 1;
+            txtPassword.Text = "Pass1234";
             // 
             // lb_Username
             // 
@@ -101,7 +93,6 @@
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);
             Controls.Add(btnLogin);
-            Controls.Add(btnRegister);
             Name = "Login";
             Text = "FrmLogin";
             Load += Login_Load;
@@ -110,8 +101,6 @@
         }
 
         #endregion
-
-        private Button btnRegister;
         private Button btnLogin;
         private TextBox txtUsername;
         private TextBox txtPassword;
