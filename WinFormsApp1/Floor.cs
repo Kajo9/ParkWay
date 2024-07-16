@@ -29,6 +29,14 @@ namespace ParkWay
             dgvFloors.Columns["FloorName"].DisplayIndex = 1;
             dgvFloors.Columns["ParkingSpots"].DisplayIndex = 2;
 
+            DataGridViewButtonColumn btnListParkingSpots = new DataGridViewButtonColumn();
+            btnListParkingSpots.HeaderText = "Prikaži mjesta";
+            btnListParkingSpots.Text = "Prikaži";
+            btnListParkingSpots.UseColumnTextForButtonValue = true;
+            dgvFloors.Columns.Add(btnListParkingSpots);
+
+            dgvFloors.CellContentClick += dgvFloors_CellContentClick;
+
         }
 
         private void LoadFloorsData()
@@ -178,9 +186,10 @@ namespace ParkWay
             isUpdating = false;
             txtFloorID.Text = string.Empty;
             txtFloorName.Text = string.Empty;
+            ResetForm();
         }
 
-        private void btnListAllFloor_Click(object sender, EventArgs e)
+        private void dgvFloors_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvFloors.SelectedRows.Count > 0)
             {
@@ -203,16 +212,14 @@ namespace ParkWay
                         }
 
                         MessageBox.Show(sb.ToString(), "Parkirna mjesta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        dgvFloors.ClearSelection();
                     }
                     else
                     {
                         MessageBox.Show("Nema dostupnih parkirnih mjesta za odabrani kat.", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Morate odabrati kat.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

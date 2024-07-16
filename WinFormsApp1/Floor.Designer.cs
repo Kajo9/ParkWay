@@ -43,7 +43,6 @@
             newToolStripMenuItem = new ToolStripMenuItem();
             saveToolStripMenuItem = new ToolStripMenuItem();
             deleteToolStripMenuItem1 = new ToolStripMenuItem();
-            btnListAllFloor = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvOverviewofParkingSpaces).BeginInit();
             msFloor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFloors).BeginInit();
@@ -124,6 +123,7 @@
             dgvFloors.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvFloors.Size = new Size(1289, 385);
             dgvFloors.TabIndex = 4;
+            dgvFloors.CellContentClick += dgvFloors_CellContentClick;
             dgvFloors.SelectionChanged += dgvFloors_SelectionChanged;
             // 
             // txtFloorID
@@ -174,22 +174,11 @@
             deleteToolStripMenuItem1.Text = "Delete";
             deleteToolStripMenuItem1.Click += deleteToolStripMenuItem1_Click;
             // 
-            // btnListAllFloor
-            // 
-            btnListAllFloor.Location = new Point(1118, 76);
-            btnListAllFloor.Name = "btnListAllFloor";
-            btnListAllFloor.Size = new Size(212, 27);
-            btnListAllFloor.TabIndex = 9;
-            btnListAllFloor.Text = "Izlistaj sva parkirna mjesta";
-            btnListAllFloor.UseVisualStyleBackColor = true;
-            btnListAllFloor.Click += btnListAllFloor_Click;
-            // 
             // Floor
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1350, 534);
-            Controls.Add(btnListAllFloor);
             Controls.Add(lblID);
             Controls.Add(txtFloorID);
             Controls.Add(dgvFloors);
@@ -228,6 +217,5 @@
         private ToolStripMenuItem newToolStripMenuItem;
         private ToolStripMenuItem saveToolStripMenuItem;
         private ToolStripMenuItem deleteToolStripMenuItem1;
-        private Button btnListAllFloor;
     }
 }

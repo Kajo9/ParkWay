@@ -89,6 +89,7 @@ namespace ParkWay
             isUpdating = false;
             txtParkingSpotID.Text = string.Empty;
             txtParkingSpot.Text = string.Empty;
+            ResetForm();
         }
 
         private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -192,6 +193,38 @@ namespace ParkWay
         private void cbFloor_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadParkingSpotsData();
+        }
+
+        private void chbAvailable_CheckedChanged(object sender, EventArgs e)
+        {
+            if (dgvParkingspot.SelectedRows.Count > 0)
+            {
+                int selectedRowIndex = dgvParkingspot.SelectedRows[0].Index;
+                int parkingspotID = (int)dgvParkingspot.Rows[selectedRowIndex].Cells["ID"].Value;
+
+                using (var context = new DatabaseContext())
+                {
+                    var parkingSpot = context.ParkingSpots.FirstOrDefault(p => p.ID == parkingspotID);
+                    if (parkingSpot != null)
+                    {
+                        bool newAvailability = chbAvailable.Checked;
+                        if (parkingSpot.isAvaible != newAvailability)
+                        {
+                            parkingSpot.isAvaible = newAvailability;
+                            context.SaveChanges();
+
+                            MessageBox.Show("Status dostupnosti je uspješno ažuriran!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadParkingSpotsData();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Morate odabrati red za ažuriranje statusa dostupnosti.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            chbAvailable.Checked = false;
         }
     }
 }

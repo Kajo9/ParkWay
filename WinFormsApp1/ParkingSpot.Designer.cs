@@ -43,6 +43,8 @@
             deleteToolStripMenuItem1 = new ToolStripMenuItem();
             cbFloor = new ComboBox();
             lblFloor = new Label();
+            lblAvailable = new Label();
+            chbAvailable = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)dgvParkingspot).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -56,9 +58,10 @@
             dgvParkingspot.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvParkingspot.Location = new Point(41, 123);
             dgvParkingspot.Name = "dgvParkingspot";
+            dgvParkingspot.ReadOnly = true;
             dgvParkingspot.RowHeadersWidth = 51;
             dgvParkingspot.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvParkingspot.Size = new Size(1289, 385);
+            dgvParkingspot.Size = new Size(1289, 383);
             dgvParkingspot.TabIndex = 4;
             dgvParkingspot.SelectionChanged += dgvParkingspot_SelectionChanged;
             // 
@@ -163,11 +166,33 @@
             lblFloor.TabIndex = 9;
             lblFloor.Text = "Floor:";
             // 
+            // lblAvailable
+            // 
+            lblAvailable.AutoSize = true;
+            lblAvailable.Location = new Point(308, 76);
+            lblAvailable.Name = "lblAvailable";
+            lblAvailable.Size = new Size(74, 20);
+            lblAvailable.TabIndex = 12;
+            lblAvailable.Text = "Available:";
+            // 
+            // chbAvailable
+            // 
+            chbAvailable.AutoSize = true;
+            chbAvailable.Location = new Point(388, 76);
+            chbAvailable.Name = "chbAvailable";
+            chbAvailable.Size = new Size(101, 24);
+            chbAvailable.TabIndex = 14;
+            chbAvailable.Text = "checkBox1";
+            chbAvailable.UseVisualStyleBackColor = true;
+            chbAvailable.CheckedChanged += chbAvailable_CheckedChanged;
+            // 
             // ParkingSpot
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1353, 564);
+            ClientSize = new Size(1353, 562);
+            Controls.Add(chbAvailable);
+            Controls.Add(lblAvailable);
             Controls.Add(lblFloor);
             Controls.Add(cbFloor);
             Controls.Add(txtParkingSpotID);
@@ -203,5 +228,7 @@
         private ToolStripMenuItem newToolStripMenuItem1;
         private ToolStripMenuItem saveToolStripMenuItem1;
         private ToolStripMenuItem deleteToolStripMenuItem;
+        private Label lblAvailable;
+        private CheckBox chbAvailable;
     }
 }
