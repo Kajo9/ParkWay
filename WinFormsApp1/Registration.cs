@@ -48,21 +48,6 @@ namespace ParkWay
                 dgvUsers.DataSource = users;
 
                 dgvUsers.Columns["ID"].Visible = false;
-
-                if (!dgvUsers.Columns.Contains("Edit") && !dgvUsers.Columns.Contains("Delete"))
-                {
-                    DataGridViewButtonColumn editButtonColumn = new DataGridViewButtonColumn();
-                    editButtonColumn.Name = "Edit";
-                    editButtonColumn.Text = "Edit";
-                    editButtonColumn.UseColumnTextForButtonValue = true;
-                    dgvUsers.Columns.Add(editButtonColumn);
-
-                    DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
-                    deleteButtonColumn.Name = "Delete";
-                    deleteButtonColumn.Text = "Delete";
-                    deleteButtonColumn.UseColumnTextForButtonValue = true;
-                    dgvUsers.Columns.Add(deleteButtonColumn);
-                }
             }
         }
 
@@ -123,6 +108,7 @@ namespace ParkWay
             txtUsername.Text = string.Empty;
             txtPassword.Text = string.Empty;
             cbRole.SelectedIndex = 0;
+            dgvUsers.ClearSelection();
         }
 
         private bool ValidateInputs(string firstname, string lastname, string username, string password)
@@ -283,6 +269,21 @@ namespace ParkWay
             else
             {
                 MessageBox.Show("Morate odabrati red za brisanje.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void dgvUsers_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvUsers.SelectedRows.Count > 0)
+            {
+                isUpdating = true;
+                int selectedRowIndex = dgvUsers.SelectedRows[0].Index;
+
+                txtFirsName.Text = dgvUsers.Rows[selectedRowIndex].Cells["FirstName"].Value.ToString();
+                txtLastName.Text = dgvUsers.Rows[selectedRowIndex].Cells["LastName"].Value.ToString();
+                txtUsername.Text = dgvUsers.Rows[selectedRowIndex].Cells["Username"].Value.ToString();
+                txtPassword.Text = dgvUsers.Rows[selectedRowIndex].Cells["Password"].Value.ToString();
+                cbRole.SelectedItem = dgvUsers.Rows[selectedRowIndex].Cells["Role"].Value.ToString();
             }
         }
     }

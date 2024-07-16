@@ -15,6 +15,7 @@ namespace ParkWay
     {
 
         private bool isUpdating = false;
+        private bool isProgrammaticChange = false;
         public ParkingSpot()
         {
             InitializeComponent();
@@ -73,6 +74,11 @@ namespace ParkWay
                 txtParkingSpotID.Text = dgvParkingspot.Rows[selectedRowIndex].Cells["ID"].Value.ToString();
                 txtParkingSpot.Text = dgvParkingspot.Rows[selectedRowIndex].Cells["Name"].Value.ToString();
                 cbFloor.SelectedValue = dgvParkingspot.Rows[selectedRowIndex].Cells["FloorId"].Value;
+                chbAvailable.Checked = (bool)dgvParkingspot.Rows[selectedRowIndex].Cells["isAvaible"].Value;
+
+                isProgrammaticChange = true;
+                chbAvailable.Checked = (bool)dgvParkingspot.Rows[selectedRowIndex].Cells["isAvaible"].Value;
+                isProgrammaticChange = false;
             }
         }
 
@@ -82,6 +88,7 @@ namespace ParkWay
             txtParkingSpotID.Text = string.Empty;
             txtParkingSpot.Text = string.Empty;
             dgvParkingspot.ClearSelection();
+            chbAvailable.Checked = false;
         }
 
         private void newToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -99,6 +106,7 @@ namespace ParkWay
                 using (var context = new DatabaseContext())
                 {
                     int selectedFloorId = (int)cbFloor.SelectedValue;
+                    bool isAvailable = chbAvailable.Checked;
 
                     if (isUpdating)
                     {
@@ -137,7 +145,8 @@ namespace ParkWay
                         var parkingspot = new Models.ParkingSpot
                         {
                             Name = txtParkingSpot.Text,
-                            FloorId = selectedFloorId
+                            FloorId = selectedFloorId,
+                            isAvaible = isAvailable
                         };
                         context.ParkingSpots.Add(parkingspot);
                         context.SaveChanges();
@@ -197,6 +206,8 @@ namespace ParkWay
 
         private void chbAvailable_CheckedChanged(object sender, EventArgs e)
         {
+            if (isProgrammaticChange) return;
+
             if (dgvParkingspot.SelectedRows.Count > 0)
             {
                 int selectedRowIndex = dgvParkingspot.SelectedRows[0].Index;
@@ -214,6 +225,7 @@ namespace ParkWay
                             context.SaveChanges();
 
                             MessageBox.Show("Status dostupnosti je uspješno ažuriran!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                             LoadParkingSpotsData();
                         }
                     }
@@ -223,8 +235,6 @@ namespace ParkWay
             {
                 MessageBox.Show("Morate odabrati red za ažuriranje statusa dostupnosti.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-            chbAvailable.Checked = false;
         }
     }
 }

@@ -30,7 +30,7 @@ namespace ParkWay
             dgvFloors.Columns["ParkingSpots"].DisplayIndex = 2;
 
             DataGridViewButtonColumn btnListParkingSpots = new DataGridViewButtonColumn();
-            btnListParkingSpots.HeaderText = "Prikaži mjesta";
+            btnListParkingSpots.HeaderText = "Prikaži sva parkirna mjesta";
             btnListParkingSpots.Text = "Prikaži";
             btnListParkingSpots.UseColumnTextForButtonValue = true;
             dgvFloors.Columns.Add(btnListParkingSpots);

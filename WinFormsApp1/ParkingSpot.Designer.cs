@@ -51,6 +51,8 @@
             // 
             // dgvParkingspot
             // 
+            dgvParkingspot.AllowUserToResizeColumns = false;
+            dgvParkingspot.AllowUserToResizeRows = false;
             dgvParkingspot.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvParkingspot.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvParkingspot.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;

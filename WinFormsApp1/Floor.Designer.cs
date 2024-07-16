@@ -111,6 +111,8 @@
             // 
             // dgvFloors
             // 
+            dgvFloors.AllowUserToResizeColumns = false;
+            dgvFloors.AllowUserToResizeRows = false;
             dgvFloors.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvFloors.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvFloors.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
