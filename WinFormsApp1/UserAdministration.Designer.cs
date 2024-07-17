@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserAdministration));
             lblFirstName = new Label();
             lblLastName = new Label();
             lblUsername = new Label();
@@ -37,13 +38,13 @@
             txtLastName = new TextBox();
             txtUsername = new TextBox();
             txtPassword = new TextBox();
-            btnRegister = new Button();
             cbRole = new ComboBox();
             dgvUsers = new DataGridView();
             menuStrip1 = new MenuStrip();
             newToolStripMenuItem = new ToolStripMenuItem();
             saveToolStripMenuItem = new ToolStripMenuItem();
             deleteToolStripMenuItem = new ToolStripMenuItem();
+            lblStar = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -53,45 +54,45 @@
             lblFirstName.AutoSize = true;
             lblFirstName.Location = new Point(24, 67);
             lblFirstName.Name = "lblFirstName";
-            lblFirstName.Size = new Size(80, 20);
+            lblFirstName.Size = new Size(86, 20);
             lblFirstName.TabIndex = 0;
-            lblFirstName.Text = "First name:";
+            lblFirstName.Text = "First name:*";
             // 
             // lblLastName
             // 
             lblLastName.AutoSize = true;
             lblLastName.Location = new Point(22, 119);
             lblLastName.Name = "lblLastName";
-            lblLastName.Size = new Size(79, 20);
+            lblLastName.Size = new Size(85, 20);
             lblLastName.TabIndex = 1;
-            lblLastName.Text = "Last name:";
+            lblLastName.Text = "Last name:*";
             // 
             // lblUsername
             // 
             lblUsername.AutoSize = true;
             lblUsername.Location = new Point(24, 177);
             lblUsername.Name = "lblUsername";
-            lblUsername.Size = new Size(78, 20);
+            lblUsername.Size = new Size(84, 20);
             lblUsername.TabIndex = 2;
-            lblUsername.Text = "Username:";
+            lblUsername.Text = "Username:*";
             // 
             // lblPassword
             // 
             lblPassword.AutoSize = true;
             lblPassword.Location = new Point(24, 241);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(73, 20);
+            lblPassword.Size = new Size(79, 20);
             lblPassword.TabIndex = 3;
-            lblPassword.Text = "Password:";
+            lblPassword.Text = "Password:*";
             // 
             // lblRole
             // 
             lblRole.AutoSize = true;
             lblRole.Location = new Point(24, 303);
             lblRole.Name = "lblRole";
-            lblRole.Size = new Size(42, 20);
+            lblRole.Size = new Size(48, 20);
             lblRole.TabIndex = 4;
-            lblRole.Text = "Role:";
+            lblRole.Text = "Role:*";
             // 
             // txtFirsName
             // 
@@ -157,33 +158,45 @@
             // 
             // newToolStripMenuItem
             // 
+            newToolStripMenuItem.Image = (Image)resources.GetObject("newToolStripMenuItem.Image");
             newToolStripMenuItem.Name = "newToolStripMenuItem";
-            newToolStripMenuItem.Size = new Size(53, 24);
+            newToolStripMenuItem.Size = new Size(73, 24);
             newToolStripMenuItem.Text = "New";
             newToolStripMenuItem.Click += newToolStripMenuItem_Click;
             // 
             // saveToolStripMenuItem
             // 
+            saveToolStripMenuItem.Image = (Image)resources.GetObject("saveToolStripMenuItem.Image");
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(54, 24);
+            saveToolStripMenuItem.Size = new Size(74, 24);
             saveToolStripMenuItem.Text = "Save";
             saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
             // deleteToolStripMenuItem
             // 
+            deleteToolStripMenuItem.Image = (Image)resources.GetObject("deleteToolStripMenuItem.Image");
             deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size = new Size(67, 24);
+            deleteToolStripMenuItem.Size = new Size(87, 24);
             deleteToolStripMenuItem.Text = "Delete";
             deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
             // 
-            // Registration
+            // lblStar
+            // 
+            lblStar.AutoSize = true;
+            lblStar.Location = new Point(24, 382);
+            lblStar.Name = "lblStar";
+            lblStar.Size = new Size(325, 20);
+            lblStar.TabIndex = 13;
+            lblStar.Text = "Sve označno zvijezdom mora biti popunjeno (*)";
+            // 
+            // UserAdministration
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1357, 451);
+            Controls.Add(lblStar);
             Controls.Add(dgvUsers);
             Controls.Add(cbRole);
-            Controls.Add(btnRegister);
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);
             Controls.Add(txtLastName);
@@ -195,7 +208,7 @@
             Controls.Add(lblFirstName);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Name = "Registration";
+            Name = "UserAdministration";
             Text = "Registration";
             WindowState = FormWindowState.Maximized;
             Load += Registration_Load;
@@ -217,12 +230,12 @@
         private TextBox txtLastName;
         private TextBox txtUsername;
         private TextBox txtPassword;
-        private Button btnRegister;
         private ComboBox cbRole;
         private DataGridView dgvUsers;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem newToolStripMenuItem;
         private ToolStripMenuItem saveToolStripMenuItem;
         private ToolStripMenuItem deleteToolStripMenuItem;
+        private Label lblStar;
     }
 }

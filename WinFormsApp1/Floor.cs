@@ -30,12 +30,19 @@ namespace ParkWay
             dgvFloors.Columns["FloorName"].DisplayIndex = 1;
             dgvFloors.Columns["ParkingSpots"].DisplayIndex = 2;
 
-            DataGridViewButtonColumn btnListParkingSpots = new DataGridViewButtonColumn();
-            btnListParkingSpots.HeaderText = "Prikaži sva parkirna mjesta";
-            btnListParkingSpots.Text = "Prikaži";
-            btnListParkingSpots.UseColumnTextForButtonValue = true;
-            dgvFloors.Columns.Add(btnListParkingSpots);
+            if (!dgvFloors.Columns.Contains("Prikaži sva parkirna mjesta"))
+            {
+                DataGridViewButtonColumn btnListParkingSpots = new DataGridViewButtonColumn
+                {
+                    HeaderText = "Prikaži sva parkirna mjesta",
+                    Text = "Prikaži",
+                    UseColumnTextForButtonValue = true,
+                    Name = "Prikaži sva parkirna mjesta"
+                };
+                dgvFloors.Columns.Add(btnListParkingSpots);
+            }
 
+            dgvFloors.CellContentClick -= dgvFloors_CellContentClick;
             dgvFloors.CellContentClick += dgvFloors_CellContentClick;
 
         }
@@ -192,36 +199,17 @@ namespace ParkWay
 
         private void dgvFloors_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvFloors.SelectedRows.Count > 0)
+            if (e.RowIndex >= 0)
             {
-                int selectedRowIndex = dgvFloors.SelectedRows[0].Index;
-                int floorID = (int)dgvFloors.Rows[selectedRowIndex].Cells["ID"].Value;
-
-                using (var context = new DatabaseContext())
+                var column = dgvFloors.Columns["Prikaži sva parkirna mjesta"];
+                if (column != null && e.ColumnIndex == column.Index)
                 {
-                    var floor = context.Floors
-                        .Include(f => f.ParkingSpots)
-                        .FirstOrDefault(f => f.ID == floorID);
+                    int floorID = (int)dgvFloors.Rows[e.RowIndex].Cells["ID"].Value;
 
-                    if (floor != null && floor.ParkingSpots != null)
-                    {
-                        StringBuilder sb = new StringBuilder();
-                        sb.AppendLine($"Parkirna mjesta za kat: {floor.FloorName}");
-                        foreach (var spot in floor.ParkingSpots)
-                        {
-                            sb.AppendLine($"- {spot.Name}");
-                        }
-
-                        MessageBox.Show(sb.ToString(), "Parkirna mjesta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        dgvFloors.ClearSelection();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Nema dostupnih parkirnih mjesta za odabrani kat.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    ListofParkingSpots listofParkingSpots = new ListofParkingSpots(floorID);
+                    listofParkingSpots.Show();
                 }
-            }
+            }   
         }
     }
 }

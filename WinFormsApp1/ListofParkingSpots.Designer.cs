@@ -28,12 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "ListofParkingSpots";
+            dgvListParkingSpots = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgvListParkingSpots).BeginInit();
+            SuspendLayout();
+            // 
+            // dgvListParkingSpots
+            // 
+            dgvListParkingSpots.AllowUserToAddRows = false;
+            dgvListParkingSpots.AllowUserToDeleteRows = false;
+            dgvListParkingSpots.AllowUserToResizeColumns = false;
+            dgvListParkingSpots.AllowUserToResizeRows = false;
+            dgvListParkingSpots.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvListParkingSpots.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvListParkingSpots.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvListParkingSpots.Location = new Point(29, 30);
+            dgvListParkingSpots.Name = "dgvListParkingSpots";
+            dgvListParkingSpots.ReadOnly = true;
+            dgvListParkingSpots.RowHeadersWidth = 51;
+            dgvListParkingSpots.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvListParkingSpots.Size = new Size(742, 379);
+            dgvListParkingSpots.TabIndex = 0;
+            // 
+            // ListofParkingSpots
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(dgvListParkingSpots);
+            Name = "ListofParkingSpots";
+            Text = "ListofParkingSpots";
+            Load += ListofParkingSpots_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvListParkingSpots).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private DataGridView dgvListParkingSpots;
     }
 }

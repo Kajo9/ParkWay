@@ -184,10 +184,6 @@ namespace ParkWay
                     ResetForm();
                 }
             }
-            else
-            {
-                MessageBox.Show("Molimo ispunite sva polja!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -240,5 +236,6 @@ namespace ParkWay
                 cbRole.SelectedItem = dgvUsers.Rows[selectedRowIndex].Cells["Role"].Value.ToString();
             }
         }
+
     }
 }

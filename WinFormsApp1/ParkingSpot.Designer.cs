@@ -58,7 +58,7 @@
             dgvParkingspot.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvParkingspot.BackgroundColor = SystemColors.ScrollBar;
             dgvParkingspot.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvParkingspot.Location = new Point(41, 123);
+            dgvParkingspot.Location = new Point(41, 167);
             dgvParkingspot.Name = "dgvParkingspot";
             dgvParkingspot.ReadOnly = true;
             dgvParkingspot.RowHeadersWidth = 51;
@@ -80,7 +80,7 @@
             // 
             txtParkingSpot.Location = new Point(141, 73);
             txtParkingSpot.Name = "txtParkingSpot";
-            txtParkingSpot.Size = new Size(125, 27);
+            txtParkingSpot.Size = new Size(485, 27);
             txtParkingSpot.TabIndex = 0;
             // 
             // lblID
@@ -111,22 +111,25 @@
             // 
             // newToolStripMenuItem1
             // 
+            newToolStripMenuItem1.Image = Properties.Resources.paper_24935_640;
             newToolStripMenuItem1.Name = "newToolStripMenuItem1";
-            newToolStripMenuItem1.Size = new Size(53, 24);
+            newToolStripMenuItem1.Size = new Size(73, 24);
             newToolStripMenuItem1.Text = "New";
             newToolStripMenuItem1.Click += newToolStripMenuItem1_Click;
             // 
             // saveToolStripMenuItem1
             // 
+            saveToolStripMenuItem1.Image = Properties.Resources.floppy_disk_98413_640;
             saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            saveToolStripMenuItem1.Size = new Size(54, 24);
+            saveToolStripMenuItem1.Size = new Size(74, 24);
             saveToolStripMenuItem1.Text = "Save";
             saveToolStripMenuItem1.Click += saveToolStripMenuItem1_Click;
             // 
             // deleteToolStripMenuItem
             // 
+            deleteToolStripMenuItem.Image = Properties.Resources.delete_156119_640;
             deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size = new Size(67, 24);
+            deleteToolStripMenuItem.Size = new Size(87, 24);
             deleteToolStripMenuItem.Text = "Delete";
             deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
             // 
@@ -153,16 +156,16 @@
             // 
             // cbFloor
             // 
-            cbFloor.Location = new Point(376, 39);
+            cbFloor.Location = new Point(145, 115);
             cbFloor.Name = "cbFloor";
-            cbFloor.Size = new Size(121, 28);
+            cbFloor.Size = new Size(481, 28);
             cbFloor.TabIndex = 10;
             cbFloor.SelectedIndexChanged += cbFloor_SelectedIndexChanged;
             // 
             // lblFloor
             // 
             lblFloor.AutoSize = true;
-            lblFloor.Location = new Point(308, 38);
+            lblFloor.Location = new Point(41, 118);
             lblFloor.Name = "lblFloor";
             lblFloor.Size = new Size(46, 20);
             lblFloor.TabIndex = 9;
@@ -171,7 +174,7 @@
             // lblAvailable
             // 
             lblAvailable.AutoSize = true;
-            lblAvailable.Location = new Point(308, 76);
+            lblAvailable.Location = new Point(309, 42);
             lblAvailable.Name = "lblAvailable";
             lblAvailable.Size = new Size(74, 20);
             lblAvailable.TabIndex = 12;
@@ -180,7 +183,7 @@
             // chbAvailable
             // 
             chbAvailable.AutoSize = true;
-            chbAvailable.Location = new Point(388, 76);
+            chbAvailable.Location = new Point(389, 45);
             chbAvailable.Name = "chbAvailable";
             chbAvailable.Size = new Size(18, 17);
             chbAvailable.TabIndex = 14;

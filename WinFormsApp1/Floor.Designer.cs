@@ -106,7 +106,7 @@
             // 
             txtFloorName.Location = new Point(141, 76);
             txtFloorName.Name = "txtFloorName";
-            txtFloorName.Size = new Size(125, 27);
+            txtFloorName.Size = new Size(431, 27);
             txtFloorName.TabIndex = 1;
             // 
             // dgvFloors
@@ -157,22 +157,25 @@
             // 
             // newToolStripMenuItem
             // 
+            newToolStripMenuItem.Image = Properties.Resources.paper_24935_640;
             newToolStripMenuItem.Name = "newToolStripMenuItem";
-            newToolStripMenuItem.Size = new Size(53, 24);
+            newToolStripMenuItem.Size = new Size(73, 24);
             newToolStripMenuItem.Text = "New";
             newToolStripMenuItem.Click += newToolStripMenuItem_Click;
             // 
             // saveToolStripMenuItem
             // 
+            saveToolStripMenuItem.Image = Properties.Resources.floppy_disk_98413_640;
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(54, 24);
+            saveToolStripMenuItem.Size = new Size(74, 24);
             saveToolStripMenuItem.Text = "Save";
             saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
             // deleteToolStripMenuItem1
             // 
+            deleteToolStripMenuItem1.Image = Properties.Resources.delete_156119_640;
             deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
-            deleteToolStripMenuItem1.Size = new Size(67, 24);
+            deleteToolStripMenuItem1.Size = new Size(87, 24);
             deleteToolStripMenuItem1.Text = "Delete";
             deleteToolStripMenuItem1.Click += deleteToolStripMenuItem1_Click;
             // 
