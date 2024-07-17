@@ -240,7 +240,7 @@ namespace ParkWay
             {
                 if (e.Value != null)
                 {
-                    e.Value = new string('*', e.Value.ToString().Length);
+                    e.Value = new string('$', e.Value.ToString().Length);
                 }
             }
         }
