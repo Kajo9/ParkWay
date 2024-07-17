@@ -115,7 +115,7 @@
             dgvFloors.AllowUserToResizeRows = false;
             dgvFloors.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvFloors.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvFloors.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            dgvFloors.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvFloors.BackgroundColor = SystemColors.ScrollBar;
             dgvFloors.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvFloors.Location = new Point(41, 123);
@@ -159,6 +159,7 @@
             // 
             newToolStripMenuItem.Image = Properties.Resources.paper_24935_640;
             newToolStripMenuItem.Name = "newToolStripMenuItem";
+            newToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.N;
             newToolStripMenuItem.Size = new Size(73, 24);
             newToolStripMenuItem.Text = "New";
             newToolStripMenuItem.Click += newToolStripMenuItem_Click;
@@ -167,14 +168,17 @@
             // 
             saveToolStripMenuItem.Image = Properties.Resources.floppy_disk_98413_640;
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            saveToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.S;
             saveToolStripMenuItem.Size = new Size(74, 24);
             saveToolStripMenuItem.Text = "Save";
             saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
             // deleteToolStripMenuItem1
             // 
-            deleteToolStripMenuItem1.Image = Properties.Resources.delete_156119_640;
+            deleteToolStripMenuItem1.Image = Properties.Resources.delete_4980658;
             deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
+            deleteToolStripMenuItem1.ShortcutKeyDisplayString = "";
+            deleteToolStripMenuItem1.ShortcutKeys = Keys.Control | Keys.D;
             deleteToolStripMenuItem1.Size = new Size(87, 24);
             deleteToolStripMenuItem1.Text = "Delete";
             deleteToolStripMenuItem1.Click += deleteToolStripMenuItem1_Click;

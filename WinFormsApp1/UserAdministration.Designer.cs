@@ -52,7 +52,7 @@
             // lblFirstName
             // 
             lblFirstName.AutoSize = true;
-            lblFirstName.Location = new Point(24, 67);
+            lblFirstName.Location = new Point(19, 132);
             lblFirstName.Name = "lblFirstName";
             lblFirstName.Size = new Size(86, 20);
             lblFirstName.TabIndex = 0;
@@ -61,7 +61,7 @@
             // lblLastName
             // 
             lblLastName.AutoSize = true;
-            lblLastName.Location = new Point(22, 119);
+            lblLastName.Location = new Point(17, 168);
             lblLastName.Name = "lblLastName";
             lblLastName.Size = new Size(85, 20);
             lblLastName.TabIndex = 1;
@@ -70,7 +70,7 @@
             // lblUsername
             // 
             lblUsername.AutoSize = true;
-            lblUsername.Location = new Point(24, 177);
+            lblUsername.Location = new Point(19, 226);
             lblUsername.Name = "lblUsername";
             lblUsername.Size = new Size(84, 20);
             lblUsername.TabIndex = 2;
@@ -79,7 +79,7 @@
             // lblPassword
             // 
             lblPassword.AutoSize = true;
-            lblPassword.Location = new Point(24, 241);
+            lblPassword.Location = new Point(19, 290);
             lblPassword.Name = "lblPassword";
             lblPassword.Size = new Size(79, 20);
             lblPassword.TabIndex = 3;
@@ -88,7 +88,7 @@
             // lblRole
             // 
             lblRole.AutoSize = true;
-            lblRole.Location = new Point(24, 303);
+            lblRole.Location = new Point(19, 352);
             lblRole.Name = "lblRole";
             lblRole.Size = new Size(48, 20);
             lblRole.TabIndex = 4;
@@ -96,28 +96,28 @@
             // 
             // txtFirsName
             // 
-            txtFirsName.Location = new Point(162, 64);
+            txtFirsName.Location = new Point(157, 113);
             txtFirsName.Name = "txtFirsName";
             txtFirsName.Size = new Size(200, 27);
             txtFirsName.TabIndex = 5;
             // 
             // txtLastName
             // 
-            txtLastName.Location = new Point(162, 116);
+            txtLastName.Location = new Point(157, 165);
             txtLastName.Name = "txtLastName";
             txtLastName.Size = new Size(200, 27);
             txtLastName.TabIndex = 6;
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(162, 174);
+            txtUsername.Location = new Point(157, 223);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(200, 27);
             txtUsername.TabIndex = 7;
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(162, 234);
+            txtPassword.Location = new Point(157, 283);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(200, 27);
             txtPassword.TabIndex = 8;
@@ -125,7 +125,7 @@
             // cbRole
             // 
             cbRole.FormattingEnabled = true;
-            cbRole.Location = new Point(162, 295);
+            cbRole.Location = new Point(157, 344);
             cbRole.Name = "cbRole";
             cbRole.Size = new Size(200, 28);
             cbRole.TabIndex = 10;
@@ -137,7 +137,7 @@
             dgvUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvUsers.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvUsers.ColumnHeadersHeight = 29;
-            dgvUsers.Location = new Point(489, 41);
+            dgvUsers.Location = new Point(493, 52);
             dgvUsers.Name = "dgvUsers";
             dgvUsers.ReadOnly = true;
             dgvUsers.RowHeadersWidth = 51;
@@ -160,6 +160,7 @@
             // 
             newToolStripMenuItem.Image = (Image)resources.GetObject("newToolStripMenuItem.Image");
             newToolStripMenuItem.Name = "newToolStripMenuItem";
+            newToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.N;
             newToolStripMenuItem.Size = new Size(73, 24);
             newToolStripMenuItem.Text = "New";
             newToolStripMenuItem.Click += newToolStripMenuItem_Click;
@@ -168,14 +169,16 @@
             // 
             saveToolStripMenuItem.Image = (Image)resources.GetObject("saveToolStripMenuItem.Image");
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            saveToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.S;
             saveToolStripMenuItem.Size = new Size(74, 24);
             saveToolStripMenuItem.Text = "Save";
             saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
             // deleteToolStripMenuItem
             // 
-            deleteToolStripMenuItem.Image = (Image)resources.GetObject("deleteToolStripMenuItem.Image");
+            deleteToolStripMenuItem.Image = Properties.Resources.delete_4980658;
             deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            deleteToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.D;
             deleteToolStripMenuItem.Size = new Size(87, 24);
             deleteToolStripMenuItem.Text = "Delete";
             deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
@@ -183,7 +186,8 @@
             // lblStar
             // 
             lblStar.AutoSize = true;
-            lblStar.Location = new Point(24, 382);
+            lblStar.ForeColor = SystemColors.ControlText;
+            lblStar.Location = new Point(12, 52);
             lblStar.Name = "lblStar";
             lblStar.Size = new Size(325, 20);
             lblStar.TabIndex = 13;

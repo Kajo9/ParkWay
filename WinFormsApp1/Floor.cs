@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
 using ParkWay.Models;
 using ParkWay.Globalno;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ParkWay
 {
@@ -62,6 +63,11 @@ namespace ParkWay
                 dgvFloors.DataSource = floors;
 
                 dgvFloors.Columns["ID"].Visible = false;
+
+                dgvFloors.ClearSelection();
+                txtFloorID.Text = string.Empty;
+                txtFloorName.Text = string.Empty;
+
             }
         }
 
@@ -209,7 +215,7 @@ namespace ParkWay
                     ListofParkingSpots listofParkingSpots = new ListofParkingSpots(floorID);
                     listofParkingSpots.Show();
                 }
-            }   
+            }
         }
     }
 }

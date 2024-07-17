@@ -113,6 +113,7 @@
             // 
             newToolStripMenuItem1.Image = Properties.Resources.paper_24935_640;
             newToolStripMenuItem1.Name = "newToolStripMenuItem1";
+            newToolStripMenuItem1.ShortcutKeys = Keys.Control | Keys.N;
             newToolStripMenuItem1.Size = new Size(73, 24);
             newToolStripMenuItem1.Text = "New";
             newToolStripMenuItem1.Click += newToolStripMenuItem1_Click;
@@ -121,14 +122,16 @@
             // 
             saveToolStripMenuItem1.Image = Properties.Resources.floppy_disk_98413_640;
             saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
+            saveToolStripMenuItem1.ShortcutKeys = Keys.Control | Keys.S;
             saveToolStripMenuItem1.Size = new Size(74, 24);
             saveToolStripMenuItem1.Text = "Save";
             saveToolStripMenuItem1.Click += saveToolStripMenuItem1_Click;
             // 
             // deleteToolStripMenuItem
             // 
-            deleteToolStripMenuItem.Image = Properties.Resources.delete_156119_640;
+            deleteToolStripMenuItem.Image = Properties.Resources.delete_4980658;
             deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            deleteToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.D;
             deleteToolStripMenuItem.Size = new Size(87, 24);
             deleteToolStripMenuItem.Text = "Delete";
             deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;

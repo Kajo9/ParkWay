@@ -50,6 +50,7 @@ namespace ParkWay
 
                 dgvUsers.Columns["ID"].Visible = false;
             }
+
         }
 
         private void ResetForm()
