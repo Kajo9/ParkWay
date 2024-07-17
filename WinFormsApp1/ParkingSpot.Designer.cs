@@ -70,7 +70,7 @@
             // lblParkingspot
             // 
             lblParkingspot.AutoSize = true;
-            lblParkingspot.Location = new Point(41, 76);
+            lblParkingspot.Location = new Point(41, 127);
             lblParkingspot.Name = "lblParkingspot";
             lblParkingspot.Size = new Size(97, 20);
             lblParkingspot.TabIndex = 2;
@@ -78,7 +78,7 @@
             // 
             // txtParkingSpot
             // 
-            txtParkingSpot.Location = new Point(141, 73);
+            txtParkingSpot.Location = new Point(144, 124);
             txtParkingSpot.Name = "txtParkingSpot";
             txtParkingSpot.Size = new Size(485, 27);
             txtParkingSpot.TabIndex = 0;
@@ -159,7 +159,7 @@
             // 
             // cbFloor
             // 
-            cbFloor.Location = new Point(145, 115);
+            cbFloor.Location = new Point(144, 82);
             cbFloor.Name = "cbFloor";
             cbFloor.Size = new Size(481, 28);
             cbFloor.TabIndex = 10;
@@ -168,7 +168,7 @@
             // lblFloor
             // 
             lblFloor.AutoSize = true;
-            lblFloor.Location = new Point(41, 118);
+            lblFloor.Location = new Point(41, 85);
             lblFloor.Name = "lblFloor";
             lblFloor.Size = new Size(46, 20);
             lblFloor.TabIndex = 9;
@@ -210,7 +210,7 @@
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "ParkingSpot";
-            Text = "ParkingSpot";
+            Text = "Parking spot";
             WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)dgvParkingspot).EndInit();
             menuStrip1.ResumeLayout(false);

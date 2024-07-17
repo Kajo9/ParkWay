@@ -16,7 +16,7 @@ namespace ParkWay
     {
 
         private bool isUpdating = false;
-        private bool isProgrammaticChange = false;
+        private bool isCheckChanged = false;
         public ParkingSpot()
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace ParkWay
             LoadParkingSpotsData();
             dgvParkingspot.Columns["Name"].DisplayIndex = 0;
             dgvParkingspot.Columns["isAvaible"].DisplayIndex = 1;
-
+            ResetForm();
         }
         private void LoadParkingSpotsData()
         {
@@ -77,9 +77,9 @@ namespace ParkWay
                 cbFloor.SelectedValue = dgvParkingspot.Rows[selectedRowIndex].Cells["FloorId"].Value;
                 chbAvailable.Checked = (bool)dgvParkingspot.Rows[selectedRowIndex].Cells["isAvaible"].Value;
 
-                isProgrammaticChange = true;
+                isCheckChanged = true;
                 chbAvailable.Checked = (bool)dgvParkingspot.Rows[selectedRowIndex].Cells["isAvaible"].Value;
-                isProgrammaticChange = false;
+                isCheckChanged = false;
             }
         }
 
@@ -88,15 +88,13 @@ namespace ParkWay
             isUpdating = false;
             txtParkingSpotID.Text = string.Empty;
             txtParkingSpot.Text = string.Empty;
+            cbFloor.Text = string.Empty;
             dgvParkingspot.ClearSelection();
             chbAvailable.Checked = false;
         }
 
         private void newToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            isUpdating = false;
-            txtParkingSpotID.Text = string.Empty;
-            txtParkingSpot.Text = string.Empty;
             ResetForm();
         }
 
@@ -207,7 +205,7 @@ namespace ParkWay
 
         private void chbAvailable_CheckedChanged(object sender, EventArgs e)
         {
-            if (isProgrammaticChange) return;
+            if (isCheckChanged) return;
 
             if (dgvParkingspot.SelectedRows.Count > 0)
             {
@@ -231,10 +229,6 @@ namespace ParkWay
                         }
                     }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Morate odabrati red za ažuriranje statusa dostupnosti.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

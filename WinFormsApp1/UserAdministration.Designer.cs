@@ -163,6 +163,7 @@
             newToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.N;
             newToolStripMenuItem.Size = new Size(73, 24);
             newToolStripMenuItem.Text = "New";
+            newToolStripMenuItem.ToolTipText = "Ctrl+D";
             newToolStripMenuItem.Click += newToolStripMenuItem_Click;
             // 
             // saveToolStripMenuItem
@@ -181,6 +182,7 @@
             deleteToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.D;
             deleteToolStripMenuItem.Size = new Size(87, 24);
             deleteToolStripMenuItem.Text = "Delete";
+            deleteToolStripMenuItem.ToolTipText = "Ctrl+D";
             deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
             // 
             // lblStar
@@ -213,7 +215,7 @@
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "UserAdministration";
-            Text = "Registration";
+            Text = "User administration";
             WindowState = FormWindowState.Maximized;
             Load += Registration_Load;
             ((System.ComponentModel.ISupportInitialize)dgvUsers).EndInit();

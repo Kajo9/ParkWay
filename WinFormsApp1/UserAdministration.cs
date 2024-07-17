@@ -28,6 +28,7 @@ namespace ParkWay
             cbRole.DataSource = roles;
 
             LoadUsers();
+            ResetForm();
         }
 
         private void LoadUsers()
@@ -49,6 +50,8 @@ namespace ParkWay
                 dgvUsers.DataSource = users;
 
                 dgvUsers.Columns["ID"].Visible = false;
+
+                dgvUsers.ClearSelection();
             }
 
         }
@@ -110,11 +113,6 @@ namespace ParkWay
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            isUpdating = false;
-            txtFirsName.Text = string.Empty;
-            txtLastName.Text = string.Empty;
-            txtUsername.Text = string.Empty;
-            txtPassword.Text = string.Empty;
             ResetForm();
         }
 

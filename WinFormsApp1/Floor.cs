@@ -29,7 +29,6 @@ namespace ParkWay
             LoadFloorsData();
             dgvFloors.Columns["ID"].DisplayIndex = 0;
             dgvFloors.Columns["FloorName"].DisplayIndex = 1;
-            dgvFloors.Columns["ParkingSpots"].DisplayIndex = 2;
 
             if (!dgvFloors.Columns.Contains("Prikaži sva parkirna mjesta"))
             {
@@ -56,8 +55,7 @@ namespace ParkWay
                                             .Select(f => new
                                             {
                                                 f.ID,
-                                                f.FloorName,
-                                                ParkingSpots = string.Join(", ", f.ParkingSpots.Select(ps => ps.Name))
+                                                f.FloorName
                                             })
                                             .ToList();
                 dgvFloors.DataSource = floors;
@@ -197,9 +195,6 @@ namespace ParkWay
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            isUpdating = false;
-            txtFloorID.Text = string.Empty;
-            txtFloorName.Text = string.Empty;
             ResetForm();
         }
 

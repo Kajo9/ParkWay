@@ -56,7 +56,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(dgvListParkingSpots);
             Name = "ListofParkingSpots";
-            Text = "ListofParkingSpots";
+            Text = "List of parking spots";
             Load += ListofParkingSpots_Load;
             ((System.ComponentModel.ISupportInitialize)dgvListParkingSpots).EndInit();
             ResumeLayout(false);

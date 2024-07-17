@@ -33,8 +33,8 @@
             floorsToolStripMenuItem = new ToolStripMenuItem();
             parkingSpotsToolStripMenuItem = new ToolStripMenuItem();
             usersToolStripMenuItem = new ToolStripMenuItem();
-            btnBack = new Button();
             changePasswordToolStripMenuItem = new ToolStripMenuItem();
+            btnBack = new Button();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -58,23 +58,29 @@
             // floorsToolStripMenuItem
             // 
             floorsToolStripMenuItem.Name = "floorsToolStripMenuItem";
-            floorsToolStripMenuItem.Size = new Size(224, 26);
+            floorsToolStripMenuItem.Size = new Size(179, 26);
             floorsToolStripMenuItem.Text = "Floors";
             floorsToolStripMenuItem.Click += floorsToolStripMenuItem_Click;
             // 
             // parkingSpotsToolStripMenuItem
             // 
             parkingSpotsToolStripMenuItem.Name = "parkingSpotsToolStripMenuItem";
-            parkingSpotsToolStripMenuItem.Size = new Size(224, 26);
+            parkingSpotsToolStripMenuItem.Size = new Size(179, 26);
             parkingSpotsToolStripMenuItem.Text = "Parking spots";
             parkingSpotsToolStripMenuItem.Click += parkingSpotsToolStripMenuItem_Click;
             // 
             // usersToolStripMenuItem
             // 
             usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            usersToolStripMenuItem.Size = new Size(224, 26);
+            usersToolStripMenuItem.Size = new Size(179, 26);
             usersToolStripMenuItem.Text = "Users";
             usersToolStripMenuItem.Click += usersToolStripMenuItem_Click;
+            // 
+            // changePasswordToolStripMenuItem
+            // 
+            changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            changePasswordToolStripMenuItem.Size = new Size(140, 24);
+            changePasswordToolStripMenuItem.Text = "Change password";
             // 
             // btnBack
             // 
@@ -83,15 +89,9 @@
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(94, 29);
             btnBack.TabIndex = 2;
-            btnBack.Text = "Back";
+            btnBack.Text = "Log off";
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
-            // 
-            // changePasswordToolStripMenuItem
-            // 
-            changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            changePasswordToolStripMenuItem.Size = new Size(140, 24);
-            changePasswordToolStripMenuItem.Text = "Change password";
             // 
             // Main
             // 
