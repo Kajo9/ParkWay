@@ -41,7 +41,7 @@ namespace ParkWay
 
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Registration registration = new Registration();
+            UserAdministration registration = new UserAdministration();
             registration.Show();
         }
     }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
 using ParkWay.Models;
+using ParkWay.Globalno;
 
 namespace ParkWay
 {
@@ -89,12 +90,12 @@ namespace ParkWay
                     bool hasParkingSpots = context.ParkingSpots.Any(p => p.FloorId == floorsID);
                     if (hasParkingSpots)
                     {
-                        MessageBox.Show("Ne možete obrisati kat koji ima parkirna mjesta.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Ne možete obrisati kat koji ima parkirna mjesta.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
                 }
 
-                DialogResult result = MessageBox.Show("Jeste li sigurni da želite obrisati odabrani red?", "Potvrda brisanja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("Jeste li sigurni da želite obrisati odabrani red?", Global.AppName, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -106,20 +107,20 @@ namespace ParkWay
                             context.Floors.Remove(floors);
                             context.SaveChanges();
 
-                            MessageBox.Show("Podaci su uspešno obrisani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Podaci su uspešno obrisani!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoadFloorsData();
                             ResetForm();
                         }
                         else
                         {
-                            MessageBox.Show("Nije pronađen zapis za brisanje.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Nije pronađen zapis za brisanje.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Morate odabrati red za brisanje.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Morate odabrati red za brisanje.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -137,28 +138,28 @@ namespace ParkWay
                         {
                             if (context.Floors.Any(f => f.FloorName == txtFloorName.Text && f.ID != floorID))
                             {
-                                MessageBox.Show("Naziv kata već postoji!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Naziv kata već postoji!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
 
                             existingFloor.FloorName = txtFloorName.Text;
                             context.SaveChanges();
 
-                            MessageBox.Show("Podaci su uspješno ažurirani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Podaci su uspješno ažurirani!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             LoadFloorsData();
                             ResetForm();
                         }
                         else
                         {
-                            MessageBox.Show("Nije pronađen zapis za ažuriranje.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Nije pronađen zapis za ažuriranje.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                     else
                     {
                         if (context.Floors.Any(f => f.FloorName == txtFloorName.Text))
                         {
-                            MessageBox.Show("Naziv kata već postoji!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Naziv kata već postoji!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
 
@@ -169,7 +170,7 @@ namespace ParkWay
                         context.Floors.Add(floor);
                         context.SaveChanges();
 
-                        MessageBox.Show("Podaci su uspješno sačuvani!", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Podaci su uspješno sačuvani!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadFloorsData();
                         ResetForm();
                     }
@@ -177,7 +178,7 @@ namespace ParkWay
             }
             else
             {
-                MessageBox.Show("Morate ispuniti polje!", "Upozorenje!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Morate ispuniti polje!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -217,7 +218,7 @@ namespace ParkWay
                     }
                     else
                     {
-                        MessageBox.Show("Nema dostupnih parkirnih mjesta za odabrani kat.", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Nema dostupnih parkirnih mjesta za odabrani kat.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }

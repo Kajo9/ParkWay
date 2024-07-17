@@ -1,5 +1,6 @@
 using ParkWay;
 using ParkWay.Models;
+using ParkWay.Globalno;
 
 namespace WinFormsApp1
 {
@@ -13,7 +14,7 @@ namespace WinFormsApp1
 
         private void Login_Load(object sender, EventArgs e)
         {
-
+            Global.AppName = "ParkWay";
         }
 
         private void btn_Login_Click(object sender, EventArgs e)
@@ -23,7 +24,7 @@ namespace WinFormsApp1
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Molimo unesite korisnièko ime i lozinku!", "Upozorenje!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Molimo unesite korisnièko ime i lozinku!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -33,7 +34,7 @@ namespace WinFormsApp1
 
                 if (user == null)
                 {
-                    MessageBox.Show("Pogrešno korisnièko ime ili lozinka!", "Upozorenje!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Pogrešno korisnièko ime ili lozinka!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -46,7 +47,7 @@ namespace WinFormsApp1
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            Registration registration = new Registration();
+            UserAdministration registration = new UserAdministration();
             registration.Show();
         }
     }

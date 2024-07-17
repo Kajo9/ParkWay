@@ -1,6 +1,6 @@
 ﻿namespace ParkWay
 {
-    partial class Registration
+    partial class UserAdministration
     {
         /// <summary>
         /// Required designer variable.
@@ -120,16 +120,6 @@
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(200, 27);
             txtPassword.TabIndex = 8;
-            // 
-            // btnRegister
-            // 
-            btnRegister.Location = new Point(213, 383);
-            btnRegister.Name = "btnRegister";
-            btnRegister.Size = new Size(94, 29);
-            btnRegister.TabIndex = 9;
-            btnRegister.Text = "Register";
-            btnRegister.UseVisualStyleBackColor = true;
-            btnRegister.Click += btnRegister_Click;
             // 
             // cbRole
             // 

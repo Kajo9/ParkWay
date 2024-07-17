@@ -182,9 +182,8 @@
             chbAvailable.AutoSize = true;
             chbAvailable.Location = new Point(388, 76);
             chbAvailable.Name = "chbAvailable";
-            chbAvailable.Size = new Size(101, 24);
+            chbAvailable.Size = new Size(18, 17);
             chbAvailable.TabIndex = 14;
-            chbAvailable.Text = "checkBox1";
             chbAvailable.UseVisualStyleBackColor = true;
             chbAvailable.CheckedChanged += chbAvailable_CheckedChanged;
             // 
