@@ -50,8 +50,6 @@ namespace ParkWay
                 dgvUsers.DataSource = users;
 
                 dgvUsers.Columns["ID"].Visible = false;
-
-                dgvUsers.ClearSelection();
             }
 
         }
@@ -236,5 +234,15 @@ namespace ParkWay
             }
         }
 
+        private void dgvUsers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvUsers.Columns[e.ColumnIndex].Name == "Password")
+            {
+                if (e.Value != null)
+                {
+                    e.Value = new string('*', e.Value.ToString().Length);
+                }
+            }
+        }
     }
 }

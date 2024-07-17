@@ -144,6 +144,7 @@
             dgvUsers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUsers.Size = new Size(843, 371);
             dgvUsers.TabIndex = 0;
+            dgvUsers.CellFormatting += dgvUsers_CellFormatting;
             dgvUsers.SelectionChanged += dgvUsers_SelectionChanged;
             // 
             // menuStrip1
