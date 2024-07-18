@@ -94,7 +94,7 @@
             Controls.Add(txtUsername);
             Controls.Add(btnLogin);
             Name = "Login";
-            Text = "FrmLogin";
+            Text = "ParkWay";
             Load += Login_Load;
             ResumeLayout(false);
             PerformLayout();

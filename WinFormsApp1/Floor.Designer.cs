@@ -196,7 +196,7 @@
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "Floor";
-            Text = "Floors";
+            Text = "ParkWay";
             WindowState = FormWindowState.Maximized;
             Load += Floor_Load;
             ((System.ComponentModel.ISupportInitialize)dgvOverviewofParkingSpaces).EndInit();

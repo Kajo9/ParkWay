@@ -216,7 +216,7 @@
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "UserAdministration";
-            Text = "User administration";
+            Text = "ParkWay";
             WindowState = FormWindowState.Maximized;
             Load += Registration_Load;
             ((System.ComponentModel.ISupportInitialize)dgvUsers).EndInit();
