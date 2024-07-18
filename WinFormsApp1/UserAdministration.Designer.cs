@@ -34,7 +34,7 @@
             lblUsername = new Label();
             lblPassword = new Label();
             lblRole = new Label();
-            txtFirsName = new TextBox();
+            txtFirstName = new TextBox();
             txtLastName = new TextBox();
             txtUsername = new TextBox();
             txtPassword = new TextBox();
@@ -96,10 +96,10 @@
             // 
             // txtFirsName
             // 
-            txtFirsName.Location = new Point(157, 113);
-            txtFirsName.Name = "txtFirsName";
-            txtFirsName.Size = new Size(200, 27);
-            txtFirsName.TabIndex = 5;
+            txtFirstName.Location = new Point(157, 113);
+            txtFirstName.Name = "txtFirsName";
+            txtFirstName.Size = new Size(200, 27);
+            txtFirstName.TabIndex = 5;
             // 
             // txtLastName
             // 
@@ -207,7 +207,7 @@
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);
             Controls.Add(txtLastName);
-            Controls.Add(txtFirsName);
+            Controls.Add(txtFirstName);
             Controls.Add(lblRole);
             Controls.Add(lblPassword);
             Controls.Add(lblUsername);
@@ -233,7 +233,7 @@
         private Label lblUsername;
         private Label lblPassword;
         private Label lblRole;
-        private TextBox txtFirsName;
+        private TextBox txtFirstName;
         private TextBox txtLastName;
         private TextBox txtUsername;
         private TextBox txtPassword;

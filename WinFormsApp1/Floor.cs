@@ -19,6 +19,7 @@ namespace ParkWay
     public partial class Floor : Form
     {
         private bool isUpdating = false;
+
         public Floor()
         {
             InitializeComponent();
@@ -26,26 +27,8 @@ namespace ParkWay
 
         private void Floor_Load(object sender, EventArgs e)
         {
-
             LoadFloorsData();
-            dgvFloors.Columns["ID"].DisplayIndex = 0;
-            dgvFloors.Columns["FloorName"].DisplayIndex = 1;
-
-            if (!dgvFloors.Columns.Contains("Prikaži sva parkirna mjesta"))
-            {
-                DataGridViewButtonColumn btnListParkingSpots = new DataGridViewButtonColumn
-                {
-                    HeaderText = "Prikaži sva parkirna mjesta",
-                    Text = "Prikaži",
-                    UseColumnTextForButtonValue = true,
-                    Name = "Prikaži sva parkirna mjesta"
-                };
-                dgvFloors.Columns.Add(btnListParkingSpots);
-            }
-
-            dgvFloors.CellContentClick -= dgvFloors_CellContentClick;
-            dgvFloors.CellContentClick += dgvFloors_CellContentClick;
-
+            ConfigureDataGridView();
         }
 
         private void LoadFloorsData()
@@ -53,21 +36,45 @@ namespace ParkWay
             using (var context = new DatabaseContext())
             {
                 var floors = context.Floors
-                                            .Select(f => new
-                                            {
-                                                f.ID,
-                                                f.FloorName
-                                            })
-                                            .ToList();
+                                    .Select(f => new
+                                    {
+                                        f.ID,
+                                        f.FloorName
+                                    })
+                                    .ToList();
                 dgvFloors.DataSource = floors;
-
                 dgvFloors.Columns["ID"].Visible = false;
-
-                dgvFloors.ClearSelection();
-                txtFloorID.Text = string.Empty;
-                txtFloorName.Text = string.Empty;
-
+                ResetForm();
             }
+        }
+
+        private void ConfigureDataGridView()
+        {
+            dgvFloors.Columns["ID"].DisplayIndex = 0;
+            dgvFloors.Columns["FloorName"].DisplayIndex = 1;
+
+            if (!dgvFloors.Columns.Contains("Show all parking spaces"))
+            {
+                DataGridViewButtonColumn btnListParkingSpots = new DataGridViewButtonColumn
+                {
+                    HeaderText = "Show all parking spaces",
+                    Text = "Show",
+                    UseColumnTextForButtonValue = true,
+                    Name = "Show all parking spaces"
+                };
+                dgvFloors.Columns.Add(btnListParkingSpots);
+            }
+
+            dgvFloors.CellContentClick -= dgvFloors_CellContentClick;
+            dgvFloors.CellContentClick += dgvFloors_CellContentClick;
+        }
+
+        private void ResetForm()
+        {
+            isUpdating = false;
+            txtFloorID.Text = string.Empty;
+            txtFloorName.Text = string.Empty;
+            dgvFloors.ClearSelection();
         }
 
         private void dgvFloors_SelectionChanged(object sender, EventArgs e)
@@ -81,58 +88,49 @@ namespace ParkWay
             }
         }
 
-        private void ResetForm()
-        {
-            isUpdating = false;
-            txtFloorID.Text = string.Empty;
-            txtFloorName.Text = string.Empty;
-            dgvFloors.ClearSelection();
-        }
-
-
         private void deleteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (dgvFloors.SelectedRows.Count > 0)
             {
                 int selectedRowIndex = dgvFloors.SelectedRows[0].Index;
-                int floorsID = (int)dgvFloors.Rows[selectedRowIndex].Cells["ID"].Value;
+                int floorID = (int)dgvFloors.Rows[selectedRowIndex].Cells["ID"].Value;
 
                 using (var context = new DatabaseContext())
                 {
-                    bool hasParkingSpots = context.ParkingSpots.Any(p => p.FloorId == floorsID);
+                    bool hasParkingSpots = context.ParkingSpots.Any(p => p.FloorId == floorID);
                     if (hasParkingSpots)
                     {
-                        MessageBox.Show("Ne možete obrisati kat koji ima parkirna mjesta.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("You cannot delete a floor that has parking spaces.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
                 }
 
-                DialogResult result = MessageBox.Show("Jeste li sigurni da želite obrisati odabrani red?", Global.AppName, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("Are you sure you want to delete the selected row?", Global.AppName, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
                     using (var context = new DatabaseContext())
                     {
-                        var floors = context.Floors.FirstOrDefault(f => f.ID == floorsID);
-                        if (floors != null)
+                        var floor = context.Floors.FirstOrDefault(f => f.ID == floorID);
+                        if (floor != null)
                         {
-                            context.Floors.Remove(floors);
+                            context.Floors.Remove(floor);
                             context.SaveChanges();
 
-                            MessageBox.Show("Podaci su uspešno obrisani!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Data has been successfully deleted!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoadFloorsData();
                             ResetForm();
                         }
                         else
                         {
-                            MessageBox.Show("Nije pronađen zapis za brisanje.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("No record found to delete.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Morate odabrati red za brisanje.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("You must select a row to delete.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -150,28 +148,27 @@ namespace ParkWay
                         {
                             if (context.Floors.Any(f => f.FloorName == txtFloorName.Text && f.ID != floorID))
                             {
-                                MessageBox.Show("Naziv kata već postoji!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("The name of the floor already exists!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
 
                             existingFloor.FloorName = txtFloorName.Text;
                             context.SaveChanges();
 
-                            MessageBox.Show("Podaci su uspješno ažurirani!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                            MessageBox.Show("Data has been successfully updated!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoadFloorsData();
                             ResetForm();
                         }
                         else
                         {
-                            MessageBox.Show("Nije pronađen zapis za ažuriranje.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("No update record found.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                     else
                     {
                         if (context.Floors.Any(f => f.FloorName == txtFloorName.Text))
                         {
-                            MessageBox.Show("Naziv kata već postoji!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("The name of the floor already exists!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
 
@@ -182,7 +179,7 @@ namespace ParkWay
                         context.Floors.Add(floor);
                         context.SaveChanges();
 
-                        MessageBox.Show("Podaci su uspješno sačuvani!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Data has been saved successfully!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadFloorsData();
                         ResetForm();
                     }
@@ -190,7 +187,7 @@ namespace ParkWay
             }
             else
             {
-                MessageBox.Show("Morate ispuniti polje!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("You must fill in the field!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -203,7 +200,7 @@ namespace ParkWay
         {
             if (e.RowIndex >= 0)
             {
-                var column = dgvFloors.Columns["Prikaži sva parkirna mjesta"];
+                var column = dgvFloors.Columns["Show all parking spaces"];
                 if (column != null && e.ColumnIndex == column.Index)
                 {
                     int floorID = (int)dgvFloors.Rows[e.RowIndex].Cells["ID"].Value;

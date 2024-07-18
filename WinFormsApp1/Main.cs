@@ -32,17 +32,29 @@ namespace ParkWay
             parkingSpot.Show();
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            Login login = new Login();
-            login.Show();
-            Close();
-        }
-
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UserAdministration registration = new UserAdministration();
             registration.Show();
+        }
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+
+        }
+
+        private void profileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UserProfile profile = new UserProfile();
+            profile.Show();
+        }
+
+        private void viewReservationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReservePS reservePS = new ReservePS();
+            reservePS.Show();
         }
     }
 }

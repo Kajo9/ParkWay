@@ -33,6 +33,7 @@
             txtPassword = new TextBox();
             lb_Username = new Label();
             lbl_Password = new Label();
+            btnRegister = new Button();
             SuspendLayout();
             // 
             // btnLogin
@@ -48,7 +49,7 @@
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(265, 78);
+            txtUsername.Location = new Point(225, 78);
             txtUsername.Name = "txtUsername";
             txtUsername.PlaceholderText = "Korisničko ime";
             txtUsername.Size = new Size(267, 27);
@@ -57,7 +58,7 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(265, 156);
+            txtPassword.Location = new Point(225, 153);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '$';
             txtPassword.PlaceholderText = "Lozinka";
@@ -83,16 +84,29 @@
             lbl_Password.TabIndex = 5;
             lbl_Password.Text = "Password: ";
             // 
+            // btnRegister
+            // 
+            btnRegister.Location = new Point(398, 256);
+            btnRegister.Name = "btnRegister";
+            btnRegister.Size = new Size(94, 29);
+            btnRegister.TabIndex = 6;
+            btnRegister.Text = "Register";
+            btnRegister.UseVisualStyleBackColor = true;
+            btnRegister.Click += btnRegister_Click_1;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(558, 334);
+            Controls.Add(btnRegister);
             Controls.Add(lbl_Password);
             Controls.Add(lb_Username);
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);
             Controls.Add(btnLogin);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "Login";
             Text = "ParkWay";
             Load += Login_Load;
@@ -106,5 +120,6 @@
         private TextBox txtPassword;
         private Label lb_Username;
         private Label lbl_Password;
+        private Button btnRegister;
     }
 }

@@ -56,7 +56,7 @@ namespace ParkWay
 
         private void ResetForm()
         {
-            txtFirsName.Text = string.Empty;
+            txtFirstName.Text = string.Empty;
             txtLastName.Text = string.Empty;
             txtUsername.Text = string.Empty;
             txtPassword.Text = string.Empty;
@@ -65,28 +65,25 @@ namespace ParkWay
         }
 
         private bool ValidateInputs(string firstname, string lastname, string username, string password)
-        {
-
-
-
+        { 
             if (string.IsNullOrWhiteSpace(firstname))
             {
-                MessageBox.Show("Ime je obavezno.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Name is required.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             if (string.IsNullOrWhiteSpace(lastname))
             {
-                MessageBox.Show("Prezime je obavezno.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Surname is required.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             if (string.IsNullOrWhiteSpace(username))
             {
-                MessageBox.Show("Potrebno je korisničko ime.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A username is required.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             if (string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("Potrebna je lozinka.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A password is required.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -116,7 +113,7 @@ namespace ParkWay
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string firstName = txtFirsName.Text;
+            string firstName = txtFirstName.Text;
             string lastName = txtLastName.Text;
             string username = txtUsername.Text;
             string password = txtPassword.Text;
@@ -128,13 +125,13 @@ namespace ParkWay
                 {
                     if (selectedRole == "Admin" && context.Users.Any(u => u.Role == "Admin" && !isUpdating))
                     {
-                        MessageBox.Show("Postoji već osoba s administratorskim ulogama", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("There is already a person with administrator roles", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
                     if (context.Users.Any(u => u.Username == username && (!isUpdating || u.ID != (int)dgvUsers.SelectedRows[0].Cells["ID"].Value)))
                     {
-                        MessageBox.Show("Korisničko ime već postoji!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Username already exists!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
@@ -153,11 +150,11 @@ namespace ParkWay
 
                             context.SaveChanges();
 
-                            MessageBox.Show("Uspješno ažuriran korisnik!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Successfully updated user!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
-                            MessageBox.Show("Nije pronađen korisnik za ažuriranje", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("No user found to update.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                     else
@@ -174,7 +171,7 @@ namespace ParkWay
                         context.Users.Add(newUser);
                         context.SaveChanges();
 
-                        MessageBox.Show("Korisnik uspješno registriran!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("User successfully registered!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
                     LoadUsers();
@@ -190,7 +187,7 @@ namespace ParkWay
                 int selectedRowIndex = dgvUsers.SelectedRows[0].Index;
                 int usersID = (int)dgvUsers.Rows[selectedRowIndex].Cells["ID"].Value;
 
-                DialogResult result = MessageBox.Show("Jeste li sigurni da želite obrisati odabrani red?", Global.AppName, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("Are you sure you want to delete the selected row?", Global.AppName, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -202,20 +199,20 @@ namespace ParkWay
                             context.Users.Remove(users);
                             context.SaveChanges();
 
-                            MessageBox.Show("Podaci su uspešno obrisani!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Data deleted successfully!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoadUsers();
                             ResetForm();
                         }
                         else
                         {
-                            MessageBox.Show("Nije pronađen zapis za brisanje.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("No record found to delete.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Morate odabrati red za brisanje.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("You must select a row to delete.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -226,7 +223,7 @@ namespace ParkWay
                 isUpdating = true;
                 int selectedRowIndex = dgvUsers.SelectedRows[0].Index;
 
-                txtFirsName.Text = dgvUsers.Rows[selectedRowIndex].Cells["FirstName"].Value.ToString();
+                txtFirstName.Text = dgvUsers.Rows[selectedRowIndex].Cells["FirstName"].Value.ToString();
                 txtLastName.Text = dgvUsers.Rows[selectedRowIndex].Cells["LastName"].Value.ToString();
                 txtUsername.Text = dgvUsers.Rows[selectedRowIndex].Cells["Username"].Value.ToString();
                 txtPassword.Text = dgvUsers.Rows[selectedRowIndex].Cells["Password"].Value.ToString();

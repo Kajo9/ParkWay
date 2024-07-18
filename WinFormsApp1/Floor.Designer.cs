@@ -162,6 +162,7 @@
             newToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.N;
             newToolStripMenuItem.Size = new Size(73, 24);
             newToolStripMenuItem.Text = "New";
+            newToolStripMenuItem.ToolTipText = "Ctrl+N\r\n";
             newToolStripMenuItem.Click += newToolStripMenuItem_Click;
             // 
             // saveToolStripMenuItem

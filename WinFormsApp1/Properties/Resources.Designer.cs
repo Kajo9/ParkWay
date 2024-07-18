@@ -63,6 +63,26 @@ namespace ParkWay.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap avatar_12124771 {
+            get {
+                object obj = ResourceManager.GetObject("avatar_12124771", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap catalog_13085305 {
+            get {
+                object obj = ResourceManager.GetObject("catalog_13085305", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap delete_156119_640 {
             get {
                 object obj = ResourceManager.GetObject("delete-156119_640", resourceCulture);

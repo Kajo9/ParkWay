@@ -33,26 +33,34 @@
             floorsToolStripMenuItem = new ToolStripMenuItem();
             parkingSpotsToolStripMenuItem = new ToolStripMenuItem();
             usersToolStripMenuItem = new ToolStripMenuItem();
-            changePasswordToolStripMenuItem = new ToolStripMenuItem();
-            btnBack = new Button();
+            toolStrip1 = new ToolStrip();
+            toolStripDropDownButton1 = new ToolStripDropDownButton();
+            profileToolStripMenuItem = new ToolStripMenuItem();
+            viewReservationsToolStripMenuItem = new ToolStripMenuItem();
+            myReservationsToolStripMenuItem = new ToolStripMenuItem();
+            logOutToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
+            toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
+            menuStrip1.BackColor = SystemColors.GradientInactiveCaption;
+            menuStrip1.Dock = DockStyle.Left;
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { catalogToolStripMenuItem, changePasswordToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { catalogToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1159, 28);
+            menuStrip1.Size = new Size(101, 424);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
             // catalogToolStripMenuItem
             // 
             catalogToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { floorsToolStripMenuItem, parkingSpotsToolStripMenuItem, usersToolStripMenuItem });
+            catalogToolStripMenuItem.Image = Properties.Resources.catalog_13085305;
             catalogToolStripMenuItem.Name = "catalogToolStripMenuItem";
-            catalogToolStripMenuItem.Size = new Size(75, 24);
+            catalogToolStripMenuItem.Size = new Size(88, 24);
             catalogToolStripMenuItem.Text = "Catalog";
             // 
             // floorsToolStripMenuItem
@@ -76,29 +84,60 @@
             usersToolStripMenuItem.Text = "Users";
             usersToolStripMenuItem.Click += usersToolStripMenuItem_Click;
             // 
-            // changePasswordToolStripMenuItem
+            // toolStrip1
             // 
-            changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            changePasswordToolStripMenuItem.Size = new Size(140, 24);
-            changePasswordToolStripMenuItem.Text = "Change password";
+            toolStrip1.Dock = DockStyle.Right;
+            toolStrip1.ImageScalingSize = new Size(25, 25);
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1 });
+            toolStrip1.Location = new Point(1119, 0);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(40, 424);
+            toolStrip1.TabIndex = 2;
+            toolStrip1.Text = "toolStrip1";
             // 
-            // btnBack
+            // toolStripDropDownButton1
             // 
-            btnBack.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnBack.Location = new Point(1028, 368);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new Size(94, 29);
-            btnBack.TabIndex = 2;
-            btnBack.Text = "Log off";
-            btnBack.UseVisualStyleBackColor = true;
-            btnBack.Click += btnBack_Click;
+            toolStripDropDownButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripDropDownButton1.DropDownItems.AddRange(new ToolStripItem[] { profileToolStripMenuItem, viewReservationsToolStripMenuItem, myReservationsToolStripMenuItem, logOutToolStripMenuItem });
+            toolStripDropDownButton1.Image = Properties.Resources.avatar_12124771;
+            toolStripDropDownButton1.ImageTransparentColor = Color.Magenta;
+            toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            toolStripDropDownButton1.Size = new Size(37, 29);
+            toolStripDropDownButton1.Text = "toolStripDropDownButton1";
+            // 
+            // profileToolStripMenuItem
+            // 
+            profileToolStripMenuItem.Name = "profileToolStripMenuItem";
+            profileToolStripMenuItem.Size = new Size(268, 26);
+            profileToolStripMenuItem.Text = "Profile";
+            profileToolStripMenuItem.Click += profileToolStripMenuItem_Click;
+            // 
+            // viewReservationsToolStripMenuItem
+            // 
+            viewReservationsToolStripMenuItem.Name = "viewReservationsToolStripMenuItem";
+            viewReservationsToolStripMenuItem.Size = new Size(268, 26);
+            viewReservationsToolStripMenuItem.Text = "View/Reserve Parking Spot";
+            viewReservationsToolStripMenuItem.Click += viewReservationsToolStripMenuItem_Click;
+            // 
+            // myReservationsToolStripMenuItem
+            // 
+            myReservationsToolStripMenuItem.Name = "myReservationsToolStripMenuItem";
+            myReservationsToolStripMenuItem.Size = new Size(268, 26);
+            myReservationsToolStripMenuItem.Text = "My Reservations";
+            // 
+            // logOutToolStripMenuItem
+            // 
+            logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            logOutToolStripMenuItem.Size = new Size(268, 26);
+            logOutToolStripMenuItem.Text = "Log out";
+            logOutToolStripMenuItem.Click += logOutToolStripMenuItem_Click;
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1159, 424);
-            Controls.Add(btnBack);
+            Controls.Add(toolStrip1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "Main";
@@ -106,6 +145,8 @@
             WindowState = FormWindowState.Maximized;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -115,8 +156,12 @@
         private ToolStripMenuItem catalogToolStripMenuItem;
         private ToolStripMenuItem floorsToolStripMenuItem;
         private ToolStripMenuItem parkingSpotsToolStripMenuItem;
-        private Button btnBack;
         private ToolStripMenuItem usersToolStripMenuItem;
-        private ToolStripMenuItem changePasswordToolStripMenuItem;
+        private ToolStrip toolStrip1;
+        private ToolStripDropDownButton toolStripDropDownButton1;
+        private ToolStripMenuItem profileToolStripMenuItem;
+        private ToolStripMenuItem viewReservationsToolStripMenuItem;
+        private ToolStripMenuItem myReservationsToolStripMenuItem;
+        private ToolStripMenuItem logOutToolStripMenuItem;
     }
 }

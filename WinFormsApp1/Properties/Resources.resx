@@ -124,10 +124,16 @@
   <data name="floppy-disk-98413_640" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\floppy-disk-98413_640.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="delete_4980658" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete_4980658.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="catalog_13085305" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\catalog_130853051.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="delete-156119_640" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete-156119_640.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="delete_4980658" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete_4980658.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="avatar_12124771" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\avatar_12124771.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

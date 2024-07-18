@@ -38,6 +38,14 @@ namespace WinFormsApp1
                 }
                 else
                 {
+                    LoggedUser.UserId = user.ID;
+                    LoggedUser.FirstName = user.FirstName;
+                    LoggedUser.LastName = user.LastName;
+                    LoggedUser.Username = user.Username;
+                    LoggedUser.Password = user.Password;
+
+                    MessageBox.Show($"Dobrodošli, {user.Username}!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     Hide();
                     Main main = new Main();
                     main.Show();
@@ -48,6 +56,12 @@ namespace WinFormsApp1
         private void btnRegister_Click(object sender, EventArgs e)
         {
             UserAdministration registration = new UserAdministration();
+            registration.Show();
+        }
+
+        private void btnRegister_Click_1(object sender, EventArgs e)
+        {
+            Registration registration = new Registration();
             registration.Show();
         }
     }

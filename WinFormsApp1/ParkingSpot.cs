@@ -17,6 +17,7 @@ namespace ParkWay
 
         private bool isUpdating = false;
         private bool isCheckChanged = false;
+
         public ParkingSpot()
         {
             InitializeComponent();
@@ -27,10 +28,10 @@ namespace ParkWay
         {
             LoadFloors();
             LoadParkingSpotsData();
-            dgvParkingspot.Columns["Name"].DisplayIndex = 0;
-            dgvParkingspot.Columns["isAvaible"].DisplayIndex = 1;
             ResetForm();
+            ConfigureDataGridView();
         }
+
         private void LoadParkingSpotsData()
         {
             using (var context = new DatabaseContext())
@@ -49,12 +50,11 @@ namespace ParkWay
                         })
                         .ToList();
                     dgvParkingspot.DataSource = parkingSpots;
-
-                    dgvParkingspot.Columns["ID"].Visible = false;
-                    dgvParkingspot.Columns["FloorId"].Visible = false;
+                    HideUnnecessaryColumns();
                 }
             }
         }
+
         private void LoadFloors()
         {
             using (var context = new DatabaseContext())
@@ -64,6 +64,18 @@ namespace ParkWay
                 cbFloor.ValueMember = "ID";
                 cbFloor.DataSource = floors;
             }
+        }
+
+        private void ConfigureDataGridView()
+        {
+            dgvParkingspot.Columns["Name"].DisplayIndex = 0;
+            dgvParkingspot.Columns["isAvaible"].DisplayIndex = 1;
+        }
+
+        private void HideUnnecessaryColumns()
+        {
+            dgvParkingspot.Columns["ID"].Visible = false;
+            dgvParkingspot.Columns["FloorId"].Visible = false;
         }
 
         private void dgvParkingspot_SelectionChanged(object sender, EventArgs e)
@@ -88,9 +100,9 @@ namespace ParkWay
             isUpdating = false;
             txtParkingSpotID.Text = string.Empty;
             txtParkingSpot.Text = string.Empty;
-            cbFloor.Text = string.Empty;
-            dgvParkingspot.ClearSelection();
+            cbFloor.SelectedIndex = -1;
             chbAvailable.Checked = false;
+            dgvParkingspot.ClearSelection();
         }
 
         private void newToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -115,29 +127,30 @@ namespace ParkWay
                         {
                             if (context.ParkingSpots.Any(p => p.Name == txtParkingSpot.Text && p.FloorId == selectedFloorId && p.ID != parkingspotID))
                             {
-                                MessageBox.Show("Naziv parkirnog mjesta već postoji na odabranom katu!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("The name of the parking space already exists on the selected floor!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
 
                             existingParkingSpot.Name = txtParkingSpot.Text;
                             existingParkingSpot.FloorId = selectedFloorId;
+                            existingParkingSpot.isAvaible = isAvailable;
                             context.SaveChanges();
 
-                            MessageBox.Show("Podaci su uspješno ažurirani!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Data has been updated successfully!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             LoadParkingSpotsData();
                             ResetForm();
                         }
                         else
                         {
-                            MessageBox.Show("Nije pronađen zapis za ažuriranje.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("No update record found.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                     else
                     {
                         if (context.ParkingSpots.Any(p => p.Name == txtParkingSpot.Text && p.FloorId == selectedFloorId))
                         {
-                            MessageBox.Show("Naziv parkirnog mjesta već postoji na odabranom katu!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("The name of the parking space already exists on the selected floor!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
 
@@ -150,7 +163,7 @@ namespace ParkWay
                         context.ParkingSpots.Add(parkingspot);
                         context.SaveChanges();
 
-                        MessageBox.Show("Podaci su uspješno sačuvani!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Data has been saved successfully!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadParkingSpotsData();
                         ResetForm();
                     }
@@ -158,7 +171,7 @@ namespace ParkWay
             }
             else
             {
-                MessageBox.Show("Morate ispuniti polje!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("You must fill in the field!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -169,7 +182,7 @@ namespace ParkWay
                 int selectedRowIndex = dgvParkingspot.SelectedRows[0].Index;
                 int parkingspotID = (int)dgvParkingspot.Rows[selectedRowIndex].Cells["ID"].Value;
 
-                DialogResult result = MessageBox.Show("Jeste li sigurni da želite obrisati odabrani red?", Global.AppName, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("Are you sure you want to delete the selected row?", Global.AppName, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -181,20 +194,20 @@ namespace ParkWay
                             context.ParkingSpots.Remove(parkingspot);
                             context.SaveChanges();
 
-                            MessageBox.Show("Podaci su uspešno obrisani!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Data has been successfully deleted!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoadParkingSpotsData();
                             ResetForm();
                         }
                         else
                         {
-                            MessageBox.Show("Nije pronađen zapis za brisanje.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("No record found to delete.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Morate odabrati red za brisanje.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("You must select a row to delete.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -223,7 +236,7 @@ namespace ParkWay
                             parkingSpot.isAvaible = newAvailability;
                             context.SaveChanges();
 
-                            MessageBox.Show("Status dostupnosti je uspješno ažuriran!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("The availability status has been successfully updated!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             LoadParkingSpotsData();
                         }
