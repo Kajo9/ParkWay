@@ -9,5 +9,7 @@ namespace ParkWay.Globalno
     public static class Global
     {
         public static string AppName { get; set; }
+
+        public static LoggedUser LoggedUser { get; set;}
     }
 }

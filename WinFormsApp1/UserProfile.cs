@@ -20,10 +20,10 @@ namespace ParkWay
 
         private void UserProfile_Load(object sender, EventArgs e)
         {
-            txtFirstName.Text = LoggedUser.FirstName;
-            txtLastName.Text = LoggedUser.LastName;
-            txtUsername.Text = LoggedUser.Username;
-            txtPassword.Text = LoggedUser.Password;
+            //txtFirstName.Text = LoggedUser.FirstName;
+            //txtLastName.Text = LoggedUser.LastName;
+            //txtUsername.Text = LoggedUser.Username;
+            //txtPassword.Text = LoggedUser.Password;
         }
     }
 }

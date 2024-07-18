@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
+using ParkWay.Globalno;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,8 @@ namespace ParkWay
         public Main()
         {
             InitializeComponent();
+
+            lblLogUser.Text = $"Dobro došao {Global.LoggedUser.FirstName} {DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss")}";
         }
 
         private void floorsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -42,7 +45,7 @@ namespace ParkWay
         {
             Login login = new Login();
             login.Show();
-
+            Close();
         }
 
         private void profileToolStripMenuItem_Click(object sender, EventArgs e)

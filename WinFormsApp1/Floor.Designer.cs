@@ -141,9 +141,9 @@
             lblID.AutoSize = true;
             lblID.Location = new Point(41, 42);
             lblID.Name = "lblID";
-            lblID.Size = new Size(27, 20);
+            lblID.Size = new Size(81, 20);
             lblID.TabIndex = 7;
-            lblID.Text = "ID:";
+            lblID.Text = "Redni broj:";
             // 
             // menuStrip1
             // 

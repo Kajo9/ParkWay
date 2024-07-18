@@ -94,10 +94,10 @@
             lblRole.TabIndex = 4;
             lblRole.Text = "Role:*";
             // 
-            // txtFirsName
+            // txtFirstName
             // 
             txtFirstName.Location = new Point(157, 113);
-            txtFirstName.Name = "txtFirsName";
+            txtFirstName.Name = "txtFirstName";
             txtFirstName.Size = new Size(200, 27);
             txtFirstName.TabIndex = 5;
             // 

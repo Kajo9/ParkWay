@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            menuStrip1 = new MenuStrip();
+            msCatalog = new MenuStrip();
             catalogToolStripMenuItem = new ToolStripMenuItem();
             floorsToolStripMenuItem = new ToolStripMenuItem();
             parkingSpotsToolStripMenuItem = new ToolStripMenuItem();
@@ -37,23 +37,23 @@
             toolStripDropDownButton1 = new ToolStripDropDownButton();
             profileToolStripMenuItem = new ToolStripMenuItem();
             viewReservationsToolStripMenuItem = new ToolStripMenuItem();
-            myReservationsToolStripMenuItem = new ToolStripMenuItem();
             logOutToolStripMenuItem = new ToolStripMenuItem();
-            menuStrip1.SuspendLayout();
+            lblLogUser = new Label();
+            msCatalog.SuspendLayout();
             toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
-            // menuStrip1
+            // msCatalog
             // 
-            menuStrip1.BackColor = SystemColors.GradientInactiveCaption;
-            menuStrip1.Dock = DockStyle.Left;
-            menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { catalogToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(101, 424);
-            menuStrip1.TabIndex = 1;
-            menuStrip1.Text = "menuStrip1";
+            msCatalog.BackColor = SystemColors.GradientInactiveCaption;
+            msCatalog.Dock = DockStyle.Left;
+            msCatalog.ImageScalingSize = new Size(20, 20);
+            msCatalog.Items.AddRange(new ToolStripItem[] { catalogToolStripMenuItem });
+            msCatalog.Location = new Point(0, 0);
+            msCatalog.Name = "msCatalog";
+            msCatalog.Size = new Size(101, 424);
+            msCatalog.TabIndex = 1;
+            msCatalog.Text = "menuStrip1";
             // 
             // catalogToolStripMenuItem
             // 
@@ -98,7 +98,7 @@
             // toolStripDropDownButton1
             // 
             toolStripDropDownButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripDropDownButton1.DropDownItems.AddRange(new ToolStripItem[] { profileToolStripMenuItem, viewReservationsToolStripMenuItem, myReservationsToolStripMenuItem, logOutToolStripMenuItem });
+            toolStripDropDownButton1.DropDownItems.AddRange(new ToolStripItem[] { profileToolStripMenuItem, viewReservationsToolStripMenuItem, logOutToolStripMenuItem });
             toolStripDropDownButton1.Image = Properties.Resources.avatar_12124771;
             toolStripDropDownButton1.ImageTransparentColor = Color.Magenta;
             toolStripDropDownButton1.Name = "toolStripDropDownButton1";
@@ -119,32 +119,36 @@
             viewReservationsToolStripMenuItem.Text = "View/Reserve Parking Spot";
             viewReservationsToolStripMenuItem.Click += viewReservationsToolStripMenuItem_Click;
             // 
-            // myReservationsToolStripMenuItem
-            // 
-            myReservationsToolStripMenuItem.Name = "myReservationsToolStripMenuItem";
-            myReservationsToolStripMenuItem.Size = new Size(268, 26);
-            myReservationsToolStripMenuItem.Text = "My Reservations";
-            // 
             // logOutToolStripMenuItem
             // 
+            logOutToolStripMenuItem.Image = Properties.Resources.power_on_4980965;
             logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
             logOutToolStripMenuItem.Size = new Size(268, 26);
             logOutToolStripMenuItem.Text = "Log out";
             logOutToolStripMenuItem.Click += logOutToolStripMenuItem_Click;
+            // 
+            // lblLogUser
+            // 
+            lblLogUser.AutoSize = true;
+            lblLogUser.Location = new Point(819, 361);
+            lblLogUser.Name = "lblLogUser";
+            lblLogUser.Size = new Size(0, 20);
+            lblLogUser.TabIndex = 3;
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1159, 424);
+            Controls.Add(lblLogUser);
             Controls.Add(toolStrip1);
-            Controls.Add(menuStrip1);
-            MainMenuStrip = menuStrip1;
+            Controls.Add(msCatalog);
+            MainMenuStrip = msCatalog;
             Name = "Main";
             Text = "ParkWay";
             WindowState = FormWindowState.Maximized;
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            msCatalog.ResumeLayout(false);
+            msCatalog.PerformLayout();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             ResumeLayout(false);
@@ -152,7 +156,7 @@
         }
 
         #endregion
-        private MenuStrip menuStrip1;
+        private MenuStrip msCatalog;
         private ToolStripMenuItem catalogToolStripMenuItem;
         private ToolStripMenuItem floorsToolStripMenuItem;
         private ToolStripMenuItem parkingSpotsToolStripMenuItem;
@@ -161,7 +165,7 @@
         private ToolStripDropDownButton toolStripDropDownButton1;
         private ToolStripMenuItem profileToolStripMenuItem;
         private ToolStripMenuItem viewReservationsToolStripMenuItem;
-        private ToolStripMenuItem myReservationsToolStripMenuItem;
         private ToolStripMenuItem logOutToolStripMenuItem;
+        private Label lblLogUser;
     }
 }

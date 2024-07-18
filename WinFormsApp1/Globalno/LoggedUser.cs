@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ParkWay.Globalno
 {
-    public static class LoggedUser
+    public class LoggedUser
     {
-        public static int UserId { get; set; }
-        public static string FirstName { get; set; }
-        public static string LastName { get; set; }
-        public static string Username { get; set; }
-        public static string Password { get; set; }
+        public int UserId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
     }
 }

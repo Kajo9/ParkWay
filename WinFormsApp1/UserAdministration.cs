@@ -65,7 +65,7 @@ namespace ParkWay
         }
 
         private bool ValidateInputs(string firstname, string lastname, string username, string password)
-        { 
+        {
             if (string.IsNullOrWhiteSpace(firstname))
             {
                 MessageBox.Show("Name is required.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -237,7 +237,7 @@ namespace ParkWay
             {
                 if (e.Value != null)
                 {
-                    e.Value = new string('$', e.Value.ToString().Length);
+                    e.Value = new string('*', e.Value.ToString().Length);
                 }
             }
         }

@@ -1,6 +1,7 @@
 using ParkWay;
 using ParkWay.Models;
 using ParkWay.Globalno;
+using System.Runtime.InteropServices;
 
 namespace WinFormsApp1
 {
@@ -15,6 +16,9 @@ namespace WinFormsApp1
         private void Login_Load(object sender, EventArgs e)
         {
             Global.AppName = "ParkWay";
+
+            txtUsername.Text = "ivica69";
+            txtPassword.Text = "Lozinka123";
         }
 
         private void btn_Login_Click(object sender, EventArgs e)
@@ -24,7 +28,7 @@ namespace WinFormsApp1
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Molimo unesite korisnièko ime i lozinku!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter your username and password!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -34,17 +38,22 @@ namespace WinFormsApp1
 
                 if (user == null)
                 {
-                    MessageBox.Show("Pogrešno korisnièko ime ili lozinka!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Wrong username or password!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    LoggedUser.UserId = user.ID;
-                    LoggedUser.FirstName = user.FirstName;
-                    LoggedUser.LastName = user.LastName;
-                    LoggedUser.Username = user.Username;
-                    LoggedUser.Password = user.Password;
+                    var userData = new LoggedUser
+                    {
+                        UserId = user.ID,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        Username = user.Username,
+                        Password = user.Password
+                    };
 
-                    MessageBox.Show($"Dobrodošli, {user.Username}!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Global.LoggedUser = userData;
+                    
+                    //MessageBox.Show($"Welcome, {user.Username}!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     Hide();
                     Main main = new Main();

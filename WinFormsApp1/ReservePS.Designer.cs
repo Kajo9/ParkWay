@@ -28,34 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            dgvReservePS = new DataGridView();
+            cbFloor = new ComboBox();
+            lblFloor = new Label();
+            ((System.ComponentModel.ISupportInitialize)dgvReservePS).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dgvReservePS
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(22, 35);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(745, 384);
-            dataGridView1.TabIndex = 0;
+            dgvReservePS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvReservePS.Location = new Point(29, 82);
+            dgvReservePS.Name = "dgvReservePS";
+            dgvReservePS.RowHeadersWidth = 51;
+            dgvReservePS.Size = new Size(797, 384);
+            dgvReservePS.TabIndex = 0;
+            dgvReservePS.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // cbFloor
+            // 
+            cbFloor.FormattingEnabled = true;
+            cbFloor.Location = new Point(105, 33);
+            cbFloor.Name = "cbFloor";
+            cbFloor.Size = new Size(151, 28);
+            cbFloor.TabIndex = 1;
+            // 
+            // lblFloor
+            // 
+            lblFloor.AutoSize = true;
+            lblFloor.Location = new Point(29, 36);
+            lblFloor.Name = "lblFloor";
+            lblFloor.Size = new Size(46, 20);
+            lblFloor.TabIndex = 2;
+            lblFloor.Text = "Floor:";
             // 
             // ReservePS
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(dataGridView1);
+            ClientSize = new Size(852, 499);
+            Controls.Add(lblFloor);
+            Controls.Add(cbFloor);
+            Controls.Add(dgvReservePS);
             Name = "ReservePS";
             Text = "ReservePS";
             Load += ReservePS_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvReservePS).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView dgvReservePS;
+        private ComboBox cbFloor;
+        private Label lblFloor;
     }
 }

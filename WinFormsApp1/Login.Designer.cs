@@ -54,17 +54,15 @@
             txtUsername.PlaceholderText = "Korisničko ime";
             txtUsername.Size = new Size(267, 27);
             txtUsername.TabIndex = 0;
-            txtUsername.Text = "mmijić21";
             // 
             // txtPassword
             // 
             txtPassword.Location = new Point(225, 153);
             txtPassword.Name = "txtPassword";
-            txtPassword.PasswordChar = '$';
+            txtPassword.PasswordChar = '*';
             txtPassword.PlaceholderText = "Lozinka";
             txtPassword.Size = new Size(267, 27);
             txtPassword.TabIndex = 1;
-            txtPassword.Text = "Pass1234";
             // 
             // lb_Username
             // 
@@ -108,6 +106,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "Login";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ParkWay";
             Load += Login_Load;
             ResumeLayout(false);
