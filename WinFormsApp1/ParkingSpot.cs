@@ -84,7 +84,7 @@ namespace ParkWay
             {
                 isUpdating = true;
                 int selectedRowIndex = dgvParkingspot.SelectedRows[0].Index;
-                txtParkingSpotID.Text = dgvParkingspot.Rows[selectedRowIndex].Cells["ID"].Value.ToString();
+                txtPosition.Text = dgvParkingspot.Rows[selectedRowIndex].Cells["ID"].Value.ToString();
                 txtParkingSpot.Text = dgvParkingspot.Rows[selectedRowIndex].Cells["Name"].Value.ToString();
                 cbFloor.SelectedValue = dgvParkingspot.Rows[selectedRowIndex].Cells["FloorId"].Value;
                 chbAvailable.Checked = (bool)dgvParkingspot.Rows[selectedRowIndex].Cells["isAvaible"].Value;
@@ -98,7 +98,7 @@ namespace ParkWay
         private void ResetForm()
         {
             isUpdating = false;
-            txtParkingSpotID.Text = string.Empty;
+            txtPosition.Text = string.Empty;
             txtParkingSpot.Text = string.Empty;
             cbFloor.SelectedIndex = -1;
             chbAvailable.Checked = false;
@@ -121,7 +121,7 @@ namespace ParkWay
 
                     if (isUpdating)
                     {
-                        int parkingspotID = int.Parse(txtParkingSpotID.Text);
+                        int parkingspotID = int.Parse(txtPosition.Text);
                         var existingParkingSpot = context.ParkingSpots.FirstOrDefault(ps => ps.ID == parkingspotID);
                         if (existingParkingSpot != null)
                         {

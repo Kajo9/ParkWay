@@ -72,7 +72,7 @@ namespace ParkWay
         private void ResetForm()
         {
             isUpdating = false;
-            txtFloorID.Text = string.Empty;
+            txtPosition.Text = string.Empty;
             txtFloorName.Text = string.Empty;
             dgvFloors.ClearSelection();
         }
@@ -83,7 +83,7 @@ namespace ParkWay
             {
                 isUpdating = true;
                 int selectedRowIndex = dgvFloors.SelectedRows[0].Index;
-                txtFloorID.Text = dgvFloors.Rows[selectedRowIndex].Cells["ID"].Value.ToString();
+                txtPosition.Text = dgvFloors.Rows[selectedRowIndex].Cells["ID"].Value.ToString();
                 txtFloorName.Text = dgvFloors.Rows[selectedRowIndex].Cells["FloorName"].Value.ToString();
             }
         }
@@ -142,7 +142,7 @@ namespace ParkWay
                 {
                     if (isUpdating)
                     {
-                        int floorID = int.Parse(txtFloorID.Text);
+                        int floorID = int.Parse(txtPosition.Text);
                         var existingFloor = context.Floors.FirstOrDefault(f => f.ID == floorID);
                         if (existingFloor != null)
                         {

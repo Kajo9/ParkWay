@@ -31,8 +31,8 @@
             dgvParkingspot = new DataGridView();
             lblParkingspot = new Label();
             txtParkingSpot = new TextBox();
-            lblID = new Label();
-            txtParkingSpotID = new TextBox();
+            lblPosition = new Label();
+            txtPosition = new TextBox();
             menuStrip1 = new MenuStrip();
             newToolStripMenuItem1 = new ToolStripMenuItem();
             saveToolStripMenuItem1 = new ToolStripMenuItem();
@@ -83,22 +83,22 @@
             txtParkingSpot.Size = new Size(485, 27);
             txtParkingSpot.TabIndex = 0;
             // 
-            // lblID
+            // lblPosition
             // 
-            lblID.AutoSize = true;
-            lblID.Location = new Point(41, 42);
-            lblID.Name = "lblID";
-            lblID.Size = new Size(27, 20);
-            lblID.TabIndex = 5;
-            lblID.Text = "ID:";
+            lblPosition.AutoSize = true;
+            lblPosition.Location = new Point(41, 42);
+            lblPosition.Name = "lblPosition";
+            lblPosition.Size = new Size(64, 20);
+            lblPosition.TabIndex = 5;
+            lblPosition.Text = "Position:";
             // 
-            // txtParkingSpotID
+            // txtPosition
             // 
-            txtParkingSpotID.Location = new Point(141, 35);
-            txtParkingSpotID.Name = "txtParkingSpotID";
-            txtParkingSpotID.ReadOnly = true;
-            txtParkingSpotID.Size = new Size(125, 27);
-            txtParkingSpotID.TabIndex = 6;
+            txtPosition.Location = new Point(141, 35);
+            txtPosition.Name = "txtPosition";
+            txtPosition.ReadOnly = true;
+            txtPosition.Size = new Size(50, 27);
+            txtPosition.TabIndex = 6;
             // 
             // menuStrip1
             // 
@@ -202,8 +202,8 @@
             Controls.Add(lblAvailable);
             Controls.Add(lblFloor);
             Controls.Add(cbFloor);
-            Controls.Add(txtParkingSpotID);
-            Controls.Add(lblID);
+            Controls.Add(txtPosition);
+            Controls.Add(lblPosition);
             Controls.Add(txtParkingSpot);
             Controls.Add(lblParkingspot);
             Controls.Add(dgvParkingspot);
@@ -223,8 +223,8 @@
         private DataGridView dgvParkingspot;
         private Label lblParkingspot;
         private TextBox txtParkingSpot;
-        private Label lblID;
-        private TextBox txtParkingSpotID;
+        private Label lblPosition;
+        private TextBox txtPosition;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem editToolStripMenuItem;
         private ToolStripMenuItem newToolStripMenuItem;

@@ -45,6 +45,8 @@
             saveToolStripMenuItem = new ToolStripMenuItem();
             deleteToolStripMenuItem = new ToolStripMenuItem();
             lblStar = new Label();
+            lblPosition = new Label();
+            txtPosition = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -52,7 +54,7 @@
             // lblFirstName
             // 
             lblFirstName.AutoSize = true;
-            lblFirstName.Location = new Point(19, 132);
+            lblFirstName.Location = new Point(19, 141);
             lblFirstName.Name = "lblFirstName";
             lblFirstName.Size = new Size(86, 20);
             lblFirstName.TabIndex = 0;
@@ -61,7 +63,7 @@
             // lblLastName
             // 
             lblLastName.AutoSize = true;
-            lblLastName.Location = new Point(17, 168);
+            lblLastName.Location = new Point(19, 196);
             lblLastName.Name = "lblLastName";
             lblLastName.Size = new Size(85, 20);
             lblLastName.TabIndex = 1;
@@ -70,7 +72,7 @@
             // lblUsername
             // 
             lblUsername.AutoSize = true;
-            lblUsername.Location = new Point(19, 226);
+            lblUsername.Location = new Point(21, 258);
             lblUsername.Name = "lblUsername";
             lblUsername.Size = new Size(84, 20);
             lblUsername.TabIndex = 2;
@@ -79,7 +81,7 @@
             // lblPassword
             // 
             lblPassword.AutoSize = true;
-            lblPassword.Location = new Point(19, 290);
+            lblPassword.Location = new Point(19, 312);
             lblPassword.Name = "lblPassword";
             lblPassword.Size = new Size(79, 20);
             lblPassword.TabIndex = 3;
@@ -88,7 +90,7 @@
             // lblRole
             // 
             lblRole.AutoSize = true;
-            lblRole.Location = new Point(19, 352);
+            lblRole.Location = new Point(19, 368);
             lblRole.Name = "lblRole";
             lblRole.Size = new Size(48, 20);
             lblRole.TabIndex = 4;
@@ -96,28 +98,28 @@
             // 
             // txtFirstName
             // 
-            txtFirstName.Location = new Point(157, 113);
+            txtFirstName.Location = new Point(157, 134);
             txtFirstName.Name = "txtFirstName";
             txtFirstName.Size = new Size(200, 27);
             txtFirstName.TabIndex = 5;
             // 
             // txtLastName
             // 
-            txtLastName.Location = new Point(157, 165);
+            txtLastName.Location = new Point(157, 189);
             txtLastName.Name = "txtLastName";
             txtLastName.Size = new Size(200, 27);
             txtLastName.TabIndex = 6;
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(157, 223);
+            txtUsername.Location = new Point(157, 251);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(200, 27);
             txtUsername.TabIndex = 7;
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(157, 283);
+            txtPassword.Location = new Point(157, 305);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(200, 27);
             txtPassword.TabIndex = 8;
@@ -125,7 +127,7 @@
             // cbRole
             // 
             cbRole.FormattingEnabled = true;
-            cbRole.Location = new Point(157, 344);
+            cbRole.Location = new Point(157, 360);
             cbRole.Name = "cbRole";
             cbRole.Size = new Size(200, 28);
             cbRole.TabIndex = 10;
@@ -134,6 +136,7 @@
             // 
             dgvUsers.AllowUserToResizeColumns = false;
             dgvUsers.AllowUserToResizeRows = false;
+            dgvUsers.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvUsers.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvUsers.ColumnHeadersHeight = 29;
@@ -196,11 +199,30 @@
             lblStar.TabIndex = 13;
             lblStar.Text = "Sve označno zvijezdom mora biti popunjeno (*)";
             // 
+            // lblPosition
+            // 
+            lblPosition.AutoSize = true;
+            lblPosition.Location = new Point(21, 100);
+            lblPosition.Name = "lblPosition";
+            lblPosition.Size = new Size(64, 20);
+            lblPosition.TabIndex = 14;
+            lblPosition.Text = "Position:";
+            // 
+            // txtPosition
+            // 
+            txtPosition.Location = new Point(157, 93);
+            txtPosition.Name = "txtPosition";
+            txtPosition.ReadOnly = true;
+            txtPosition.Size = new Size(50, 27);
+            txtPosition.TabIndex = 15;
+            // 
             // UserAdministration
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1357, 451);
+            Controls.Add(txtPosition);
+            Controls.Add(lblPosition);
             Controls.Add(lblStar);
             Controls.Add(dgvUsers);
             Controls.Add(cbRole);
@@ -244,5 +266,7 @@
         private ToolStripMenuItem saveToolStripMenuItem;
         private ToolStripMenuItem deleteToolStripMenuItem;
         private Label lblStar;
+        private Label lblPosition;
+        private TextBox txtPosition;
     }
 }

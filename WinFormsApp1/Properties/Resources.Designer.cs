@@ -113,6 +113,26 @@ namespace ParkWay.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hidden_3624748 {
+            get {
+                object obj = ResourceManager.GetObject("hidden_3624748", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hidden_3624748__1_ {
+            get {
+                object obj = ResourceManager.GetObject("hidden_3624748 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap paper_24935_640 {
             get {
                 object obj = ResourceManager.GetObject("paper-24935_640", resourceCulture);
@@ -126,6 +146,26 @@ namespace ParkWay.Properties {
         internal static System.Drawing.Bitmap power_on_4980965 {
             get {
                 object obj = ResourceManager.GetObject("power-on_4980965", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap visible_3694163 {
+            get {
+                object obj = ResourceManager.GetObject("visible_3694163", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap visible_3694163__2_ {
+            get {
+                object obj = ResourceManager.GetObject("visible_3694163 (2)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

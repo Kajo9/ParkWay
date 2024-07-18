@@ -37,8 +37,8 @@
             lblFloor = new Label();
             txtFloorName = new TextBox();
             dgvFloors = new DataGridView();
-            txtFloorID = new TextBox();
-            lblID = new Label();
+            txtPosition = new TextBox();
+            lblPosition = new Label();
             menuStrip1 = new MenuStrip();
             newToolStripMenuItem = new ToolStripMenuItem();
             saveToolStripMenuItem = new ToolStripMenuItem();
@@ -128,22 +128,22 @@
             dgvFloors.CellContentClick += dgvFloors_CellContentClick;
             dgvFloors.SelectionChanged += dgvFloors_SelectionChanged;
             // 
-            // txtFloorID
+            // txtPosition
             // 
-            txtFloorID.Location = new Point(141, 39);
-            txtFloorID.Name = "txtFloorID";
-            txtFloorID.ReadOnly = true;
-            txtFloorID.Size = new Size(125, 27);
-            txtFloorID.TabIndex = 6;
+            txtPosition.Location = new Point(141, 39);
+            txtPosition.Name = "txtPosition";
+            txtPosition.ReadOnly = true;
+            txtPosition.Size = new Size(52, 27);
+            txtPosition.TabIndex = 6;
             // 
-            // lblID
+            // lblPosition
             // 
-            lblID.AutoSize = true;
-            lblID.Location = new Point(41, 42);
-            lblID.Name = "lblID";
-            lblID.Size = new Size(81, 20);
-            lblID.TabIndex = 7;
-            lblID.Text = "Redni broj:";
+            lblPosition.AutoSize = true;
+            lblPosition.Location = new Point(41, 42);
+            lblPosition.Name = "lblPosition";
+            lblPosition.Size = new Size(64, 20);
+            lblPosition.TabIndex = 7;
+            lblPosition.Text = "Position:";
             // 
             // menuStrip1
             // 
@@ -189,8 +189,8 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1350, 534);
-            Controls.Add(lblID);
-            Controls.Add(txtFloorID);
+            Controls.Add(lblPosition);
+            Controls.Add(txtPosition);
             Controls.Add(dgvFloors);
             Controls.Add(txtFloorName);
             Controls.Add(lblFloor);
@@ -221,8 +221,8 @@
         private Label lblFloor;
         private TextBox txtFloorName;
         private DataGridView dgvFloors;
-        private TextBox txtFloorID;
-        private Label lblID;
+        private TextBox txtPosition;
+        private Label lblPosition;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem newToolStripMenuItem;
         private ToolStripMenuItem saveToolStripMenuItem;

@@ -28,7 +28,6 @@ namespace ParkWay
             cbRole.DataSource = roles;
 
             LoadUsers();
-            ResetForm();
         }
 
         private void LoadUsers()
@@ -51,7 +50,6 @@ namespace ParkWay
 
                 dgvUsers.Columns["ID"].Visible = false;
             }
-
         }
 
         private void ResetForm()
@@ -223,6 +221,7 @@ namespace ParkWay
                 isUpdating = true;
                 int selectedRowIndex = dgvUsers.SelectedRows[0].Index;
 
+                txtPosition.Text = dgvUsers.Rows[selectedRowIndex].Cells["ID"].Value.ToString();
                 txtFirstName.Text = dgvUsers.Rows[selectedRowIndex].Cells["FirstName"].Value.ToString();
                 txtLastName.Text = dgvUsers.Rows[selectedRowIndex].Cells["LastName"].Value.ToString();
                 txtUsername.Text = dgvUsers.Rows[selectedRowIndex].Cells["Username"].Value.ToString();

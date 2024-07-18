@@ -34,6 +34,8 @@
             lb_Username = new Label();
             lbl_Password = new Label();
             btnRegister = new Button();
+            btnShow = new Button();
+            btnHide = new Button();
             SuspendLayout();
             // 
             // btnLogin
@@ -92,11 +94,34 @@
             btnRegister.UseVisualStyleBackColor = true;
             btnRegister.Click += btnRegister_Click_1;
             // 
+            // btnShow
+            // 
+            btnShow.BackgroundImageLayout = ImageLayout.None;
+            btnShow.Image = ParkWay.Properties.Resources.visible_3694163__2_;
+            btnShow.Location = new Point(462, 153);
+            btnShow.Name = "btnShow";
+            btnShow.Size = new Size(30, 29);
+            btnShow.TabIndex = 7;
+            btnShow.UseVisualStyleBackColor = true;
+            btnShow.Click += btnShow_Click;
+            // 
+            // btnHide
+            // 
+            btnHide.Image = ParkWay.Properties.Resources.hidden_3624748__1_;
+            btnHide.Location = new Point(462, 153);
+            btnHide.Name = "btnHide";
+            btnHide.Size = new Size(30, 29);
+            btnHide.TabIndex = 8;
+            btnHide.UseVisualStyleBackColor = true;
+            btnHide.Click += btnHide_Click;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(558, 334);
+            ClientSize = new Size(622, 334);
+            Controls.Add(btnHide);
+            Controls.Add(btnShow);
             Controls.Add(btnRegister);
             Controls.Add(lbl_Password);
             Controls.Add(lb_Username);
@@ -120,5 +145,7 @@
         private Label lb_Username;
         private Label lbl_Password;
         private Button btnRegister;
+        private Button btnShow;
+        private Button btnHide;
     }
 }

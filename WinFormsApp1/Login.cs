@@ -52,7 +52,7 @@ namespace WinFormsApp1
                     };
 
                     Global.LoggedUser = userData;
-                    
+
                     //MessageBox.Show($"Welcome, {user.Username}!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     Hide();
@@ -72,6 +72,24 @@ namespace WinFormsApp1
         {
             Registration registration = new Registration();
             registration.Show();
+        }
+
+        private void btnShow_Click(object sender, EventArgs e)
+        {
+            if (txtPassword.PasswordChar == '\0')
+            {
+                btnHide.BringToFront();
+                txtPassword.PasswordChar = '*';
+            }
+        }
+
+        private void btnHide_Click(object sender, EventArgs e)
+        {
+            if (txtPassword.PasswordChar == '*')
+            {
+                btnShow.BringToFront();
+                txtPassword.PasswordChar = '\0';
+            }
         }
     }
 }
