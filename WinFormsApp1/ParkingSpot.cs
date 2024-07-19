@@ -16,7 +16,8 @@ namespace ParkWay
     {
 
         private bool isUpdating = false;
-        private bool isCheckChanged = false;
+        public bool isCheckChanged = false;
+        public int position;
 
         public ParkingSpot()
         {
@@ -28,27 +29,15 @@ namespace ParkWay
         {
             LoadFloors();
             LoadParkingSpotsData();
-            ResetForm();
             ConfigureDataGridView();
         }
-
         private void LoadParkingSpotsData()
         {
             using (var context = new DatabaseContext())
             {
                 if (cbFloor.SelectedValue != null)
                 {
-                    int selectedFloorId = (int)cbFloor.SelectedValue;
-                    var parkingSpots = context.ParkingSpots
-                        .Where(ps => ps.FloorId == selectedFloorId)
-                        .Select(ps => new
-                        {
-                            ps.ID,
-                            ps.Name,
-                            ps.isAvaible,
-                            ps.FloorId
-                        })
-                        .ToList();
+                    var parkingSpots = context.ParkingSpots.ToList();
                     dgvParkingspot.DataSource = parkingSpots;
                     HideUnnecessaryColumns();
                 }
@@ -76,23 +65,6 @@ namespace ParkWay
         {
             dgvParkingspot.Columns["ID"].Visible = false;
             dgvParkingspot.Columns["FloorId"].Visible = false;
-        }
-
-        private void dgvParkingspot_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgvParkingspot.SelectedRows.Count > 0)
-            {
-                isUpdating = true;
-                int selectedRowIndex = dgvParkingspot.SelectedRows[0].Index;
-                txtPosition.Text = dgvParkingspot.Rows[selectedRowIndex].Cells["ID"].Value.ToString();
-                txtParkingSpot.Text = dgvParkingspot.Rows[selectedRowIndex].Cells["Name"].Value.ToString();
-                cbFloor.SelectedValue = dgvParkingspot.Rows[selectedRowIndex].Cells["FloorId"].Value;
-                chbAvailable.Checked = (bool)dgvParkingspot.Rows[selectedRowIndex].Cells["isAvaible"].Value;
-
-                isCheckChanged = true;
-                chbAvailable.Checked = (bool)dgvParkingspot.Rows[selectedRowIndex].Cells["isAvaible"].Value;
-                isCheckChanged = false;
-            }
         }
 
         private void ResetForm()
@@ -188,7 +160,7 @@ namespace ParkWay
                 {
                     using (var context = new DatabaseContext())
                     {
-                        var parkingspot = context.ParkingSpots.FirstOrDefault(p => p.ID == parkingspotID);
+                        var parkingspot = context.ParkingSpots.FirstOrDefault(p => p.ID == position);
                         if (parkingspot != null)
                         {
                             context.ParkingSpots.Remove(parkingspot);
@@ -223,11 +195,11 @@ namespace ParkWay
             if (dgvParkingspot.SelectedRows.Count > 0)
             {
                 int selectedRowIndex = dgvParkingspot.SelectedRows[0].Index;
-                int parkingspotID = (int)dgvParkingspot.Rows[selectedRowIndex].Cells["ID"].Value;
+                position = (int)dgvParkingspot.Rows[selectedRowIndex].Cells["ID"].Value;
 
                 using (var context = new DatabaseContext())
                 {
-                    var parkingSpot = context.ParkingSpots.FirstOrDefault(p => p.ID == parkingspotID);
+                    var parkingSpot = context.ParkingSpots.FirstOrDefault(p => p.ID == position);
                     if (parkingSpot != null)
                     {
                         bool newAvailability = chbAvailable.Checked;
@@ -242,6 +214,23 @@ namespace ParkWay
                         }
                     }
                 }
+            }
+        }
+
+        private void dgvParkingspot_DoubleClick(object sender, EventArgs e)
+        {
+            if (dgvParkingspot.SelectedRows.Count > 0)
+            {
+                var selectedIndex = dgvParkingspot.SelectedRows[0].Index;
+
+                position = int.Parse(dgvParkingspot.Rows[selectedIndex].Cells["ID"].Value.ToString());
+                txtPosition.Text = dgvParkingspot.Rows[selectedIndex].Cells["ID"].Value.ToString();
+                txtParkingSpot.Text = dgvParkingspot.Rows[selectedIndex].Cells["Name"].Value.ToString();
+                cbFloor.SelectedValue = dgvParkingspot.Rows[selectedIndex].Cells["FloorId"].Value;
+                chbAvailable.Checked = (bool)dgvParkingspot.Rows[selectedIndex].Cells["isAvaible"].Value;
+
+                isCheckChanged = true;
+                isCheckChanged = false;
             }
         }
     }

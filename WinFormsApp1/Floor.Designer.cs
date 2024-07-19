@@ -126,7 +126,7 @@
             dgvFloors.Size = new Size(1289, 385);
             dgvFloors.TabIndex = 4;
             dgvFloors.CellContentClick += dgvFloors_CellContentClick;
-            dgvFloors.SelectionChanged += dgvFloors_SelectionChanged;
+            dgvFloors.DoubleClick += dgvFloors_DoubleClick;
             // 
             // txtPosition
             // 

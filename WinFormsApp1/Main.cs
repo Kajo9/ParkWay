@@ -20,7 +20,7 @@ namespace ParkWay
         {
             InitializeComponent();
 
-            lblLogUser.Text = $"Dobro došao {Global.LoggedUser.FirstName} {DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss")}";
+            lblLogUser.Text = $"Welcome {Global.LoggedUser.FirstName} {DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss")}";
         }
 
         private void floorsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -53,16 +53,17 @@ namespace ParkWay
             reservePS.Show();
         }
 
+        private void changepasswordOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePassword changePassword = new ChangePassword();
+            changePassword.Show();
+        }
+
         private void logOutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Login login = new Login();
             login.Show();
             Close();
-        }
-
-        private void LogOutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -18,7 +18,7 @@ namespace WinFormsApp1
             Global.AppName = "ParkWay";
 
             txtUsername.Text = "ivica69";
-            txtPassword.Text = "Lozinka123";
+            txtPassword.Text = "Lozinka456";
         }
 
         private void btn_Login_Click(object sender, EventArgs e)

@@ -15,7 +15,7 @@ namespace ParkWay
 {
     public partial class UserAdministration : Form
     {
-        private bool isUpdating = false;
+        public int position = 0;
 
         public UserAdministration()
         {
@@ -28,24 +28,13 @@ namespace ParkWay
             cbRole.DataSource = roles;
 
             LoadUsers();
-            ResetForm();
         }
 
         private void LoadUsers()
         {
             using (var context = new DatabaseContext())
             {
-                var users = context.Users
-                    .Select(u => new
-                    {
-                        u.ID,
-                        u.FirstName,
-                        u.LastName,
-                        u.Username,
-                        u.Password,
-                        u.Role
-                    })
-                    .ToList();
+                var users = context.Users.ToList();
 
                 dgvUsers.DataSource = users;
 
@@ -55,25 +44,25 @@ namespace ParkWay
 
         private void ResetForm()
         {
+            position = 0;
             txtPosition.Text = string.Empty;
             txtFirstName.Text = string.Empty;
             txtLastName.Text = string.Empty;
             txtUsername.Text = string.Empty;
             txtPassword.Text = string.Empty;
             cbRole.SelectedIndex = 0;
-            dgvUsers.ClearSelection();
         }
 
         private bool ValidateInputs(string firstname, string lastname, string username, string password)
         {
             if (string.IsNullOrWhiteSpace(firstname))
             {
-                MessageBox.Show("Name is required.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("First name is required.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             if (string.IsNullOrWhiteSpace(lastname))
             {
-                MessageBox.Show("Surname is required.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Last name is required.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             if (string.IsNullOrWhiteSpace(username))
@@ -99,7 +88,7 @@ namespace ParkWay
         {
             if (password.Length < 8)
             {
-                MessageBox.Show("Lozinka mora biti barem 8 znakova dugačka", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Password must be at least 8 characters long", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -119,73 +108,63 @@ namespace ParkWay
             string password = txtPassword.Text;
             string selectedRole = cbRole.SelectedItem.ToString();
 
-            if (ValidateInputs(firstName, lastName, username, password))
+            if(!ValidateInputs(firstName, lastName, username, password)) 
+            {
+                return;
+            }
+
+            if (position == 0)
             {
                 using (var context = new DatabaseContext())
                 {
-                    if (selectedRole == "Admin" && context.Users.Any(u => u.Role == "Admin" && !isUpdating))
+                    var user = new User
                     {
-                        MessageBox.Show("There is already a person with administrator roles", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                        FirstName = firstName,
+                        LastName = lastName,
+                        Username = username,
+                        Password = password,
+                        Role = selectedRole
+                    };
 
-                    if (context.Users.Any(u => u.Username == username && (!isUpdating || u.ID != (int)dgvUsers.SelectedRows[0].Cells["ID"].Value)))
-                    {
-                        MessageBox.Show("Username already exists!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                    context.Users.Add(user);
 
-                    if (isUpdating)
-                    {
-                        int selectedUserId = (int)dgvUsers.SelectedRows[0].Cells["ID"].Value;
-                        var existingUser = context.Users.FirstOrDefault(u => u.ID == selectedUserId);
+                    context.SaveChanges();
 
-                        if (existingUser != null)
-                        {
-                            existingUser.FirstName = firstName;
-                            existingUser.LastName = lastName;
-                            existingUser.Username = username;
-                            existingUser.Password = password;
-                            existingUser.Role = selectedRole;
-
-                            context.SaveChanges();
-
-                            MessageBox.Show("Successfully updated user!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("No user found to update.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                    }
-                    else
-                    {
-                        var newUser = new User
-                        {
-                            FirstName = firstName,
-                            LastName = lastName,
-                            Username = username,
-                            Password = password,
-                            Role = selectedRole
-                        };
-
-                        context.Users.Add(newUser);
-                        context.SaveChanges();
-
-                        MessageBox.Show("User successfully registered!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-
-                    LoadUsers();
                     ResetForm();
+                    MessageBox.Show("User succesfully adedd!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+            else
+            {
+                using (var context = new DatabaseContext())
+                {
+                  var user = context.Users.FirstOrDefault(a => a.ID == position);
+
+                    if (user != null)
+                    {
+                        user.FirstName = firstName;
+                        user.LastName = lastName;
+                        user.Username = username;
+                        user.Password = password;
+                        user.Role = selectedRole;
+
+                        context.Users.Update(user);
+
+                        context.SaveChanges();
+
+                        ResetForm();
+                        MessageBox.Show("User succesfully updated!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+
+            LoadUsers();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dgvUsers.SelectedRows.Count > 0)
+            if (position != 0)
             {
-                int selectedRowIndex = dgvUsers.SelectedRows[0].Index;
-                int usersID = (int)dgvUsers.Rows[selectedRowIndex].Cells["ID"].Value;
 
                 DialogResult result = MessageBox.Show("Are you sure you want to delete the selected row?", Global.AppName, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -193,15 +172,15 @@ namespace ParkWay
                 {
                     using (var context = new DatabaseContext())
                     {
-                        var users = context.Users.FirstOrDefault(u => u.ID == usersID);
+                        var users = context.Users.FirstOrDefault(u => u.ID == position);
                         if (users != null)
                         {
                             context.Users.Remove(users);
                             context.SaveChanges();
 
                             MessageBox.Show("Data deleted successfully!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadUsers();
                             ResetForm();
+                            LoadUsers();
                         }
                         else
                         {
@@ -216,22 +195,6 @@ namespace ParkWay
             }
         }
 
-        private void dgvUsers_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgvUsers.SelectedRows.Count > 0)
-            {
-                isUpdating = true;
-                int selectedRowIndex = dgvUsers.SelectedRows[0].Index;
-
-                txtPosition.Text = dgvUsers.Rows[selectedRowIndex].Cells["ID"].Value.ToString();
-                txtFirstName.Text = dgvUsers.Rows[selectedRowIndex].Cells["FirstName"].Value.ToString();
-                txtLastName.Text = dgvUsers.Rows[selectedRowIndex].Cells["LastName"].Value.ToString();
-                txtUsername.Text = dgvUsers.Rows[selectedRowIndex].Cells["Username"].Value.ToString();
-                txtPassword.Text = dgvUsers.Rows[selectedRowIndex].Cells["Password"].Value.ToString();
-                cbRole.SelectedItem = dgvUsers.Rows[selectedRowIndex].Cells["Role"].Value.ToString();
-            }
-        }
-
         private void dgvUsers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dgvUsers.Columns[e.ColumnIndex].Name == "Password")
@@ -240,6 +203,22 @@ namespace ParkWay
                 {
                     e.Value = new string('*', e.Value.ToString().Length);
                 }
+            }
+        }
+
+        private void dgvUsers_DoubleClick(object sender, EventArgs e)
+        {
+            if (dgvUsers.SelectedRows.Count > 0)
+            {
+                var selectedIndex = dgvUsers.SelectedRows[0].Index;
+
+                position = int.Parse(dgvUsers.Rows[selectedIndex].Cells["ID"].Value.ToString());
+                txtPosition.Text = dgvUsers.Rows[selectedIndex].Cells["ID"].Value.ToString();
+                txtFirstName.Text = dgvUsers.Rows[selectedIndex].Cells["FirstName"].Value.ToString();
+                txtLastName.Text = dgvUsers.Rows[selectedIndex].Cells["LastName"].Value.ToString();
+                txtUsername.Text = dgvUsers.Rows[selectedIndex].Cells["Username"].Value.ToString();
+                txtPassword.Text = dgvUsers.Rows[selectedIndex].Cells["Password"].Value.ToString();
+                cbRole.SelectedItem = dgvUsers.Rows[selectedIndex].Cells["Role"].Value.ToString();
             }
         }
     }

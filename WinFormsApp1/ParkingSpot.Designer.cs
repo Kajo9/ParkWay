@@ -65,7 +65,7 @@
             dgvParkingspot.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvParkingspot.Size = new Size(1289, 383);
             dgvParkingspot.TabIndex = 4;
-            dgvParkingspot.SelectionChanged += dgvParkingspot_SelectionChanged;
+            dgvParkingspot.DoubleClick += dgvParkingspot_DoubleClick;
             // 
             // lblParkingspot
             // 

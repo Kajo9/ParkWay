@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="visible_3694163 (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\visible_3694163 (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="avatar_12124771" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\avatar_12124771.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -133,6 +136,9 @@
   <data name="delete-156119_640" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete-156119_640.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="hidden_3624748 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hidden_3624748 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="visible_3694163" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\visible_3694163.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -145,10 +151,7 @@
   <data name="delete_4980658" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete_4980658.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="hidden_3624748 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\hidden_3624748 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="visible_3694163 (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\visible_3694163 (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="password-entry_8031746" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\password-entry_8031746.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
