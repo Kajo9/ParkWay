@@ -28,6 +28,7 @@ namespace ParkWay
             cbRole.DataSource = roles;
 
             LoadUsers();
+            ResetForm();
         }
 
         private void LoadUsers()
@@ -54,6 +55,7 @@ namespace ParkWay
 
         private void ResetForm()
         {
+            txtPosition.Text = string.Empty;
             txtFirstName.Text = string.Empty;
             txtLastName.Text = string.Empty;
             txtUsername.Text = string.Empty;

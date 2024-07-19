@@ -56,6 +56,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(dgvListParkingSpots);
             Name = "ListofParkingSpots";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ParkWay";
             Load += ListofParkingSpots_Load;
             ((System.ComponentModel.ISupportInitialize)dgvListParkingSpots).EndInit();

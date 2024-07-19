@@ -37,7 +37,8 @@
             toolStripDropDownButton1 = new ToolStripDropDownButton();
             profileToolStripMenuItem = new ToolStripMenuItem();
             viewReservationsToolStripMenuItem = new ToolStripMenuItem();
-            logOutToolStripMenuItem = new ToolStripMenuItem();
+            changepasswordOutToolStripMenuItem = new ToolStripMenuItem();
+            logOutToolStripMenuItem1 = new ToolStripMenuItem();
             lblLogUser = new Label();
             msCatalog.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -98,7 +99,7 @@
             // toolStripDropDownButton1
             // 
             toolStripDropDownButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripDropDownButton1.DropDownItems.AddRange(new ToolStripItem[] { profileToolStripMenuItem, viewReservationsToolStripMenuItem, logOutToolStripMenuItem });
+            toolStripDropDownButton1.DropDownItems.AddRange(new ToolStripItem[] { profileToolStripMenuItem, viewReservationsToolStripMenuItem, changepasswordOutToolStripMenuItem, logOutToolStripMenuItem1 });
             toolStripDropDownButton1.Image = Properties.Resources.avatar_12124771;
             toolStripDropDownButton1.ImageTransparentColor = Color.Magenta;
             toolStripDropDownButton1.Name = "toolStripDropDownButton1";
@@ -108,24 +109,31 @@
             // profileToolStripMenuItem
             // 
             profileToolStripMenuItem.Name = "profileToolStripMenuItem";
-            profileToolStripMenuItem.Size = new Size(268, 26);
+            profileToolStripMenuItem.Size = new Size(273, 32);
             profileToolStripMenuItem.Text = "Profile";
             profileToolStripMenuItem.Click += profileToolStripMenuItem_Click;
             // 
             // viewReservationsToolStripMenuItem
             // 
             viewReservationsToolStripMenuItem.Name = "viewReservationsToolStripMenuItem";
-            viewReservationsToolStripMenuItem.Size = new Size(268, 26);
+            viewReservationsToolStripMenuItem.Size = new Size(273, 32);
             viewReservationsToolStripMenuItem.Text = "View/Reserve Parking Spot";
             viewReservationsToolStripMenuItem.Click += viewReservationsToolStripMenuItem_Click;
             // 
-            // logOutToolStripMenuItem
+            // changepasswordOutToolStripMenuItem
             // 
-            logOutToolStripMenuItem.Image = Properties.Resources.power_on_4980965;
-            logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            logOutToolStripMenuItem.Size = new Size(268, 26);
-            logOutToolStripMenuItem.Text = "Log out";
-            logOutToolStripMenuItem.Click += logOutToolStripMenuItem_Click;
+            changepasswordOutToolStripMenuItem.Name = "changepasswordOutToolStripMenuItem";
+            changepasswordOutToolStripMenuItem.Size = new Size(273, 32);
+            changepasswordOutToolStripMenuItem.Text = "Change password";
+            changepasswordOutToolStripMenuItem.Click += LogOutToolStripMenuItem_Click;
+            // 
+            // logOutToolStripMenuItem1
+            // 
+            logOutToolStripMenuItem1.Image = Properties.Resources.power_on_4980965;
+            logOutToolStripMenuItem1.Name = "logOutToolStripMenuItem1";
+            logOutToolStripMenuItem1.Size = new Size(273, 32);
+            logOutToolStripMenuItem1.Text = "Log out";
+            logOutToolStripMenuItem1.Click += logOutToolStripMenuItem1_Click;
             // 
             // lblLogUser
             // 
@@ -145,6 +153,7 @@
             Controls.Add(msCatalog);
             MainMenuStrip = msCatalog;
             Name = "Main";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ParkWay";
             WindowState = FormWindowState.Maximized;
             msCatalog.ResumeLayout(false);
@@ -165,7 +174,8 @@
         private ToolStripDropDownButton toolStripDropDownButton1;
         private ToolStripMenuItem profileToolStripMenuItem;
         private ToolStripMenuItem viewReservationsToolStripMenuItem;
-        private ToolStripMenuItem logOutToolStripMenuItem;
+        private ToolStripMenuItem changepasswordOutToolStripMenuItem;
         private Label lblLogUser;
+        private ToolStripMenuItem logOutToolStripMenuItem1;
     }
 }

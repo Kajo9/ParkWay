@@ -139,6 +139,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "Registration";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ParkWay";
             ResumeLayout(false);
             PerformLayout();

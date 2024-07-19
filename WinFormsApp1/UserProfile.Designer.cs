@@ -155,6 +155,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "UserProfile";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "UserProfile";
             WindowState = FormWindowState.Maximized;
             Load += UserProfile_Load;

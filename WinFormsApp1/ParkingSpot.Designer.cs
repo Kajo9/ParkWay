@@ -210,6 +210,7 @@
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "ParkingSpot";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ParkWay";
             WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)dgvParkingspot).EndInit();

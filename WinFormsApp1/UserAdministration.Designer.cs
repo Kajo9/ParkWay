@@ -238,6 +238,7 @@
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "UserAdministration";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ParkWay";
             WindowState = FormWindowState.Maximized;
             Load += Registration_Load;

@@ -41,13 +41,6 @@ namespace ParkWay
             registration.Show();
         }
 
-        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Login login = new Login();
-            login.Show();
-            Close();
-        }
-
         private void profileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UserProfile profile = new UserProfile();
@@ -58,6 +51,18 @@ namespace ParkWay
         {
             ReservePS reservePS = new ReservePS();
             reservePS.Show();
+        }
+
+        private void logOutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
+        }
+
+        private void LogOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

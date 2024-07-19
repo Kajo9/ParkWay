@@ -36,13 +36,15 @@
             // 
             // dgvReservePS
             // 
+            dgvReservePS.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvReservePS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvReservePS.Location = new Point(29, 82);
             dgvReservePS.Name = "dgvReservePS";
+            dgvReservePS.ReadOnly = true;
             dgvReservePS.RowHeadersWidth = 51;
+            dgvReservePS.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvReservePS.Size = new Size(797, 384);
             dgvReservePS.TabIndex = 0;
-            dgvReservePS.CellContentClick += dataGridView1_CellContentClick;
             // 
             // cbFloor
             // 
@@ -69,8 +71,12 @@
             Controls.Add(lblFloor);
             Controls.Add(cbFloor);
             Controls.Add(dgvReservePS);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "ReservePS";
-            Text = "ReservePS";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "ParkWay";
+            WindowState = FormWindowState.Maximized;
             Load += ReservePS_Load;
             ((System.ComponentModel.ISupportInitialize)dgvReservePS).EndInit();
             ResumeLayout(false);

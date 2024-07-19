@@ -197,6 +197,7 @@
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "Floor";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ParkWay";
             WindowState = FormWindowState.Maximized;
             Load += Floor_Load;
