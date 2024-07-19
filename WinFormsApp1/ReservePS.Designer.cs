@@ -37,6 +37,8 @@
             // dgvReservePS
             // 
             dgvReservePS.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvReservePS.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvReservePS.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvReservePS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvReservePS.Location = new Point(29, 82);
             dgvReservePS.Name = "dgvReservePS";

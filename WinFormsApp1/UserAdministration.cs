@@ -142,6 +142,12 @@ namespace ParkWay
 
                     if (user != null)
                     {
+                        if (context.Users.Any(a => a.Username == username && a.ID != position))
+                        {
+                            MessageBox.Show("Username already exists!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
                         user.FirstName = firstName;
                         user.LastName = lastName;
                         user.Username = username;

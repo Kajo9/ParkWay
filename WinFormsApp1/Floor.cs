@@ -18,8 +18,7 @@ namespace ParkWay
 
     public partial class Floor : Form
     {
-        private bool isUpdating = false;
-        public int position;
+        public int position = 0;
 
         public Floor()
         {
@@ -41,6 +40,7 @@ namespace ParkWay
                 dgvFloors.DataSource = floors;
 
                 dgvFloors.Columns["ID"].Visible = false;
+                dgvFloors.Columns["ParkingSpots"].Visible = false;
             }
         }
 
@@ -67,7 +67,7 @@ namespace ParkWay
 
         private void ResetForm()
         {
-            isUpdating = false;
+            position = 0;
             txtPosition.Text = string.Empty;
             txtFloorName.Text = string.Empty;
         }
@@ -120,62 +120,61 @@ namespace ParkWay
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtFloorName.Text))
+            string floorName = txtFloorName.Text;
+
+            if (string.IsNullOrWhiteSpace(floorName))
             {
-                using (var context = new DatabaseContext())
+                MessageBox.Show("You must fill in the field!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            using (var context = new DatabaseContext())
+            {
+                if (position == 0)
                 {
-                    if (isUpdating)
+                    if (context.Floors.Any(f => f.FloorName == floorName))
                     {
-                        int floorID = int.Parse(txtPosition.Text);
-                        var existingFloor = context.Floors.FirstOrDefault(f => f.ID == position);
-                        if (existingFloor != null)
-                        {
-                            if (context.Floors.Any(f => f.FloorName == txtFloorName.Text && f.ID != position))
-                            {
-                                MessageBox.Show("The name of the floor already exists!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
-
-                            existingFloor.FloorName = txtFloorName.Text;
-                            context.SaveChanges();
-
-                            MessageBox.Show("Data has been successfully updated!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            ResetForm();
-                            LoadFloorsData();
-                        }
-                        else
-                        {
-                            MessageBox.Show("No update record found.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
+                        MessageBox.Show("The name of the floor already exists!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
-                    else
+
+                    var floor = new ParkWay.Models.Floor
                     {
-                        if (context.Floors.Any(f => f.FloorName == txtFloorName.Text))
+                        FloorName = floorName
+                    };
+
+                    context.Floors.Add(floor);
+                    context.SaveChanges();
+
+                    ResetForm();
+                    MessageBox.Show("Data has been saved successfully!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    var floor = context.Floors.FirstOrDefault(a => a.ID == position);
+
+                    if (floor != null)
+                    {
+                        if (context.Floors.Any(f => f.FloorName == floorName && f.ID != position))
                         {
                             MessageBox.Show("The name of the floor already exists!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
 
-                        var floor = new Models.Floor
-                        {
-                            FloorName = txtFloorName.Text,
-                        };
-                        context.Floors.Add(floor);
+                        floor.FloorName = floorName;
+
+                        context.Floors.Update(floor);
                         context.SaveChanges();
 
-                        MessageBox.Show("Data has been saved successfully!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ResetForm();
-                        LoadFloorsData();
+                        MessageBox.Show("Data has been updated successfully!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
-            else
-            {
-                MessageBox.Show("You must fill in the field!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
-        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+            LoadFloorsData();
+        }
+            private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ResetForm();
         }

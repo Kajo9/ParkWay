@@ -40,7 +40,7 @@
             // lblNewPassword
             // 
             lblNewPassword.AutoSize = true;
-            lblNewPassword.Location = new Point(171, 203);
+            lblNewPassword.Location = new Point(201, 203);
             lblNewPassword.Name = "lblNewPassword";
             lblNewPassword.Size = new Size(109, 20);
             lblNewPassword.TabIndex = 0;
@@ -49,7 +49,7 @@
             // lblConfirmPassword
             // 
             lblConfirmPassword.AutoSize = true;
-            lblConfirmPassword.Location = new Point(171, 296);
+            lblConfirmPassword.Location = new Point(201, 296);
             lblConfirmPassword.Name = "lblConfirmPassword";
             lblConfirmPassword.Size = new Size(132, 20);
             lblConfirmPassword.TabIndex = 1;
@@ -57,21 +57,21 @@
             // 
             // txtNewPassword
             // 
-            txtNewPassword.Location = new Point(351, 203);
+            txtNewPassword.Location = new Point(381, 203);
             txtNewPassword.Name = "txtNewPassword";
             txtNewPassword.Size = new Size(195, 27);
             txtNewPassword.TabIndex = 2;
             // 
             // txtConfirmPassword
             // 
-            txtConfirmPassword.Location = new Point(351, 289);
+            txtConfirmPassword.Location = new Point(381, 289);
             txtConfirmPassword.Name = "txtConfirmPassword";
             txtConfirmPassword.Size = new Size(195, 27);
             txtConfirmPassword.TabIndex = 3;
             // 
             // btnChangePassword
             // 
-            btnChangePassword.Location = new Point(237, 372);
+            btnChangePassword.Location = new Point(267, 372);
             btnChangePassword.Name = "btnChangePassword";
             btnChangePassword.Size = new Size(262, 29);
             btnChangePassword.TabIndex = 4;
@@ -83,7 +83,7 @@
             // 
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox1.Image = Properties.Resources.password_entry_8031746;
-            pictureBox1.Location = new Point(295, 24);
+            pictureBox1.Location = new Point(325, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(128, 128);
             pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
