@@ -21,6 +21,26 @@ namespace ParkWay
             InitializeComponent();
 
             lblLogUser.Text = $"Welcome {Global.LoggedUser.FirstName} {DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss")}";
+
+            UpdateUIBasedOnRole();
+        }
+
+        private void UpdateUIBasedOnRole()
+        {
+            if (Global.LoggedUser.Role == "Admin")
+            {
+                catalogToolStripMenuItem.Visible = true;
+                profileToolStripMenuItem.Visible = true;
+                viewReservationsToolStripMenuItem.Visible = false;
+                changepasswordOutToolStripMenuItem.Visible = true;
+            }
+            else
+            {
+                catalogToolStripMenuItem.Visible = false;
+                profileToolStripMenuItem.Visible = true;
+                viewReservationsToolStripMenuItem.Visible = true;
+                changepasswordOutToolStripMenuItem.Visible = true;
+            }
         }
 
         private void floorsToolStripMenuItem_Click(object sender, EventArgs e)

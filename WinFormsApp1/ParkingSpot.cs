@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -14,30 +13,32 @@ namespace ParkWay
 {
     public partial class ParkingSpot : Form
     {
-
-        private bool isUpdating = false;
+        public int position = 0;
         public bool isCheckChanged = false;
-        public int position;
 
         public ParkingSpot()
         {
             InitializeComponent();
-            LoadFloors();
         }
 
-        private void ParkingSpace_Load(object sender, EventArgs e)
+        private void ParkingSpot_Load(object sender, EventArgs e)
         {
             LoadFloors();
             LoadParkingSpotsData();
             ConfigureDataGridView();
         }
+
         private void LoadParkingSpotsData()
         {
             using (var context = new DatabaseContext())
             {
                 if (cbFloor.SelectedValue != null)
                 {
-                    var parkingSpots = context.ParkingSpots.ToList();
+                    int selectedFloorId = (int)cbFloor.SelectedValue;
+                    var parkingSpots = context.ParkingSpots
+                        .Where(ps => ps.FloorId == selectedFloorId)
+                        .ToList();
+
                     dgvParkingspot.DataSource = parkingSpots;
                     HideUnnecessaryColumns();
                 }
@@ -65,11 +66,12 @@ namespace ParkWay
         {
             dgvParkingspot.Columns["ID"].Visible = false;
             dgvParkingspot.Columns["FloorId"].Visible = false;
+            dgvParkingspot.Columns["Floor"].Visible = false;
         }
 
         private void ResetForm()
         {
-            isUpdating = false;
+            position = 0;
             txtPosition.Text = string.Empty;
             txtParkingSpot.Text = string.Empty;
             cbFloor.SelectedIndex = -1;
@@ -91,13 +93,12 @@ namespace ParkWay
                     int selectedFloorId = (int)cbFloor.SelectedValue;
                     bool isAvailable = chbAvailable.Checked;
 
-                    if (isUpdating)
+                    if (position != 0)
                     {
-                        int parkingspotID = int.Parse(txtPosition.Text);
-                        var existingParkingSpot = context.ParkingSpots.FirstOrDefault(ps => ps.ID == parkingspotID);
+                        var existingParkingSpot = context.ParkingSpots.FirstOrDefault(ps => ps.ID == position);
                         if (existingParkingSpot != null)
                         {
-                            if (context.ParkingSpots.Any(p => p.Name == txtParkingSpot.Text && p.FloorId == selectedFloorId && p.ID != parkingspotID))
+                            if (context.ParkingSpots.Any(p => p.Name == txtParkingSpot.Text && p.FloorId == selectedFloorId && p.ID != position))
                             {
                                 MessageBox.Show("The name of the parking space already exists on the selected floor!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
@@ -149,11 +150,8 @@ namespace ParkWay
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dgvParkingspot.SelectedRows.Count > 0)
+            if (position != 0)
             {
-                int selectedRowIndex = dgvParkingspot.SelectedRows[0].Index;
-                int parkingspotID = (int)dgvParkingspot.Rows[selectedRowIndex].Cells["ID"].Value;
-
                 DialogResult result = MessageBox.Show("Are you sure you want to delete the selected row?", Global.AppName, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
@@ -185,7 +183,7 @@ namespace ParkWay
 
         private void cbFloor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadParkingSpotsData();
+            LoadParkingSpotsData(); // Osvježi podatke parkirnih mjesta na temelju odabranog kata
         }
 
         private void chbAvailable_CheckedChanged(object sender, EventArgs e)

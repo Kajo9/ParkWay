@@ -17,8 +17,8 @@ namespace WinFormsApp1
         {
             Global.AppName = "ParkWay";
 
-            txtUsername.Text = "ivica69";
-            txtPassword.Text = "Lozinka456";
+            txtUsername.Text = "k";
+            txtPassword.Text = "Lozinka123";
         }
 
         private void btn_Login_Click(object sender, EventArgs e)
@@ -48,12 +48,11 @@ namespace WinFormsApp1
                         FirstName = user.FirstName,
                         LastName = user.LastName,
                         Username = user.Username,
-                        Password = user.Password
+                        Password = user.Password,
+                        Role = user.Role
                     };
 
                     Global.LoggedUser = userData;
-
-                    //MessageBox.Show($"Welcome, {user.Username}!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     Hide();
                     Main main = new Main();

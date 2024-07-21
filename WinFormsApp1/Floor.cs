@@ -1,24 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
 using ParkWay.Models;
 using ParkWay.Globalno;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using ParkWay;
 
 namespace ParkWay
 {
-
     public partial class Floor : Form
     {
         public int position = 0;
+        private Form openedForm = null;
 
         public Floor()
         {
@@ -36,18 +29,15 @@ namespace ParkWay
             using (var context = new DatabaseContext())
             {
                 var floors = context.Floors.ToList();
-
                 dgvFloors.DataSource = floors;
-
-                dgvFloors.Columns["ID"].Visible = false;
-                dgvFloors.Columns["ParkingSpots"].Visible = false;
             }
         }
 
         private void ConfigureDataGridView()
         {
-            dgvFloors.Columns["ID"].DisplayIndex = 0;
-            dgvFloors.Columns["FloorName"].DisplayIndex = 1;
+            dgvFloors.Columns["FloorName"].DisplayIndex = 0;
+            dgvFloors.Columns["ParkingSpots"].Visible = false;
+            dgvFloors.Columns["ID"].Visible = false;
 
             if (!dgvFloors.Columns.Contains("Show all parking spaces"))
             {
@@ -60,9 +50,6 @@ namespace ParkWay
                 };
                 dgvFloors.Columns.Add(btnListParkingSpots);
             }
-
-            dgvFloors.CellContentClick -= dgvFloors_CellContentClick;
-            dgvFloors.CellContentClick += dgvFloors_CellContentClick;
         }
 
         private void ResetForm()
@@ -138,7 +125,7 @@ namespace ParkWay
                         return;
                     }
 
-                    var floor = new ParkWay.Models.Floor
+                    var floor = new Models.Floor
                     {
                         FloorName = floorName
                     };
@@ -174,7 +161,8 @@ namespace ParkWay
 
             LoadFloorsData();
         }
-            private void newToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ResetForm();
         }
@@ -186,12 +174,23 @@ namespace ParkWay
                 var column = dgvFloors.Columns["Show all parking spaces"];
                 if (column != null && e.ColumnIndex == column.Index)
                 {
-                    position = (int)dgvFloors.Rows[e.RowIndex].Cells["ID"].Value;
+                    if (openedForm == null || openedForm.IsDisposed)
+                    {
+                        position = (int)dgvFloors.Rows[e.RowIndex].Cells["ID"].Value;
+                        openedForm = new ListofParkingSpots(position);
+                        openedForm.FormClosed += OpenedForm_FormClosed;
+                        openedForm.Show();
 
-                    ListofParkingSpots listofParkingSpots = new ListofParkingSpots(position);
-                    listofParkingSpots.Show();
+                        dgvFloors.Enabled = false;
+                    }
                 }
             }
+        }
+
+        private void OpenedForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            openedForm = null;
+            dgvFloors.Enabled = true;
         }
 
         private void dgvFloors_DoubleClick(object sender, EventArgs e)
@@ -199,7 +198,6 @@ namespace ParkWay
             if (dgvFloors.SelectedRows.Count > 0)
             {
                 var selectedIndex = dgvFloors.SelectedRows[0].Index;
-
                 position = int.Parse(dgvFloors.Rows[selectedIndex].Cells["ID"].Value.ToString());
                 txtPosition.Text = dgvFloors.Rows[selectedIndex].Cells["ID"].Value.ToString();
                 txtFloorName.Text = dgvFloors.Rows[selectedIndex].Cells["FloorName"].Value.ToString();

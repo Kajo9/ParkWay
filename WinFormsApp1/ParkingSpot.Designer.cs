@@ -159,6 +159,7 @@
             // 
             // cbFloor
             // 
+            cbFloor.AccessibleRole = AccessibleRole.ComboBox;
             cbFloor.Location = new Point(144, 82);
             cbFloor.Name = "cbFloor";
             cbFloor.Size = new Size(481, 28);
@@ -213,6 +214,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ParkWay";
             WindowState = FormWindowState.Maximized;
+            Load += ParkingSpot_Load;
             ((System.ComponentModel.ISupportInitialize)dgvParkingspot).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
