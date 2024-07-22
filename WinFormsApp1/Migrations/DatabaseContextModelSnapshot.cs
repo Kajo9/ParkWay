@@ -98,13 +98,13 @@ namespace ParkWay.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int>("NumberOfDays")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("ParkingSpotId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("ReservationDate")
+                    b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("UserId")

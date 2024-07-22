@@ -25,21 +25,6 @@ namespace ParkWay.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ParkingOverviews",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ParkingSpotName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FloorName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    isReserved = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ParkingOverviews", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -105,57 +90,28 @@ namespace ParkWay.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Purchases",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserID = table.Column<int>(type: "int", nullable: false),
-                    ParkingSpotID = table.Column<int>(type: "int", nullable: false),
-                    PurchaseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    NumberOfDays = table.Column<int>(type: "int", nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Purchases", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_Purchases_ParkingSpots_ParkingSpotID",
-                        column: x => x.ParkingSpotID,
-                        principalTable: "ParkingSpots",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Purchases_Users_UserID",
-                        column: x => x.UserID,
-                        principalTable: "Users",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Reservations",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserID = table.Column<int>(type: "int", nullable: false),
-                    ParkingSpotID = table.Column<int>(type: "int", nullable: false),
-                    ReservationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    NumberOfDays = table.Column<int>(type: "int", nullable: false)
+                    ParkingSpotId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    StartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Reservations", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Reservations_ParkingSpots_ParkingSpotID",
-                        column: x => x.ParkingSpotID,
+                        name: "FK_Reservations_ParkingSpots_ParkingSpotId",
+                        column: x => x.ParkingSpotId,
                         principalTable: "ParkingSpots",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Reservations_Users_UserID",
-                        column: x => x.UserID,
+                        name: "FK_Reservations_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
@@ -177,24 +133,14 @@ namespace ParkWay.Migrations
                 column: "FloorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Purchases_ParkingSpotID",
-                table: "Purchases",
-                column: "ParkingSpotID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Purchases_UserID",
-                table: "Purchases",
-                column: "UserID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Reservations_ParkingSpotID",
+                name: "IX_Reservations_ParkingSpotId",
                 table: "Reservations",
-                column: "ParkingSpotID");
+                column: "ParkingSpotId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reservations_UserID",
+                name: "IX_Reservations_UserId",
                 table: "Reservations",
-                column: "UserID");
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -202,12 +148,6 @@ namespace ParkWay.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Invoices");
-
-            migrationBuilder.DropTable(
-                name: "ParkingOverviews");
-
-            migrationBuilder.DropTable(
-                name: "Purchases");
 
             migrationBuilder.DropTable(
                 name: "Reservations");

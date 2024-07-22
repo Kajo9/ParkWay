@@ -53,7 +53,7 @@
             msCatalog.Items.AddRange(new ToolStripItem[] { catalogToolStripMenuItem });
             msCatalog.Location = new Point(0, 0);
             msCatalog.Name = "msCatalog";
-            msCatalog.Size = new Size(156, 424);
+            msCatalog.Size = new Size(101, 424);
             msCatalog.TabIndex = 1;
             msCatalog.Text = "menuStrip1";
             // 
@@ -95,6 +95,7 @@
             // 
             // toolStrip1
             // 
+            toolStrip1.BackColor = SystemColors.GradientActiveCaption;
             toolStrip1.Dock = DockStyle.Right;
             toolStrip1.ImageScalingSize = new Size(25, 25);
             toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1 });
@@ -108,6 +109,7 @@
             // 
             toolStripDropDownButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
             toolStripDropDownButton1.DropDownItems.AddRange(new ToolStripItem[] { profileToolStripMenuItem, viewReservationsToolStripMenuItem, changePasswordToolStripMenuItem, logOutToolStripMenuItem });
+            toolStripDropDownButton1.ForeColor = SystemColors.Control;
             toolStripDropDownButton1.Image = Properties.Resources.avatar_12124771;
             toolStripDropDownButton1.ImageTransparentColor = Color.Magenta;
             toolStripDropDownButton1.Name = "toolStripDropDownButton1";

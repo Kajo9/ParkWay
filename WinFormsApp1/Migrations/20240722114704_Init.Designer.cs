@@ -12,8 +12,8 @@ using ParkWay.Models;
 namespace ParkWay.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240722092041_UpdateInit")]
-    partial class UpdateInit
+    [Migration("20240722114704_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -101,13 +101,13 @@ namespace ParkWay.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int>("NumberOfDays")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("ParkingSpotId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("ReservationDate")
+                    b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("UserId")

@@ -2,18 +2,18 @@
 using ParkWay.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ParkWay
 {
     public partial class ReservePS : Form
     {
-        private Form openedForm = null;
-        private int position = 0;
-
         public ReservePS()
         {
             InitializeComponent();
@@ -22,7 +22,6 @@ namespace ParkWay
         private void ReservePS_Load(object sender, EventArgs e)
         {
             ComboBoxLoadFloors();
-            LoadParkingSpots();
         }
 
         private void ComboBoxLoadFloors()
@@ -33,7 +32,7 @@ namespace ParkWay
                 cbFloor.DataSource = floors;
                 cbFloor.DisplayMember = "FloorName";
                 cbFloor.ValueMember = "ID";
-                cbFloor.SelectedIndex = -1; 
+                cbFloor.SelectedIndex = -1;
             }
         }
 
@@ -68,16 +67,16 @@ namespace ParkWay
                 dgvReservePS.Columns["Floor"].Visible = false;
                 dgvReservePS.Columns["isAvaible"].Visible = false;
 
-                if (!dgvReservePS.Columns.Contains("Reserve parking spot"))
+                if (!dgvReservePS.Columns.Contains("Available"))
                 {
-                    DataGridViewButtonColumn btnListParkingSpots = new DataGridViewButtonColumn
+                    DataGridViewButtonColumn btnReserve = new DataGridViewButtonColumn
                     {
-                        HeaderText = "Available",
-                        Text = "Reserve parking spot",
+                        HeaderText = "Action",
+                        Text = "Reserve",
                         UseColumnTextForButtonValue = true,
                         Name = "Available"
                     };
-                    dgvReservePS.Columns.Add(btnListParkingSpots);
+                    dgvReservePS.Columns.Add(btnReserve);
                 }
             }
         }
@@ -100,9 +99,8 @@ namespace ParkWay
                             parkingSpot.isAvaible = false;
                             context.SaveChanges();
 
-
                             MessageBox.Show("Parking spot reserved successfully.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadParkingSpots(); 
+                            LoadParkingSpots();
                         }
                     }
                     else

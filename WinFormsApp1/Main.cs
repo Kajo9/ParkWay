@@ -32,14 +32,14 @@ namespace ParkWay
         //        catalogToolStripMenuItem.Visible = true;
         //        profileToolStripMenuItem.Visible = true;
         //        viewReservationsToolStripMenuItem.Visible = false;
-        //        changepasswordOutToolStripMenuItem.Visible = true;
+        //        changePasswordToolStripMenuItem.Visible = true;
         //    }
         //    else
         //    {
         //        catalogToolStripMenuItem.Visible = false;
         //        profileToolStripMenuItem.Visible = true;
         //        viewReservationsToolStripMenuItem.Visible = true;
-        //        changepasswordOutToolStripMenuItem.Visible = true;
+        //        changePasswordToolStripMenuItem.Visible = true;
         //    }
         //}
 

@@ -44,6 +44,7 @@ namespace ParkWay.Models
                 .HasOne(r => r.ParkingSpot)
                 .WithMany()
                 .HasForeignKey(p => p.ParkingSpotId);
+
             modelBuilder.Entity<Reservation>()
                 .HasOne(r => r.User)
                 .WithMany()

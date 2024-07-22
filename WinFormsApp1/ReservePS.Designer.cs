@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             dgvReservePS = new DataGridView();
-            cbFloor = new ComboBox();
             lblFloor = new Label();
+            cbFloor = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvReservePS).BeginInit();
             SuspendLayout();
             // 
@@ -40,45 +40,44 @@
             dgvReservePS.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvReservePS.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvReservePS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvReservePS.Location = new Point(29, 82);
+            dgvReservePS.Location = new Point(23, 71);
             dgvReservePS.Name = "dgvReservePS";
             dgvReservePS.ReadOnly = true;
             dgvReservePS.RowHeadersWidth = 51;
             dgvReservePS.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvReservePS.Size = new Size(797, 384);
+            dgvReservePS.Size = new Size(900, 380);
             dgvReservePS.TabIndex = 0;
-            dgvReservePS.CellContentClick += dgvReservePS_CellContentClick;
-            // 
-            // cbFloor
-            // 
-            cbFloor.FormattingEnabled = true;
-            cbFloor.Location = new Point(105, 33);
-            cbFloor.Name = "cbFloor";
-            cbFloor.Size = new Size(151, 28);
-            cbFloor.TabIndex = 1;
             // 
             // lblFloor
             // 
             lblFloor.AutoSize = true;
-            lblFloor.Location = new Point(29, 36);
+            lblFloor.Location = new Point(23, 30);
             lblFloor.Name = "lblFloor";
             lblFloor.Size = new Size(46, 20);
-            lblFloor.TabIndex = 2;
+            lblFloor.TabIndex = 1;
             lblFloor.Text = "Floor:";
+            // 
+            // cbFloor
+            // 
+            cbFloor.FormattingEnabled = true;
+            cbFloor.Location = new Point(92, 30);
+            cbFloor.Name = "cbFloor";
+            cbFloor.Size = new Size(151, 28);
+            cbFloor.TabIndex = 2;
             // 
             // ReservePS
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(852, 499);
-            Controls.Add(lblFloor);
+            ClientSize = new Size(952, 481);
             Controls.Add(cbFloor);
+            Controls.Add(lblFloor);
             Controls.Add(dgvReservePS);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "ReservePS";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "ParkWay";
+            Text = "ReservePS";
             WindowState = FormWindowState.Maximized;
             Load += ReservePS_Load;
             ((System.ComponentModel.ISupportInitialize)dgvReservePS).EndInit();
@@ -89,7 +88,7 @@
         #endregion
 
         private DataGridView dgvReservePS;
-        private ComboBox cbFloor;
         private Label lblFloor;
+        private ComboBox cbFloor;
     }
 }
