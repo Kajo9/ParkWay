@@ -11,6 +11,9 @@ namespace ParkWay
 {
     public partial class ReservePS : Form
     {
+        private Form openedForm = null;
+        private int position = 0;
+
         public ReservePS()
         {
             InitializeComponent();
@@ -22,7 +25,6 @@ namespace ParkWay
             LoadParkingSpots();
         }
 
-
         private void ComboBoxLoadFloors()
         {
             using (var context = new DatabaseContext())
@@ -31,22 +33,76 @@ namespace ParkWay
                 cbFloor.DataSource = floors;
                 cbFloor.DisplayMember = "FloorName";
                 cbFloor.ValueMember = "ID";
+                cbFloor.SelectedIndex = -1; 
             }
+        }
+
+        private void cbFloor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadParkingSpots();
         }
 
         private void LoadParkingSpots()
         {
             using (var context = new DatabaseContext())
             {
-                var parkingSpots = context.ParkingSpots.ToList();
+                if (cbFloor.SelectedValue != null && cbFloor.SelectedIndex != -1)
+                {
+                    int selectedFloorId = (int)cbFloor.SelectedValue;
+                    var parkingSpots = context.ParkingSpots
+                        .Where(ps => ps.FloorId == selectedFloorId && ps.isAvaible)
+                        .ToList();
 
-                dgvReservePS.DataSource = parkingSpots;
-                dgvReservePS.Columns["ID"].Visible = false;
+                    dgvReservePS.DataSource = parkingSpots;
+                    HideUnnecessaryColumns();
+                }
+                else
+                {
+                    dgvReservePS.DataSource = null;
+                }
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void HideUnnecessaryColumns()
         {
+            if (dgvReservePS.DataSource != null)
+            {
+                dgvReservePS.Columns["ID"].Visible = false;
+                dgvReservePS.Columns["FloorId"].Visible = false;
+                dgvReservePS.Columns["Floor"].Visible = false;
+                dgvReservePS.Columns["isAvaible"].Visible = false;
+
+                if (!dgvReservePS.Columns.Contains("Reserve parking spot"))
+                {
+                    DataGridViewButtonColumn btnListParkingSpots = new DataGridViewButtonColumn
+                    {
+                        HeaderText = "Available",
+                        Text = "Reserve parking spot",
+                        UseColumnTextForButtonValue = true,
+                        Name = "Available"
+                    };
+                    dgvReservePS.Columns.Add(btnListParkingSpots);
+                }
+            }
+        }
+
+        private void dgvReservePS_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var column = dgvReservePS.Columns["Show all parking spaces"];
+                if (column != null && e.ColumnIndex == column.Index)
+                {
+                    if (openedForm == null || openedForm.IsDisposed)
+                    {
+                        position = (int)dgvReservePS.Rows[e.RowIndex].Cells["ID"].Value;
+                        openedForm = new ListofParkingSpots(position);
+                        openedForm.Show();
+
+                        dgvReservePS.Enabled = false;
+                    }
+                }
+            }
         }
     }
 }

@@ -47,6 +47,7 @@
             dgvReservePS.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvReservePS.Size = new Size(797, 384);
             dgvReservePS.TabIndex = 0;
+            dgvReservePS.CellContentClick += dgvReservePS_CellContentClick;
             // 
             // cbFloor
             // 

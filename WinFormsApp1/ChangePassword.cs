@@ -35,6 +35,7 @@ namespace ParkWay
                 using (var context = new DatabaseContext())
                 {
                     var loggedUser = context.Users.SingleOrDefault(u => u.ID == Global.LoggedUser.UserId);
+
                     if (loggedUser != null)
                     {
                         if (loggedUser.Password == newPassword)
@@ -45,10 +46,13 @@ namespace ParkWay
 
                         loggedUser.Password = newPassword;
                         context.SaveChanges();
+
                         MessageBox.Show("Password changed successfully.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        this.Close();
+                        Global.LoggedUser.Password = newPassword;
                     }
+
+                    Close();
                 }
             }
             catch (Exception ex)

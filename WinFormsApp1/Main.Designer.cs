@@ -37,8 +37,8 @@
             toolStripDropDownButton1 = new ToolStripDropDownButton();
             profileToolStripMenuItem = new ToolStripMenuItem();
             viewReservationsToolStripMenuItem = new ToolStripMenuItem();
-            changepasswordOutToolStripMenuItem = new ToolStripMenuItem();
-            logOutToolStripMenuItem1 = new ToolStripMenuItem();
+            changePasswordToolStripMenuItem = new ToolStripMenuItem();
+            logOutToolStripMenuItem = new ToolStripMenuItem();
             lblLogUser = new Label();
             msCatalog.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -99,7 +99,7 @@
             // toolStripDropDownButton1
             // 
             toolStripDropDownButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripDropDownButton1.DropDownItems.AddRange(new ToolStripItem[] { profileToolStripMenuItem, viewReservationsToolStripMenuItem, changepasswordOutToolStripMenuItem, logOutToolStripMenuItem1 });
+            toolStripDropDownButton1.DropDownItems.AddRange(new ToolStripItem[] { profileToolStripMenuItem, viewReservationsToolStripMenuItem, changePasswordToolStripMenuItem, logOutToolStripMenuItem });
             toolStripDropDownButton1.Image = Properties.Resources.avatar_12124771;
             toolStripDropDownButton1.ImageTransparentColor = Color.Magenta;
             toolStripDropDownButton1.Name = "toolStripDropDownButton1";
@@ -120,20 +120,20 @@
             viewReservationsToolStripMenuItem.Text = "View/Reserve Parking Spot";
             viewReservationsToolStripMenuItem.Click += viewReservationsToolStripMenuItem_Click;
             // 
-            // changepasswordOutToolStripMenuItem
+            // changePasswordToolStripMenuItem
             // 
-            changepasswordOutToolStripMenuItem.Name = "changepasswordOutToolStripMenuItem";
-            changepasswordOutToolStripMenuItem.Size = new Size(273, 32);
-            changepasswordOutToolStripMenuItem.Text = "Change Password";
-            changepasswordOutToolStripMenuItem.Click += changepasswordOutToolStripMenuItem_Click;
+            changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            changePasswordToolStripMenuItem.Size = new Size(273, 32);
+            changePasswordToolStripMenuItem.Text = "Change password";
+            changePasswordToolStripMenuItem.Click += changePasswordToolStripMenuItem_Click;
             // 
-            // logOutToolStripMenuItem1
+            // logOutToolStripMenuItem
             // 
-            logOutToolStripMenuItem1.Image = Properties.Resources.power_on_4980965;
-            logOutToolStripMenuItem1.Name = "logOutToolStripMenuItem1";
-            logOutToolStripMenuItem1.Size = new Size(273, 32);
-            logOutToolStripMenuItem1.Text = "Log out";
-            logOutToolStripMenuItem1.Click += logOutToolStripMenuItem1_Click;
+            logOutToolStripMenuItem.Image = Properties.Resources.power_on_4980965;
+            logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            logOutToolStripMenuItem.Size = new Size(273, 32);
+            logOutToolStripMenuItem.Text = "Log out";
+            logOutToolStripMenuItem.Click += logOutToolStripMenuItem_Click;
             // 
             // lblLogUser
             // 
@@ -174,8 +174,8 @@
         private ToolStripDropDownButton toolStripDropDownButton1;
         private ToolStripMenuItem profileToolStripMenuItem;
         private ToolStripMenuItem viewReservationsToolStripMenuItem;
-        private ToolStripMenuItem changepasswordOutToolStripMenuItem;
         private Label lblLogUser;
-        private ToolStripMenuItem logOutToolStripMenuItem1;
+        private ToolStripMenuItem changePasswordToolStripMenuItem;
+        private ToolStripMenuItem logOutToolStripMenuItem;
     }
 }

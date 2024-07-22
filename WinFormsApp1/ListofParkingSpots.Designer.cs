@@ -55,6 +55,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(dgvListParkingSpots);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "ListofParkingSpots";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ParkWay";

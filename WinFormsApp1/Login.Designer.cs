@@ -53,7 +53,6 @@
             // 
             txtUsername.Location = new Point(225, 78);
             txtUsername.Name = "txtUsername";
-            txtUsername.PlaceholderText = "Korisničko ime";
             txtUsername.Size = new Size(267, 27);
             txtUsername.TabIndex = 0;
             // 
@@ -62,7 +61,6 @@
             txtPassword.Location = new Point(225, 153);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
-            txtPassword.PlaceholderText = "Lozinka";
             txtPassword.Size = new Size(267, 27);
             txtPassword.TabIndex = 1;
             // 

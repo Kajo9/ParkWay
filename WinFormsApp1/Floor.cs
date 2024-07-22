@@ -178,7 +178,6 @@ namespace ParkWay
                     {
                         position = (int)dgvFloors.Rows[e.RowIndex].Cells["ID"].Value;
                         openedForm = new ListofParkingSpots(position);
-                        openedForm.FormClosed += OpenedForm_FormClosed;
                         openedForm.Show();
 
                         dgvFloors.Enabled = false;

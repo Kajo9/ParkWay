@@ -22,26 +22,26 @@ namespace ParkWay
 
             lblLogUser.Text = $"Welcome {Global.LoggedUser.FirstName} {DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss")}";
 
-            UpdateUIBasedOnRole();
+            //UpdateUIBasedOnRole();
         }
 
-        private void UpdateUIBasedOnRole()
-        {
-            if (Global.LoggedUser.Role == "Admin")
-            {
-                catalogToolStripMenuItem.Visible = true;
-                profileToolStripMenuItem.Visible = true;
-                viewReservationsToolStripMenuItem.Visible = false;
-                changepasswordOutToolStripMenuItem.Visible = true;
-            }
-            else
-            {
-                catalogToolStripMenuItem.Visible = false;
-                profileToolStripMenuItem.Visible = true;
-                viewReservationsToolStripMenuItem.Visible = true;
-                changepasswordOutToolStripMenuItem.Visible = true;
-            }
-        }
+        //private void UpdateUIBasedOnRole()
+        //{
+        //    if (Global.LoggedUser.Role == "Admin")
+        //    {
+        //        catalogToolStripMenuItem.Visible = true;
+        //        profileToolStripMenuItem.Visible = true;
+        //        viewReservationsToolStripMenuItem.Visible = false;
+        //        changepasswordOutToolStripMenuItem.Visible = true;
+        //    }
+        //    else
+        //    {
+        //        catalogToolStripMenuItem.Visible = false;
+        //        profileToolStripMenuItem.Visible = true;
+        //        viewReservationsToolStripMenuItem.Visible = true;
+        //        changepasswordOutToolStripMenuItem.Visible = true;
+        //    }
+        //}
 
         private void floorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -73,17 +73,17 @@ namespace ParkWay
             reservePS.Show();
         }
 
-        private void changepasswordOutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePassword changePassword = new ChangePassword();
-            changePassword.Show();
-        }
-
-        private void logOutToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Login login = new Login();
             login.Show();
             Close();
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePassword changePassword = new ChangePassword();
+            changePassword.Show();
         }
     }
 }

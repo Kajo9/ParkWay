@@ -25,9 +25,22 @@ namespace ParkWay
         {
             LoadFloors();
             LoadParkingSpotsData();
+            ComboBoxLoadFloors();
             ConfigureDataGridView();
+            ResetForm();
         }
 
+        private void ComboBoxLoadFloors()
+        {
+            using (var context = new DatabaseContext())
+            {
+                var floors = context.Floors.ToList();
+                cbFloor.DataSource = floors;
+                cbFloor.DisplayMember = "FloorName";
+                cbFloor.ValueMember = "ID";
+                cbFloor.SelectedIndex = -1;
+            }
+        }
         private void LoadParkingSpotsData()
         {
             using (var context = new DatabaseContext())
@@ -183,7 +196,7 @@ namespace ParkWay
 
         private void cbFloor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadParkingSpotsData(); // Osvježi podatke parkirnih mjesta na temelju odabranog kata
+            LoadParkingSpotsData();
         }
 
         private void chbAvailable_CheckedChanged(object sender, EventArgs e)
