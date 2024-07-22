@@ -33,6 +33,7 @@
             floorsToolStripMenuItem = new ToolStripMenuItem();
             parkingSpotsToolStripMenuItem = new ToolStripMenuItem();
             usersToolStripMenuItem = new ToolStripMenuItem();
+            reservationsToolStripMenuItem = new ToolStripMenuItem();
             toolStrip1 = new ToolStrip();
             toolStripDropDownButton1 = new ToolStripDropDownButton();
             profileToolStripMenuItem = new ToolStripMenuItem();
@@ -52,38 +53,45 @@
             msCatalog.Items.AddRange(new ToolStripItem[] { catalogToolStripMenuItem });
             msCatalog.Location = new Point(0, 0);
             msCatalog.Name = "msCatalog";
-            msCatalog.Size = new Size(101, 424);
+            msCatalog.Size = new Size(156, 424);
             msCatalog.TabIndex = 1;
             msCatalog.Text = "menuStrip1";
             // 
             // catalogToolStripMenuItem
             // 
-            catalogToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { floorsToolStripMenuItem, parkingSpotsToolStripMenuItem, usersToolStripMenuItem });
+            catalogToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { floorsToolStripMenuItem, parkingSpotsToolStripMenuItem, usersToolStripMenuItem, reservationsToolStripMenuItem });
             catalogToolStripMenuItem.Image = Properties.Resources.catalog_13085305;
             catalogToolStripMenuItem.Name = "catalogToolStripMenuItem";
-            catalogToolStripMenuItem.Size = new Size(88, 24);
+            catalogToolStripMenuItem.Size = new Size(143, 24);
             catalogToolStripMenuItem.Text = "Catalog";
             // 
             // floorsToolStripMenuItem
             // 
             floorsToolStripMenuItem.Name = "floorsToolStripMenuItem";
-            floorsToolStripMenuItem.Size = new Size(179, 26);
+            floorsToolStripMenuItem.Size = new Size(269, 26);
             floorsToolStripMenuItem.Text = "Floors";
             floorsToolStripMenuItem.Click += floorsToolStripMenuItem_Click;
             // 
             // parkingSpotsToolStripMenuItem
             // 
             parkingSpotsToolStripMenuItem.Name = "parkingSpotsToolStripMenuItem";
-            parkingSpotsToolStripMenuItem.Size = new Size(179, 26);
+            parkingSpotsToolStripMenuItem.Size = new Size(269, 26);
             parkingSpotsToolStripMenuItem.Text = "Parking spots";
             parkingSpotsToolStripMenuItem.Click += parkingSpotsToolStripMenuItem_Click;
             // 
             // usersToolStripMenuItem
             // 
             usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            usersToolStripMenuItem.Size = new Size(179, 26);
-            usersToolStripMenuItem.Text = "Users";
+            usersToolStripMenuItem.Size = new Size(269, 26);
+            usersToolStripMenuItem.Text = "User administartion";
             usersToolStripMenuItem.Click += usersToolStripMenuItem_Click;
+            // 
+            // reservationsToolStripMenuItem
+            // 
+            reservationsToolStripMenuItem.Name = "reservationsToolStripMenuItem";
+            reservationsToolStripMenuItem.Size = new Size(269, 26);
+            reservationsToolStripMenuItem.Text = "Reservation administration";
+            reservationsToolStripMenuItem.Click += reservationsToolStripMenuItem_Click;
             // 
             // toolStrip1
             // 
@@ -177,5 +185,6 @@
         private Label lblLogUser;
         private ToolStripMenuItem changePasswordToolStripMenuItem;
         private ToolStripMenuItem logOutToolStripMenuItem;
+        private ToolStripMenuItem reservationsToolStripMenuItem;
     }
 }

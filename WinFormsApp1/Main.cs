@@ -85,5 +85,11 @@ namespace ParkWay
             ChangePassword changePassword = new ChangePassword();
             changePassword.Show();
         }
+
+        private void reservationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReserveAdministration reserveAdministration = new ReserveAdministration();
+            reserveAdministration.Show();
+        }
     }
 }

@@ -46,7 +46,7 @@ namespace ParkWay
         {
             using (var context = new DatabaseContext())
             {
-                if (cbFloor.SelectedValue != null && cbFloor.SelectedIndex != -1)
+                if (cbFloor.SelectedValue != null)
                 {
                     int selectedFloorId = (int)cbFloor.SelectedValue;
                     var parkingSpots = context.ParkingSpots
@@ -55,10 +55,6 @@ namespace ParkWay
 
                     dgvReservePS.DataSource = parkingSpots;
                     HideUnnecessaryColumns();
-                }
-                else
-                {
-                    dgvReservePS.DataSource = null;
                 }
             }
         }
@@ -88,18 +84,30 @@ namespace ParkWay
 
         private void dgvReservePS_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (e.RowIndex >= 0 && e.ColumnIndex == dgvReservePS.Columns["Available"].Index)
             {
-                var column = dgvReservePS.Columns["Show all parking spaces"];
-                if (column != null && e.ColumnIndex == column.Index)
-                {
-                    if (openedForm == null || openedForm.IsDisposed)
-                    {
-                        position = (int)dgvReservePS.Rows[e.RowIndex].Cells["ID"].Value;
-                        openedForm = new ListofParkingSpots(position);
-                        openedForm.Show();
+                int parkingSpotId = (int)dgvReservePS.Rows[e.RowIndex].Cells["ID"].Value;
 
-                        dgvReservePS.Enabled = false;
+                using (var context = new DatabaseContext())
+                {
+                    var parkingSpot = context.ParkingSpots.FirstOrDefault(ps => ps.ID == parkingSpotId && ps.isAvaible);
+
+                    if (parkingSpot != null)
+                    {
+                        var confirmResult = MessageBox.Show("Are you sure you want to reserve this parking spot?", "Confirm Reservation", MessageBoxButtons.YesNo);
+                        if (confirmResult == DialogResult.Yes)
+                        {
+                            parkingSpot.isAvaible = false;
+                            context.SaveChanges();
+
+
+                            MessageBox.Show("Parking spot reserved successfully.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadParkingSpots(); 
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Selected parking spot is no longer available.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

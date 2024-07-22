@@ -20,16 +20,11 @@ namespace ParkWay.Models
 
         public  DbSet<Invoice> Invoices { get; set; }
 
-        public DbSet<ParkingOverview> ParkingOverviews { get; set; }
-
         public DbSet<ParkingSpot> ParkingSpots { get; set; }
-
-        public DbSet<Purchases> Purchases { get; set; }
 
         public DbSet<User> Users { get; set; }
 
         public DbSet<Reservation> Reservations { get; set; }
-
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -39,7 +34,20 @@ namespace ParkWay.Models
                 .WithOne(p => p.Floor)
                 .HasForeignKey(p => p.FloorId)
                 .IsRequired();
-        }
 
+            modelBuilder.Entity<ParkingSpot>()
+               .HasOne(p => p.Floor)
+               .WithMany(f => f.ParkingSpots)
+               .HasForeignKey(p => p.FloorId);
+
+            modelBuilder.Entity<Reservation>()
+                .HasOne(r => r.ParkingSpot)
+                .WithMany()
+                .HasForeignKey(p => p.ParkingSpotId);
+            modelBuilder.Entity<Reservation>()
+                .HasOne(r => r.User)
+                .WithMany()
+                .HasForeignKey(r => r.UserId);
+        }
     }
 }

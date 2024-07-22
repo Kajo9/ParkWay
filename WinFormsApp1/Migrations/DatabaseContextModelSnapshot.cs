@@ -65,30 +65,6 @@ namespace ParkWay.Migrations
                     b.ToTable("Invoices");
                 });
 
-            modelBuilder.Entity("ParkWay.Models.ParkingOverview", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<string>("FloorName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ParkingSpotName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("isReserved")
-                        .HasColumnType("bit");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("ParkingOverviews");
-                });
-
             modelBuilder.Entity("ParkWay.Models.ParkingSpot", b =>
                 {
                     b.Property<int>("ID")
@@ -114,38 +90,6 @@ namespace ParkWay.Migrations
                     b.ToTable("ParkingSpots");
                 });
 
-            modelBuilder.Entity("ParkWay.Models.Purchases", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("NumberOfDays")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ParkingSpotID")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("PurchaseDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("ParkingSpotID");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("Purchases");
-                });
-
             modelBuilder.Entity("ParkWay.Models.Reservation", b =>
                 {
                     b.Property<int>("ID")
@@ -157,20 +101,20 @@ namespace ParkWay.Migrations
                     b.Property<int>("NumberOfDays")
                         .HasColumnType("int");
 
-                    b.Property<int>("ParkingSpotID")
+                    b.Property<int>("ParkingSpotId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ReservationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserID")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("ParkingSpotID");
+                    b.HasIndex("ParkingSpotId");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Reservations");
                 });
@@ -238,36 +182,17 @@ namespace ParkWay.Migrations
                     b.Navigation("Floor");
                 });
 
-            modelBuilder.Entity("ParkWay.Models.Purchases", b =>
-                {
-                    b.HasOne("ParkWay.Models.ParkingSpot", "ParkingSpot")
-                        .WithMany()
-                        .HasForeignKey("ParkingSpotID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ParkWay.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ParkingSpot");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("ParkWay.Models.Reservation", b =>
                 {
                     b.HasOne("ParkWay.Models.ParkingSpot", "ParkingSpot")
                         .WithMany()
-                        .HasForeignKey("ParkingSpotID")
+                        .HasForeignKey("ParkingSpotId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ParkWay.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserID")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
