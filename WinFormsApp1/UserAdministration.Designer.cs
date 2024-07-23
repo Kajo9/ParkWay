@@ -192,12 +192,12 @@
             // lblStar
             // 
             lblStar.AutoSize = true;
-            lblStar.ForeColor = SystemColors.ControlText;
+            lblStar.ForeColor = SystemColors.ControlDark;
             lblStar.Location = new Point(12, 52);
             lblStar.Name = "lblStar";
-            lblStar.Size = new Size(325, 20);
+            lblStar.Size = new Size(335, 20);
             lblStar.TabIndex = 13;
-            lblStar.Text = "Sve označno zvijezdom mora biti popunjeno (*)";
+            lblStar.Text = "Everything marked with a star must be filled in (*)";
             // 
             // lblPosition
             // 

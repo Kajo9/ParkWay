@@ -49,7 +49,7 @@ namespace ParkWay.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FloorId = table.Column<int>(type: "int", nullable: false),
-                    isAvaible = table.Column<bool>(type: "bit", nullable: false)
+                    isAvailable = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -72,7 +72,7 @@ namespace ParkWay.Migrations
                     UserId = table.Column<int>(type: "int", nullable: false),
                     From = table.Column<DateTime>(type: "datetime2", nullable: false),
                     To = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Reference = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Notice = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

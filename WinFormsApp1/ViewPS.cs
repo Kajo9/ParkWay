@@ -36,14 +36,14 @@ namespace ParkWay
 
             if (!dgvViewPS.Columns.Contains("Reserve"))
             {
-                DataGridViewButtonColumn btnListParkingSpots = new DataGridViewButtonColumn
+                DataGridViewButtonColumn btnReserve = new DataGridViewButtonColumn
                 {
                     HeaderText = "Reserve",
                     Text = "Reserve",
                     UseColumnTextForButtonValue = true,
                     Name = "Reserve"
                 };
-                dgvViewPS.Columns.Add(btnListParkingSpots);
+                dgvViewPS.Columns.Add(btnReserve);
             }
         }
 
@@ -74,6 +74,8 @@ namespace ParkWay
         {
             using (var context = new DatabaseContext())
             {
+                context.RefreshParkingSpotStatus();
+
                 if (cbFloor.SelectedValue != null)
                 {
                     int selectedFloorId = (int)cbFloor.SelectedValue;
@@ -94,7 +96,7 @@ namespace ParkWay
                 dgvViewPS.Columns["ID"].Visible = false;
                 dgvViewPS.Columns["FloorId"].Visible = false;
                 dgvViewPS.Columns["Floor"].Visible = false;
-                dgvViewPS.Columns["isAvaible"].Visible = false;
+                dgvViewPS.Columns["isAvailable"].Visible = false;
             }
         }
 
@@ -106,6 +108,23 @@ namespace ParkWay
                 if (column != null && e.ColumnIndex == column.Index)
                 {
                     int parkingspotId = (int)dgvViewPS.Rows[e.RowIndex].Cells["ID"].Value;
+
+                    if (cbFloor.SelectedValue == null)
+                    {
+                        MessageBox.Show("You must select a floor!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    using (var context = new DatabaseContext())
+                    {
+                        var reservation = context.Reservations.FirstOrDefault(r => r.ParkingSpotId == parkingspotId && r.From <= DateTime.Now && r.To >= DateTime.Now);
+                        if (reservation != null)
+                        {
+                            MessageBox.Show("Parking spot is reserved.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
+                        }
+                    }
+
                     var reservePSform = new ReservePS(parkingspotId);
                     reservePSform.Show();
                 }

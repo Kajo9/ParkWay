@@ -13,7 +13,7 @@ namespace ParkWay
 {
     public partial class ListofParkingSpots : Form
     {
-        private int floorID;
+        public int floorID;
         public ListofParkingSpots(int floorID)
         {
             InitializeComponent();

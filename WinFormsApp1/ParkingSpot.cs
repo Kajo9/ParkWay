@@ -72,7 +72,7 @@ namespace ParkWay
         private void ConfigureDataGridView()
         {
             dgvParkingspot.Columns["Name"].DisplayIndex = 0;
-            dgvParkingspot.Columns["isAvaible"].DisplayIndex = 1;
+            dgvParkingspot.Columns["isAvailable"].DisplayIndex = 1;
         }
 
         private void HideUnnecessaryColumns()
@@ -125,7 +125,7 @@ namespace ParkWay
 
                             existingParkingSpot.Name = txtParkingSpot.Text;
                             existingParkingSpot.FloorId = selectedFloorId;
-                            existingParkingSpot.isAvaible = isAvailable;
+                            existingParkingSpot.isAvailable = isAvailable;
                             context.SaveChanges();
 
                             MessageBox.Show("Data has been updated successfully!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -150,7 +150,7 @@ namespace ParkWay
                         {
                             Name = txtParkingSpot.Text,
                             FloorId = selectedFloorId,
-                            isAvaible = isAvailable
+                            isAvailable = isAvailable
                         };
                         context.ParkingSpots.Add(parkingspot);
                         context.SaveChanges();
@@ -220,9 +220,9 @@ namespace ParkWay
                     if (parkingSpot != null)
                     {
                         bool newAvailability = chbAvailable.Checked;
-                        if (parkingSpot.isAvaible != newAvailability)
+                        if (parkingSpot.isAvailable != newAvailability)
                         {
-                            parkingSpot.isAvaible = newAvailability;
+                            parkingSpot.isAvailable = newAvailability;
                             context.SaveChanges();
 
                             MessageBox.Show("The availability status has been successfully updated!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);

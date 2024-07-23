@@ -14,6 +14,6 @@ namespace ParkWay.Models
         
         public Floor Floor { get; set; }
 
-        public bool isAvaible { get; set; }
+        public bool isAvailable { get; set; }
     }
 }

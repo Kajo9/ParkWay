@@ -54,7 +54,7 @@ namespace ParkWay.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("isAvaible")
+                    b.Property<bool>("isAvailable")
                         .HasColumnType("bit");
 
                     b.HasKey("ID");
@@ -75,12 +75,12 @@ namespace ParkWay.Migrations
                     b.Property<DateTime>("From")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ParkingSpotId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Reference")
+                    b.Property<string>("Notice")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ParkingSpotId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("To")
                         .HasColumnType("datetime2");

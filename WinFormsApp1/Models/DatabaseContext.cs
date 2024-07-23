@@ -25,6 +25,22 @@ namespace ParkWay.Models
         public DbSet<Reservation> Reservations { get; set; }
 
 
+        public void RefreshParkingSpotStatus()
+        {
+            var expiredReservations = Reservations.Where(r => r.To < DateTime.Now).ToList();
+
+            foreach (var reservation in expiredReservations)
+            {
+                var parkingSpot = ParkingSpots.Find(reservation.ParkingSpotId);
+                if (parkingSpot != null)
+                {
+                    parkingSpot.isAvailable = true;
+                    Reservations.Remove(reservation);
+                }
+            }
+
+            SaveChanges();
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Floor>()

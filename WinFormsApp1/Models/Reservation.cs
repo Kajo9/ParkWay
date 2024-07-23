@@ -18,6 +18,6 @@ namespace ParkWay.Models
 
         public DateTime To { get; set; }
 
-        public string Reference { get; set; }
+        public string Notice { get; set; }
     }
 }
