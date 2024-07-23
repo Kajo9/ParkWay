@@ -12,7 +12,7 @@ using ParkWay.Models;
 namespace ParkWay.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240722114704_Init")]
+    [Migration("20240723082722_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -40,32 +40,6 @@ namespace ParkWay.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Floors");
-                });
-
-            modelBuilder.Entity("ParkWay.Models.Invoice", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<DateTime>("InvoiceDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ParkingSpotID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("ParkingSpotID");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("Invoices");
                 });
 
             modelBuilder.Entity("ParkWay.Models.ParkingSpot", b =>
@@ -101,13 +75,17 @@ namespace ParkWay.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<DateTime>("EndTime")
+                    b.Property<DateTime>("From")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("ParkingSpotId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("StartTime")
+                    b.Property<string>("Reference")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("To")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("UserId")
@@ -153,25 +131,6 @@ namespace ParkWay.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("ParkWay.Models.Invoice", b =>
-                {
-                    b.HasOne("ParkWay.Models.ParkingSpot", "ParkingSpot")
-                        .WithMany()
-                        .HasForeignKey("ParkingSpotID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ParkWay.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ParkingSpot");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ParkWay.Models.ParkingSpot", b =>

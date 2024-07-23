@@ -69,7 +69,7 @@ namespace ParkWay
 
         private void viewReservationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ReservePS reservePS = new ReservePS();
+            ViewPS reservePS = new ViewPS();
             reservePS.Show();
         }
 

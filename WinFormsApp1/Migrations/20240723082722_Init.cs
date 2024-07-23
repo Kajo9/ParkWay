@@ -63,33 +63,6 @@ namespace ParkWay.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Invoices",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserID = table.Column<int>(type: "int", nullable: false),
-                    InvoiceDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ParkingSpotID = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Invoices", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_Invoices_ParkingSpots_ParkingSpotID",
-                        column: x => x.ParkingSpotID,
-                        principalTable: "ParkingSpots",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Invoices_Users_UserID",
-                        column: x => x.UserID,
-                        principalTable: "Users",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Reservations",
                 columns: table => new
                 {
@@ -97,8 +70,9 @@ namespace ParkWay.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ParkingSpotId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    StartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndTime = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    From = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    To = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Reference = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -116,16 +90,6 @@ namespace ParkWay.Migrations
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Invoices_ParkingSpotID",
-                table: "Invoices",
-                column: "ParkingSpotID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Invoices_UserID",
-                table: "Invoices",
-                column: "UserID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ParkingSpots_FloorId",
@@ -146,9 +110,6 @@ namespace ParkWay.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Invoices");
-
             migrationBuilder.DropTable(
                 name: "Reservations");
 

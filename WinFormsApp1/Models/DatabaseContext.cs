@@ -18,8 +18,6 @@ namespace ParkWay.Models
 
         public  DbSet<Floor> Floors { get; set; }
 
-        public  DbSet<Invoice> Invoices { get; set; }
-
         public DbSet<ParkingSpot> ParkingSpots { get; set; }
 
         public DbSet<User> Users { get; set; }

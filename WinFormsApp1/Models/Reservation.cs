@@ -14,7 +14,10 @@ namespace ParkWay.Models
         public int UserId { get; set; }
         public User User { get; set; }
 
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public DateTime From { get; set; }
+
+        public DateTime To { get; set; }
+
+        public string Reference { get; set; }
     }
 }

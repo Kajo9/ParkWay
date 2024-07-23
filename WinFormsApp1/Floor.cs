@@ -11,8 +11,6 @@ namespace ParkWay
     public partial class Floor : Form
     {
         public int position = 0;
-        private Form openedForm = null;
-
         public Floor()
         {
             InitializeComponent();
@@ -174,22 +172,11 @@ namespace ParkWay
                 var column = dgvFloors.Columns["Show all parking spaces"];
                 if (column != null && e.ColumnIndex == column.Index)
                 {
-                    if (openedForm == null || openedForm.IsDisposed)
-                    {
-                        position = (int)dgvFloors.Rows[e.RowIndex].Cells["ID"].Value;
-                        openedForm = new ListofParkingSpots(position);
-                        openedForm.Show();
-
-                        dgvFloors.Enabled = false;
-                    }
+                    int floorId = (int)dgvFloors.Rows[e.RowIndex].Cells["ID"].Value;
+                    var listofParkingSpotsForm = new ListofParkingSpots(floorId);
+                    listofParkingSpotsForm.Show();
                 }
             }
-        }
-
-        private void OpenedForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            openedForm = null;
-            dgvFloors.Enabled = true;
         }
 
         private void dgvFloors_DoubleClick(object sender, EventArgs e)

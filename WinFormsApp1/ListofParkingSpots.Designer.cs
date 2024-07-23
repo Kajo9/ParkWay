@@ -55,11 +55,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(dgvListParkingSpots);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "ListofParkingSpots";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ParkWay";
+            TopMost = true;
             Load += ListofParkingSpots_Load;
             ((System.ComponentModel.ISupportInitialize)dgvListParkingSpots).EndInit();
             ResumeLayout(false);

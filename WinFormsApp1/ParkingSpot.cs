@@ -101,6 +101,12 @@ namespace ParkWay
         {
             if (!string.IsNullOrWhiteSpace(txtParkingSpot.Text))
             {
+                if (cbFloor.SelectedValue == null)
+                {
+                    MessageBox.Show("You must select a floor!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 using (var context = new DatabaseContext())
                 {
                     int selectedFloorId = (int)cbFloor.SelectedValue;
