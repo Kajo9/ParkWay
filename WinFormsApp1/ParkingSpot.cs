@@ -177,7 +177,7 @@ namespace ParkWay
                 {
                     using (var context = new DatabaseContext())
                     {
-                        var parkingspot = context.ParkingSpots.FirstOrDefault(p => p.ID == position);
+                        var parkingspot = context.ParkingSpots.FirstOrDefault(p => p.ID == position); // Koristi 'ID'
                         if (parkingspot != null)
                         {
                             context.ParkingSpots.Remove(parkingspot);
@@ -199,6 +199,7 @@ namespace ParkWay
                 MessageBox.Show("You must select a row to delete.", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
 
         private void cbFloor_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -244,7 +245,7 @@ namespace ParkWay
                 txtPosition.Text = dgvParkingspot.Rows[selectedIndex].Cells["ID"].Value.ToString();
                 txtParkingSpot.Text = dgvParkingspot.Rows[selectedIndex].Cells["Name"].Value.ToString();
                 cbFloor.SelectedValue = dgvParkingspot.Rows[selectedIndex].Cells["FloorId"].Value;
-                chbAvailable.Checked = (bool)dgvParkingspot.Rows[selectedIndex].Cells["isAvaible"].Value;
+                chbAvailable.Checked = (bool)dgvParkingspot.Rows[selectedIndex].Cells["isAvailable"].Value;
 
                 isCheckChanged = true;
                 isCheckChanged = false;

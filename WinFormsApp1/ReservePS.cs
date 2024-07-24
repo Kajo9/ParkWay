@@ -22,7 +22,7 @@ namespace ParkWay
             DateTime futureTime = now.AddHours(1);
 
             txtFromTime.Text = now.ToString("HH:mm");
-            
+
             txtToTime.Text = futureTime.ToString("HH:mm");
         }
 
@@ -82,21 +82,22 @@ namespace ParkWay
                     UserId = Global.LoggedUser.UserId,
                     From = fromDateTime,
                     To = toDateTime,
-                    Notice = txtNotice.Text
+                    Notice = txtNotice.Text,
                 };
 
                 context.Reservations.Add(reservation);
+
+                var parkingSpot = context.ParkingSpots.FirstOrDefault(ps => ps.ID == parkingspotID);
 
                 try
                 {
                     context.SaveChanges();
                     MessageBox.Show("Reservation saved successfully!", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     Close();
                 }
-                catch (Exception x)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("An error occurred while saving the reservation:", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"An error occurred while saving the reservation: {ex.Message}", Global.AppName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

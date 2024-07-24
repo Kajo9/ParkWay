@@ -41,6 +41,7 @@ namespace ParkWay.Models
 
             SaveChanges();
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Floor>()

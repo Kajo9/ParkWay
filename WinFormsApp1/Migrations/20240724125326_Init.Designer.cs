@@ -12,7 +12,7 @@ using ParkWay.Models;
 namespace ParkWay.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240723132059_Init")]
+    [Migration("20240724125326_Init")]
     partial class Init
     {
         /// <inheritdoc />

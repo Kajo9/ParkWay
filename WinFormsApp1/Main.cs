@@ -22,6 +22,7 @@ namespace ParkWay
 
             lblLogUser.Text = $"Welcome {Global.LoggedUser.FirstName} {DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss")}";
 
+
             //UpdateUIBasedOnRole();
         }
 
@@ -30,16 +31,12 @@ namespace ParkWay
         //    if (Global.LoggedUser.Role == "Admin")
         //    {
         //        catalogToolStripMenuItem.Visible = true;
-        //        profileToolStripMenuItem.Visible = true;
         //        viewReservationsToolStripMenuItem.Visible = false;
-        //        changePasswordToolStripMenuItem.Visible = true;
         //    }
         //    else
         //    {
         //        catalogToolStripMenuItem.Visible = false;
-        //        profileToolStripMenuItem.Visible = true;
         //        viewReservationsToolStripMenuItem.Visible = true;
-        //        changePasswordToolStripMenuItem.Visible = true;
         //    }
         //}
 
@@ -69,8 +66,8 @@ namespace ParkWay
 
         private void viewReservationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ViewPS reservePS = new ViewPS();
-            reservePS.Show();
+            ViewPS viewPS = new ViewPS();
+            viewPS.Show();
         }
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -84,12 +81,6 @@ namespace ParkWay
         {
             ChangePassword changePassword = new ChangePassword();
             changePassword.Show();
-        }
-
-        private void reservationsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ReserveAdministration reserveAdministration = new ReserveAdministration();
-            reserveAdministration.Show();
         }
     }
 }
